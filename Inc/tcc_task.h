@@ -19,6 +19,12 @@ struct _s_STR {
 #define Kp 19.24
 #define P_SIG_POROG 20.f
 
+
+extern void Sensor_4_Task(void const *argument);
+extern void Sensor_3_Task(void const *argument);
+extern void Sensor_2_Task(void const *argument);
+extern void Sensor_1_Task(void const *argument);
+
 extern struct _s_STR TCC1;
 extern struct _s_STR TCC2;
 extern struct _s_STR TCC3;

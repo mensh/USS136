@@ -61,6 +61,11 @@ uint16_t CPU_load;
 /* Variables -----------------------------------------------------------------*/
 osThreadId defaultTaskHandle;
 osThreadId IntegtatorId;
+osThreadId TCC1_Task;
+osThreadId TCC2_Task;
+osThreadId TCC3_Task;
+osThreadId TCC4_Task;
+
 osThreadId CAN_TaskId;
 osTimerId myTimer01Handle;
 
@@ -87,6 +92,24 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(defaultTask, StartDefaultTask, osPriorityBelowNormal, 0, 128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
+	
+  osThreadDef(TCC1_Task, Sensor_1_Task, osPriorityBelowNormal, 0, 128);
+  TCC1_Task = osThreadCreate(osThread(TCC1_Task), NULL);
+	
+	
+  osThreadDef(TCC2_Task, Sensor_2_Task, osPriorityBelowNormal, 0, 128);
+  TCC2_Task = osThreadCreate(osThread(TCC2_Task), NULL);
+	
+		
+  osThreadDef(TCC3_Task, Sensor_3_Task, osPriorityBelowNormal, 0, 128);
+  TCC3_Task = osThreadCreate(osThread(TCC3_Task), NULL);
+	
+		
+  osThreadDef(TCC4_Task, Sensor_4_Task, osPriorityBelowNormal, 0, 128);
+  TCC4_Task = osThreadCreate(osThread(TCC4_Task), NULL);
+	
+	
+	
   osThreadDef(IntegratorTask, IntegratorTask, osPriorityNormal, 0, 128);
   IntegtatorId = osThreadCreate(osThread(IntegratorTask), NULL);
 
