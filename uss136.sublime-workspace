@@ -1,0 +1,968 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Se",
+				"Sensor_2_Task"
+			],
+			[
+				"ST",
+				"STATE"
+			],
+			[
+				"S",
+				"STATE"
+			],
+			[
+				"uint",
+				"uint16_t"
+			],
+			[
+				"P",
+				"Period_1_sec"
+			],
+			[
+				"Per",
+				"Period_8_sec"
+			],
+			[
+				"Pe",
+				"Period_8_sec"
+			],
+			[
+				"Str",
+				"Struhka"
+			],
+			[
+				"STR",
+				"Str1"
+			],
+			[
+				"Ti",
+				"Timer_1_s"
+			],
+			[
+				"TIMER",
+				"Timer_1_s"
+			],
+			[
+				"EN",
+				"EN_Control"
+			],
+			[
+				"a",
+				"argument"
+			],
+			[
+				"osTh",
+				"osThreadId"
+			],
+			[
+				"osT",
+				"osTimerId"
+			],
+			[
+				"print",
+				"printf\tprintf …"
+			],
+			[
+				"inc",
+				"include"
+			],
+			[
+				"V",
+				"fValue"
+			],
+			[
+				"C",
+				"CS1HOLT_UP"
+			],
+			[
+				"CS",
+				"CS1HOLT_DOWN"
+			],
+			[
+				"OBD",
+				"OBD3_OFF"
+			],
+			[
+				"sta",
+				"static"
+			],
+			[
+				"VSK_Ob",
+				"VSK_obduva_stekla"
+			],
+			[
+				"VS",
+				"VSK_OBDUVA_IKO"
+			],
+			[
+				"st",
+				"state"
+			],
+			[
+				"TIM",
+				"TIME_VSK_OBODUVA_STEKLA"
+			],
+			[
+				"T",
+				"Timer_vsk_oboduva_stekla"
+			],
+			[
+				"s_",
+				"s_algo"
+			],
+			[
+				"M_RE",
+				"M_RELE_OBDUVA_ON_ON"
+			],
+			[
+				"OB",
+				"OBD2_OFF"
+			],
+			[
+				"ON",
+				"OBG3_ON"
+			],
+			[
+				"obf",
+				"OBG3_OFF"
+			],
+			[
+				"OBG",
+				"OBG2_OFF"
+			],
+			[
+				"co",
+				"Counter"
+			],
+			[
+				"Timer",
+				"Timer_100ms"
+			],
+			[
+				"b",
+				"buk_otkaz"
+			],
+			[
+				"obo",
+				"obogrev_stekla_otkaz"
+			],
+			[
+				"Read",
+				"Read_FIFO_R1"
+			],
+			[
+				"REad",
+				"Read_Status_Register_Transmit"
+			],
+			[
+				"Sk",
+				"SKV_Ch_A"
+			],
+			[
+				"t",
+				"t_RZ_Recive"
+			],
+			[
+				"bor",
+				"bort_left"
+			],
+			[
+				"s",
+				"s_algo"
+			],
+			[
+				"SKV_",
+				"SKV_A_no_filter"
+			],
+			[
+				"0x",
+				"0x000000ff"
+			],
+			[
+				"DA",
+				"Data_Ch_1"
+			],
+			[
+				"Re",
+				"Read_FIFO_R2"
+			],
+			[
+				"Da",
+				"Data_Ch_2"
+			],
+			[
+				"St",
+				"Status_Ch_1"
+			],
+			[
+				"def",
+				"define"
+			],
+			[
+				"holt",
+				"Holt_Configuration"
+			],
+			[
+				"Ob",
+				"Obogrev_stekla_oslab_rehim"
+			],
+			[
+				"O",
+				"Obogrev_otkaz"
+			],
+			[
+				"I",
+				"Intensiv"
+			],
+			[
+				"CO",
+				"CONST_I_UBDUV_NOG_OTKAZ"
+			],
+			[
+				"CON",
+				"CONST_I_PEREGREV_NOG"
+			],
+			[
+				"vkl",
+				"vkl_obogrev_nog"
+			],
+			[
+				"Tim",
+				"Timer_1_s_peregrev_nog"
+			],
+			[
+				"TI",
+				"Timer_1_s_peregrev_nog"
+			],
+			[
+				"u",
+				"uint8_t"
+			],
+			[
+				"vkl_",
+				"vkl_obogrev"
+			],
+			[
+				"U",
+				"Uslovie"
+			],
+			[
+				"de",
+				"define"
+			],
+			[
+				"vk",
+				"vkl_obduv2"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/D/GIT/AZST-3000/INC/board.h",
+			"settings":
+			{
+				"buffer_size": 522,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "[\n    // TODO: figure out how to match multiple scopes.\n    { \"keys\": [\"ctrl+option+a\"], \"command\": \"clang_format\",\n        \"context\":  \n        [\n            {\"key\": \"selector\", \"operator\": \"equal\", \"operand\": \"source.c++\"}\n        ],\n    },\n\n    { \"keys\": [\"ctrl+option+a\"], \"command\": \"clang_format\",\n        \"context\":  \n        [\n            {\"key\": \"selector\", \"operator\": \"equal\", \"operand\": \"source.c\"}\n        ],\n    },\n    \n    { \"keys\": [\"ctrl+option+a\"], \"command\": \"clang_format\",\n        \"context\":\n        [\n            {\"key\": \"selector\", \"operator\": \"equal\", \"operand\": \"source.js\"}\n        ]\n    }\n]",
+			"file": "/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/Clang Format/Default (Windows).sublime-keymap",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 617,
+				"line_ending": "Windows",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "/D/GIT/AZST-3000/INC/AT91SAM7X256.h",
+			"settings":
+			{
+				"buffer_size": 210167,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/C++/C++ Single File.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "insta",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 464.0
+	},
+	"console":
+	{
+		"height": 568.0,
+		"history":
+		[
+			"Install Package :",
+			"Install Package"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/SVN/USS136/USS136/Inc",
+		"/D/SVN/USS136/USS136/Src"
+	],
+	"file_history":
+	[
+		"/D/SVN/USS136/USS136/Src/task_can.c",
+		"/D/SVN/NOTSVN/AZST-3000/board.h",
+		"/D/SVN/USS136/USS136/Inc/can_task.h",
+		"/D/SVN/NOTSVN/AZST-3000/SRC/cfg/PIOB_cfg.c",
+		"/D/GIT/AZST-3000/main.c",
+		"/C/Users/S_Menshikov/Desktop/Новый текстовый документ.txt.bop",
+		"/C/Keil_v5/ARM/Boards/Atmel/AT91SAM7X-EK/RTX_Blinky/Blinky.c",
+		"/D/SVN/TC_2/trunk/Новый текстовый документ.bat",
+		"/C/Users/S_Menshikov/Desktop/test.c",
+		"/D/SVN/USS136/USS136/Src/cpu_utils.c",
+		"/D/SVN/USS136/USS136/Src/dma.c",
+		"/D/SVN/USS136/USS136/Src/stm32f2xx_hal_msp.c",
+		"/D/SVN/USS136/USS136/Src/spi.c",
+		"/D/SVN/USS136/USS136/Src/adc.c",
+		"/D/SVN/USS136/USS136/Src/freertos.c",
+		"/D/SVN/USS136/USS136/Src/tcc_task.c",
+		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Projects/STM322xG_EVAL/Examples/CAN/CAN_Networking/Src/main.c",
+		"/D/SVN/USS136/USS136/Src/main.c",
+		"/D/SVN/USS136/USS136/Src/can.c",
+		"/D/SVN/USS136/USS136/Src/math_func.c",
+		"/D/SVN/TC_2/trunk/Src/task_can.c",
+		"/D/SVN/USS136/USS136/Inc/tcc_task.h",
+		"/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/User/clang_format.sublime-settings",
+		"/D/SVN/TC_2/trunk/Src/can.c",
+		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Utilities/CPU/cpu_utils.c",
+		"/D/SVN/TC_2/trunk/Src/adc.c",
+		"/D/SVN/TC_2/trunk/Src/math_func.c",
+		"/D/SVN/TC_2/trunk/Src/DFillter.c",
+		"/D/SVN/TC_2/trunk/Inc/suosu.h",
+		"/D/SVN/UVVK2/trunk/SRC/adc.c",
+		"/D/SVN/TC_2/trunk/Src/freertos.c",
+		"/D/SVN/TC_2/trunk/Src/holt_driver.c",
+		"/D/SVN/UVVK2/trunk/SRC/stm32f2xx_it.c",
+		"/D/SVN/UVVK2/trunk/SRC/thread_adc.c",
+		"/D/SVN/USS136/USS136/Src/adc_task.c",
+		"/D/SVN/TC_2/trunk/Inc/Dfillter.h",
+		"/D/SVN/TC_2/trunk/Src/adc_task.c",
+		"/C/Users/S_Menshikov/Desktop/testt.c",
+		"/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/Clang Format/clang_format.sublime-settings",
+		"/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/Default (Windows).sublime-keymap",
+		"/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/D/SVN/RZ_Wifi/hi3895/ArduESP8266/ArduESP8266.ino",
+		"/D/SVN/TC_2/trunk/Src/stm32f2xx_hal_msp.c",
+		"/C/MinGW/i686-w64-mingw32/include/adoctint.h",
+		"/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/C/MinGW/lib/gcc/mingw32/5.3.0/include/c++/mingw32/bits/stringfwd.h",
+		"/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/C/Users/S_Menshikov/Documents/visual studio 2015/Projects/WindowsFormsApplication27/WindowsFormsApplication27/Program.cs",
+		"/D/temp/RZ_BHD_com_port/Src/main.c",
+		"/D/temp/RZ_BHD_com_port/Src/HOLT/holt_core.c",
+		"/D/temp/RZ_BHD_com_port/Src/HOLT/HI3598.c",
+		"/D/c#/c#/Viewer_0.0.1/Viewer/Viewer/Main_Form.cs",
+		"/C/Users/S_Menshikov/Documents/visual studio 2015/Projects/WindowsFormsApplication1/WindowsFormsApplication1/Form1.cs",
+		"/C/Users/S_Menshikov/Documents/visual studio 2015/Projects/WindowsFormsApplication27/WindowsFormsApplication27/Form1.cs",
+		"/D/TEMPNET/trunk/Src/vsk.c",
+		"/C/Users/S_Menshikov/Desktop/test_generator/22222/Src/driver.c",
+		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Projects/STM322xG_EVAL/Examples/ADC/ADC_RegularConversion_DMA/Src/stm32f2xx_it.c",
+		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Projects/STM322xG_EVAL/Examples/CAN/CAN_Networking/Src/stm32f2xx_it.c",
+		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Projects/STM322xG_EVAL/Examples/CAN/CAN_Networking/Inc/main.h",
+		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Projects/STM322xG_EVAL/Examples/CAN/CAN_Networking/Src/stm32f2xx_hal_msp.c",
+		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Projects/STM322xG_EVAL/Examples/ADC/ADC_RegularConversion_DMA/Src/main.c",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.100/transfer function.cpp",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.363/DAC.CPP",
+		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Projects/STM322xG_EVAL/Examples/TIM/TIM_7PWMOutput/Src/main.c",
+		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Projects/STM322xG_EVAL/Examples/DAC/DAC_SignalsGeneration/Src/main.c",
+		"/D/SVN/UKV2/trunk/Src/vsk.c",
+		"/D/SVN/UKV2/trunk/Src/core/timCore.c",
+		"/D/SVN/UKV2/trunk/Src/dma.c",
+		"/D/SVN/UKV2/trunk/Inc/dma.h",
+		"/D/SVN/UKV2/trunk/Inc/gpio.h",
+		"/D/SVN/UKV2/trunk/Inc/dac.h",
+		"/D/SVN/UKV2/trunk/Src/dac.c",
+		"/C/Users/S_Menshikov/Desktop/TC.txt.bop",
+		"/D/SVN/AZST2/trunk/Src/thread_capture.c",
+		"/D/SVN/AZST2/trunk/Src/can.c",
+		"/D/SVN/AZST2/trunk/Src/anak_thread.c",
+		"/F/serial.#",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.330/DDS.c",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.793/user_esp_platform.c",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.339/user_sensor.c",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.072/user_webserver.c",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.506/user_main.c",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.520/user_light.c",
+		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Projects/STM322xG_EVAL/Examples/ADC/ADC_RegularConversion_DMA/Src/stm32f2xx_hal_msp.c",
+		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Projects/STM322xG_EVAL/Examples/ADC/ADC_RegularConversion_DMA/Inc/main.h",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.550/test.h",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.987/test.c",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.507/ul_audio_gen.h",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.617/ul_audio_gen.c",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.936/ul_other.h",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.432/ul_audio_gen.c",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.523/tm_stm32f4_timer_properties.h",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.056/tm_stm32f4_timer_properties.c",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.824/tm_stm32f4_timer_properties.c",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.569/tm_stm32f4_dac_signal.c",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.368/test.c",
+		"/D/SVN/TC_2/trunk/Src/main.c",
+		"/D/SVN/UKV2/trunk/Src/stm32f2xx_it.c",
+		"/D/Electron_pribor/Keil project/BKD-136/Timer/timer.cpp",
+		"/D/Electron_pribor/Keil project/BKD-136/Timer/timer.h",
+		"/D/Electron_pribor/Keil project/BKD-136/Config/global_init.h",
+		"/D/Electron_pribor/Keil project/BKD-136/Function/function.cpp",
+		"/D/SVN/TC_2/trunk/Src/task_bin_read.c",
+		"/D/SVN/TC_2/trunk/Src/suosu.c",
+		"/D/Electron_pribor/Keil project/BKD-136/Timer/izm_vibro.cpp",
+		"/D/Electron_pribor/Keil project/BKD-136/Task/task_race_can.cpp",
+		"/D/Electron_pribor/Keil project/BKD-136/Task/task_wd.cpp",
+		"/D/Electron_pribor/Keil project/BKD-136/Task/task.h",
+		"/D/Electron_pribor/Keil project/BKD-136/Task/send_can.cpp",
+		"/D/Electron_pribor/Keil project/BKD-136/Filtration/iir_filter.cpp",
+		"/D/Electron_pribor/Keil project/BKD-136/Filtration/filtration_header.h",
+		"/D/Electron_pribor/Keil project/BKD-136/Filtration/f_skz.cpp",
+		"/D/Electron_pribor/Keil project/BKD-136/SPI/spi.cpp",
+		"/D/Electron_pribor/Keil project/BKD-136/Filtration/fdacoefs.h",
+		"/D/c#/c#/Viewer_0.0.1/Viewer/Viewer/Form1.cs",
+		"/C/Users/S_Menshikov/Documents/Visual Studio 2015/Projects/WindowsFormsApplication14/WindowsFormsApplication14/Form1.cs",
+		"/D/Electron_pribor/c++ project/algoritm/generator.cpp",
+		"/C/Users/S_Menshikov/Desktop/ESPlorer/_lua/test100lines.lua",
+		"/C/Users/S_Menshikov/Desktop/ESPlorer/ESPlorer.jar",
+		"/C/Users/S_Menshikov/AppData/Local/Arduino15/packages/esp8266/hardware/esp8266/2.2.0/libraries/ESP8266WiFi/src/ESP8266WiFi.h",
+		"/C/Users/S_Menshikov/AppData/Local/Arduino15/packages/esp8266/hardware/esp8266/2.2.0/libraries/ESP8266WiFi/src/include/ClientContext.h",
+		"/C/Users/S_Menshikov/Documents/Visual Studio 2015/Projects/WindowsFormsApplication21/WindowsFormsApplication21/Form1.cs",
+		"/D/Electron_pribor/Keil project/BKD-136/Ring_Buffer/ring_buffer.cpp",
+		"/D/Electron_pribor/Keil project/BKD-136/Ring_Buffer/ring_buffer.h",
+		"/D/Electron_pribor/Keil project/BKD-136/Main/main.cpp",
+		"/D/Electron_pribor/Keil project/BKD-136/Main/bartlet.h",
+		"/D/Electron_pribor/Keil project/BKD-136/Filtration/median_filter.cpp",
+		"/C/Users/S_Menshikov/Desktop/testt/SRC/main.c"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"ADC",
+			"AD4",
+			"_send_waiting ",
+			"DeviceWrite",
+			"OX",
+			"fss",
+			"DATA4DAC",
+			"BIT_USED_TO_POLL",
+			"__wait_for_ready",
+			"START_BXD_RZ",
+			";",
+			"struct DSignal ",
+			";",
+			" ",
+			"struct DSignal"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			".fValue",
+			"s_out_suoso.",
+			".fValue",
+			"",
+			"s_out_bsto.",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/D/GIT/AZST-3000/INC/board.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 522,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								505,
+								505
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/Clang Format/Default (Windows).sublime-keymap",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 617,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								617,
+								617
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										616,
+										617
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/square_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										0,
+										1
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/GIT/AZST-3000/INC/AT91SAM7X256.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 210167,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								137448,
+								137433
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 36797.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.astyle_error_message":
+	{
+		"height": 0.0
+	},
+	"output.exec":
+	{
+		"height": 222.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 118.0
+	},
+	"pinned_build_system": "",
+	"project": "uss136.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"D:\\SVN\\TC2\\tc2\\SM_project.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
