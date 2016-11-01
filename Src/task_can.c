@@ -32,6 +32,7 @@ void CAN_Transmit(void) {
   hcan1.pTxMsg->StdId = 0x02b;
   hcan1.pTxMsg->DLC = 8;
   hcan1.pTxMsg->IDE = CAN_ID_STD;
+  hcan1.pTxMsg->RTR = CAN_RTR_DATA;
   HAL_CAN_Transmit_IT(&hcan1);
 
   memset(hcan1.pTxMsg, 0, sizeof(CanTxMsgTypeDef));
@@ -50,7 +51,7 @@ void CAN_Transmit(void) {
   hcan1.pTxMsg->StdId = 0x02c;
   hcan1.pTxMsg->DLC = 8;
   hcan1.pTxMsg->IDE = CAN_ID_STD;
-  HAL_CAN_Transmit_IT(&hcan1);
+  HAL_CAN_Transmit(&hcan1,500);
 }
 
 

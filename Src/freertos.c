@@ -113,7 +113,7 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(IntegratorTask, IntegratorTask, osPriorityNormal, 0, 128);
   IntegtatorId = osThreadCreate(osThread(IntegratorTask), NULL);
 
-  osThreadDef(CAN_Task, CAN_Task, osPriorityNormal, 0, 128);
+  osThreadDef(CAN_Task, CAN_Task, osPriorityNormal, 0, 256);
   CAN_TaskId = osThreadCreate(osThread(CAN_Task), NULL);
 
   osTimerStart(myTimer01Handle, 1);

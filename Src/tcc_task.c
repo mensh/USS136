@@ -43,6 +43,10 @@ void Algoritm(struct _s_STR *STR, float P) {
   if (STR->P > 36) {
     STR->Kz = 1;
   }
+	else
+	{
+		STR->Kz = 0;
+	}
 
   if (STR->P < 20) {
     STR->Period_8_sec = 0;
@@ -56,6 +60,10 @@ void Algoritm(struct _s_STR *STR, float P) {
   if (STR->P >= 0 && STR->P < 0.04) {
     STR->Otkaz = 1;
   }
+	else 
+	{
+		STR->Otkaz = 0;
+	}
 }
 
 void Sensor_1_Task(void const *argument) {
@@ -101,6 +109,9 @@ void Sensor_1_Task(void const *argument) {
       P1 = (U_1_OUT_M - U_1_IN_M) * I_1_IN_M * Kp;
       Algoritm(&TCC1, P1);
       Start_Timer = 0;
+			S_A_M_HIGHT
+      S_B_M_HIGHT
+      S_C_M_HIGHT
       osMutexRelease(mid_Thread_Mutex);
       if (TCC1.Period_1_sec == 1) osDelay(1000);
       if (TCC1.Period_8_sec == 1) osDelay(8000);
@@ -148,6 +159,9 @@ void Sensor_2_Task(void const *argument) {
       P2 = (U_2_OUT_M - U_2_IN_M) * I_2_IN_M * Kp;
       Start_Timer = 0;
       Algoritm(&TCC2, P2);
+			S_A_M_HIGHT
+      S_B_M_HIGHT
+      S_C_M_HIGHT
       osMutexRelease(mid_Thread_Mutex);
       if (TCC2.Period_1_sec == 1) osDelay(1000);
       if (TCC2.Period_8_sec == 1) osDelay(8000);
@@ -196,6 +210,9 @@ void Sensor_3_Task(void const *argument) {
       P3 = (U_3_OUT_M - U_3_IN_M) * I_3_IN_M * Kp;
       Start_Timer = 0;
       Algoritm(&TCC3, P3);
+			S_A_M_HIGHT
+      S_B_M_HIGHT
+      S_C_M_HIGHT
       osMutexRelease(mid_Thread_Mutex);
       if (TCC3.Period_1_sec == 1) osDelay(1000);
       if (TCC3.Period_8_sec == 1) osDelay(8000);

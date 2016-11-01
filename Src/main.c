@@ -80,7 +80,8 @@ int main(void) {
    * Configuration----------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick.
-   */  HAL_Init();
+   */ 
+	HAL_Init();
 
   /* Configure the system clock */
   SystemClock_Config();
@@ -90,7 +91,7 @@ int main(void) {
   MX_DMA_Init();
   MX_ADC1_Init();
   MX_CAN1_Init();
-  MX_SPI1_Init();
+ // MX_SPI1_Init();
 
   /* USER CODE BEGIN 2 */
 
@@ -106,11 +107,7 @@ int main(void) {
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1) {
-    /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
-  }
   /* USER CODE END 3 */
 }
 
