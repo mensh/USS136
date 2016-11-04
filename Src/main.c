@@ -71,7 +71,6 @@ void MX_FREERTOS_Init(void);
 /* USER CODE END 0 */
 
 int main(void) {
-
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -80,8 +79,8 @@ int main(void) {
    * Configuration----------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick.
-   */ 
-	HAL_Init();
+   */
+  HAL_Init();
 
   /* Configure the system clock */
   SystemClock_Config();
@@ -91,7 +90,7 @@ int main(void) {
   MX_DMA_Init();
   MX_ADC1_Init();
   MX_CAN1_Init();
- // MX_SPI1_Init();
+  // MX_SPI1_Init();
 
   /* USER CODE BEGIN 2 */
 
@@ -114,7 +113,6 @@ int main(void) {
 /** System Clock Configuration
 */
 void SystemClock_Config(void) {
-
   RCC_OscInitTypeDef RCC_OscInitStruct;
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
 

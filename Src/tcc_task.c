@@ -25,7 +25,7 @@ float Uverif;
 
 static float Core_Tempsensor(uint32_t data) {
   float Temp;
-  Temp = (data * 3.3 / 4095.f - 0.76) / 0.0025 + 25;
+  Temp = (data * Uverif / 4095.f - 0.76) / 0.0025 + 25;
   return Temp;
 }
 
@@ -42,11 +42,9 @@ void Algoritm(struct _s_STR *STR, float P) {
 
   if (STR->P > 36) {
     STR->Kz = 1;
+  } else {
+    STR->Kz = 0;
   }
-	else
-	{
-		STR->Kz = 0;
-	}
 
   if (STR->P < 20) {
     STR->Period_8_sec = 0;
@@ -59,15 +57,16 @@ void Algoritm(struct _s_STR *STR, float P) {
 
   if (STR->P >= 0 && STR->P < 0.04) {
     STR->Otkaz = 1;
+  } else {
+    STR->Otkaz = 0;
   }
-	else 
-	{
-		STR->Otkaz = 0;
-	}
 }
-
-void Sensor_1_Task(void const *argument) {
   float I_1_IN_M;
+	float I_2_IN_M;
+  float I_3_IN_M;
+	float I_4_IN_M;
+void Sensor_1_Task(void const *argument) {
+
   float U_1_IN_M;
   float U_1_OUT_M;
   uint8_t i;
@@ -109,7 +108,7 @@ void Sensor_1_Task(void const *argument) {
       P1 = (U_1_OUT_M - U_1_IN_M) * I_1_IN_M * Kp;
       Algoritm(&TCC1, P1);
       Start_Timer = 0;
-			S_A_M_HIGHT
+      S_A_M_HIGHT
       S_B_M_HIGHT
       S_C_M_HIGHT
       osMutexRelease(mid_Thread_Mutex);
@@ -121,7 +120,7 @@ void Sensor_1_Task(void const *argument) {
 }
 
 void Sensor_2_Task(void const *argument) {
-  float I_2_IN_M;
+ 
   float U_2_IN_M;
   float U_2_OUT_M;
   uint8_t i;
@@ -159,7 +158,7 @@ void Sensor_2_Task(void const *argument) {
       P2 = (U_2_OUT_M - U_2_IN_M) * I_2_IN_M * Kp;
       Start_Timer = 0;
       Algoritm(&TCC2, P2);
-			S_A_M_HIGHT
+      S_A_M_HIGHT
       S_B_M_HIGHT
       S_C_M_HIGHT
       osMutexRelease(mid_Thread_Mutex);
@@ -171,7 +170,7 @@ void Sensor_2_Task(void const *argument) {
 }
 
 void Sensor_3_Task(void const *argument) {
-  float I_3_IN_M;
+
   float U_3_IN_M;
   float U_3_OUT_M;
   uint8_t i;
@@ -210,7 +209,7 @@ void Sensor_3_Task(void const *argument) {
       P3 = (U_3_OUT_M - U_3_IN_M) * I_3_IN_M * Kp;
       Start_Timer = 0;
       Algoritm(&TCC3, P3);
-			S_A_M_HIGHT
+      S_A_M_HIGHT
       S_B_M_HIGHT
       S_C_M_HIGHT
       osMutexRelease(mid_Thread_Mutex);
@@ -222,7 +221,7 @@ void Sensor_3_Task(void const *argument) {
 }
 
 void Sensor_4_Task(void const *argument) {
-  float I_4_IN_M;
+ 
   float U_4_IN_M;
   float U_4_OUT_M;
   uint8_t i;
@@ -274,75 +273,15 @@ void Sensor_4_Task(void const *argument) {
 }
 
 void Task_TCC(void) {
-  static uint8_t STATE;
+
   static uint16_t Median_mass[10];
   static uint16_t Median_mass_temp[10];
   uint8_t i;
 
   HAL_ADC_Start_DMA(&hadc1, (uint32_t *)&rawADC_1, 14);
+	HAL_GPIO_WritePin(GPIOG,GPIO_PIN_9,GPIO_PIN_SET);
   while (1) {
-    /*
-switch (STATE) {
-case (0): {
-Timer_1_s = 1000;
-            //HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);
-STATE = 1;
-break;
-}
-case (1): {
-Sensor_1_Task();
-Algoritm(&TCC1, P1);
-STATE = 2;
-break;
-}
-case (2): {
-if (Timer_1_s == 0)
-            {
-STATE = 3;
-                    //HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6,
-GPIO_PIN_RESET);
-            }
-break;
-}
-case (3): {
-Timer_1_s = 1000;
-STATE = 4;
-break;
-}
-case (4): {
-Sensor_2_Task();
-Algoritm(&TCC2, P2);
-STATE = 5;
-break;
-}
-case (5): {
-if (Timer_1_s == 0) {
-STATE = 6;
-Timer_1_s = 1000;
-}
-break;
-}
-case (6): {
-Sensor_3_Task();
-Algoritm(&TCC3, P3);
-STATE = 7;
-break;
-}
-case (7): {
-if (Timer_1_s == 0) {
-STATE = 8;
-Timer_1_s = 1000;
-}
-break;
-}
-case (8): {
-Sensor_4_Task();
-Algoritm(&TCC4, P4);
-STATE = 0;
-break;
-}
-}
-*/
+
     for (i = 9; i > 0; i--) {
       Median_mass[i] = Median_mass[i - 1];
       Median_mass_temp[i] = Median_mass_temp[i - 1];
@@ -353,9 +292,6 @@ break;
 
     Temp = Core_Tempsensor(Mediana_filter16(Median_mass_temp, 10));
     Uverif = ((1678.f) * 3.f) / (Mediana_filter16(Median_mass, 10));
-
-    //  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_SET);
-
     osDelay(100);
   }
 }

@@ -168,7 +168,6 @@ void MX_ADC1_Init(void) {
 }
 
 void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc) {
-
   GPIO_InitTypeDef GPIO_InitStruct;
   if (hadc->Instance == ADC1) {
     /* USER CODE BEGIN ADC1_MspInit 0 */
@@ -229,7 +228,6 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc) {
 }
 
 void HAL_ADC_MspDeInit(ADC_HandleTypeDef *hadc) {
-
   if (hadc->Instance == ADC1) {
     /* USER CODE BEGIN ADC1_MspDeInit 0 */
 
