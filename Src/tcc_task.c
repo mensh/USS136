@@ -78,7 +78,7 @@ void Sensor_1_Task(void const *argument) {
   mid_Thread_Mutex = osMutexCreate(osMutex(SampleMutex));
   while (1) {
     status = osMutexWait(mid_Thread_Mutex, NULL);
-    if (status == osOK) {
+    if (status == osOK && TCC1.Kz == 0) {
       if (Start_Timer == 0) {
         S_A_M_LOW
         S_B_M_LOW
@@ -131,7 +131,7 @@ void Sensor_2_Task(void const *argument) {
   osStatus status;
   while (1) {
     status = osMutexWait(mid_Thread_Mutex, NULL);
-    if (status == osOK) {
+    if (status == osOK && TCC2.Kz == 0) {
       if (Start_Timer == 0) {
         S_A_M_HIGHT
         S_B_M_LOW
@@ -181,7 +181,7 @@ void Sensor_3_Task(void const *argument) {
   osStatus status;
   while (1) {
     status = osMutexWait(mid_Thread_Mutex, NULL);
-    if (status == osOK) {
+    if (status == osOK && TCC3.Kz == 0) {
       if (Start_Timer == 0) {
         Timer_100_ms = 100;
         S_A_M_LOW
@@ -233,7 +233,7 @@ void Sensor_4_Task(void const *argument) {
 
   while (1) {
     status = osMutexWait(mid_Thread_Mutex, NULL);
-    if (status == osOK) {
+    if (status == osOK && TCC4.Kz == 0) {
       if (Start_Timer == 0) {
         Timer_100_ms = 100;
         S_A_M_HIGHT

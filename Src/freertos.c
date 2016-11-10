@@ -46,6 +46,7 @@
 #include "cpu_utils.h"
 #include "tcc_task.h"
 #include "can_task.h"
+#include "rz_task.h"
 /* USER CODE BEGIN Includes */
 #define F_INT_LOW                                                              \
   HAL_GPIO_WritePin(F_INT_M_GPIO_Port, F_INT_M_Pin, GPIO_PIN_RESET);
@@ -65,6 +66,8 @@ osThreadId TCC1_Task;
 osThreadId TCC2_Task;
 osThreadId TCC3_Task;
 osThreadId TCC4_Task;
+
+osThreadId RZ_TaskId;
 
 osThreadId CAN_TaskId;
 osTimerId myTimer01Handle;
@@ -115,6 +118,10 @@ void MX_FREERTOS_Init(void) {
 
   osThreadDef(CAN_Task, CAN_Task, osPriorityNormal, 0, 256);
   CAN_TaskId = osThreadCreate(osThread(CAN_Task), NULL);
+	
+	
+	osThreadDef(RZ_TaskId, RZ_Task, osPriorityNormal, 0, 256);
+  RZ_TaskId = osThreadCreate(osThread(RZ_TaskId), NULL);
 
   osTimerStart(myTimer01Handle, 1);
 }

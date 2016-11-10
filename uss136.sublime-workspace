@@ -264,85 +264,38 @@
 	"buffers":
 	[
 		{
-			"file": "Src/tcc_task.c",
+			"file": "/Z/home/test1.ru/www/index1.php",
 			"settings":
 			{
-				"buffer_size": 8098,
-				"line_ending": "Windows"
+				"buffer_size": 6441,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/D/SVN/NOTSVN/UVVK_3000/SPI_drv.c",
+			"file": "/D/Electron_pribor/Keil project/BKD-136/_65-110.m",
 			"settings":
 			{
-				"buffer_size": 24420,
+				"buffer_size": 2431,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Z/home/test1.ru/www/index.php",
+			"settings":
+			{
+				"buffer_size": 2593,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/SVN/UVVK2/trunk/SRC/ad2s_driver.c",
+			"file": "/Z/home/test1.ru/www/uz_fn.php",
 			"settings":
 			{
-				"buffer_size": 5353,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "/*******************************************************************************\n\n\n  Filename:    GW3F2A.c\n  Description:  Library routines for the Software Drivers for \n                NAND flash very large page family.\n\n\n   Copyright:(C)Numonyx\n \n   \t\t\t\t                \n You have a license to reproduce, display, perform, produce derivative works of, \n and distribute (in original or modified form) the Program, provided that you \n explicitly agree to the following disclaimer:\n   \n   THIS PROGRAM IS PROVIDED \"AS IT IS\" WITHOUT WARRANTY OF ANY KIND, EITHER \n   EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO, THE IMPLIED WARRANTY \n   OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK \n   AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE \n   PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, \n   REPAIR OR CORRECTION.\n\n********************************************************************************\n\n   Version History.\n\n   Ver.\t\tNo\tDate     Comments\n   \n   Alpha\t0.1\t\tMarch 2010  Firt Release\n\n\n*******************************************************************************/\n#include \"GW3F2A.h\"    \n\n/*******************/\n#define NAND_DEBUG \n\nstatic NMX_uint8 cacheReadMode=0x00;        /* the device is in cache read */\nstatic NMX_uint32 lastAddressInCacheRead=0; /* last address used in cache operation */\n\n\n/************* Utility Functions ***********************/\nstatic void SetCacheReadMode(NMX_uint8 value);\nstatic NMX_uint8 GetCacheReadMode( void );\nstatic NMX_uint32 GetLastAddressInCacheRead( void );\nstatic void SetLastAddressInCacheRead(NMX_uint32 address);\n\n/*************Utility Functions***********************/\nstatic inline NAND_Ret CheckPageConstraint (NMX_uint32 *udAddress, NMX_uint16 numOfChunks, NMX_uint16 *chunkSize);\nstatic inline NAND_Ret CheckMultiplaneConstraint (NMX_uint32 *FPudAddress, NMX_uint32 *SPudAddress, NMX_uint16 numOfChunks);\n\n/******************************************************************************\n                  InsertAddress\n\nFunction:       void InsertAddress(NMX_uint32 address)\nArguments:      address - the address to insert\nReturn Value: \tna\t\t\nDescription:    This function perform the data insertion in 5 cycles(row & column address)\n******************************************************************************/\nvoid InsertAddress(NMX_uint32 address)\n{  \n\tNMX_uint8 ubTemp;\n\t                        \n\tubTemp = (NMX_uint8) address;\n\tNAND_AddressInput(ubTemp); /* first address byte */\n   \n\tubTemp = (NMX_uint8) (address>>8)&0x1F; \n \n\tNAND_AddressInput(ubTemp); /* second address byte */\n   \n\tubTemp = (NMX_uint8) (address>>13);\n\tNAND_AddressInput(ubTemp); /* third address byte */\n   \n\tubTemp =(NMX_uint8) (address>>21);    \n\tNAND_AddressInput(ubTemp); /* fourth address byte */\n   \n\tubTemp =(NMX_uint8) (address>>29);    \n\tNAND_AddressInput(ubTemp); /* fifth address byte */   \n   \n}\n\n\n\n/******************************************************************************\n                  InsertColumnAddress\n\nFunction:       void InsertColumnAddress(NMX_uint32 address)\nArguments:      address is the address to insert\nReturn Value: \tna\t\t\nDescription:    This function perform the address insertion of bytes \n\t\t\t\tthat represent the column in the page\n******************************************************************************/\nvoid InsertColumnAddress(NMX_uint16 address)\n{  \n\tNMX_uint8 ubTemp;\n\t                        \n\tubTemp = (NMX_uint8) address;\n\tNAND_AddressInput(ubTemp); /* first address byte */\n   \n\tubTemp = (NMX_uint8) (address>>8)&0x1F; \n   \n\tNAND_AddressInput(ubTemp); /* second address byte */\n   \n}\n\n\n/******************************************************************************\n                  InsertRowAddress\n\nFunction:       void InsertRowAddress(NMX_uint32 address)\nArguments:      address is the address to insert\nReturn Value: \tna\t\t\nDescription:    This function perform the address insertion of the bytes\n\t\t\t\tthat represent the block number\n******************************************************************************/\nvoid InsertRowAddress(NMX_uint32 address)\n{  \n\tNMX_uint8 ubTemp;\n\t                       \n\tubTemp = (NMX_uint8) (address>>13);\n\tNAND_AddressInput(ubTemp); /* third address byte */\n   \n\tubTemp =(NMX_uint8) (address>>21);    \n\tNAND_AddressInput(ubTemp); /* fourth address byte */\n   \n\tubTemp =(NMX_uint8) (address>>29);    \n\tNAND_AddressInput(ubTemp); /* fifth address byte */   \n  \n}\n\n\n/*******************************************************************************\n                  ReadStatusRegister\n\nFunction:       NAND_Ret ReadStatusRegister()\nArguments:\nReturn Value:   Return the status of the status register\nDescription:    This function is called after an operation on the NAND is \n                asserted. The function wait until the NAND is ready. \n\t\t        NOTE: after return the NAND Read Array Mode                \n*******************************************************************************/\n\nNAND_Ret ReadStatusRegister (/*NMX_uint8 ubStatus*/){\n\n\tNMX_uint8 ubStatus = 0;\n\tNMX_uint32 uStatusCount = 0;\n\tNAND_Ret ubReturnCode = NAND_FAIL_TIMEOUT;\n \n\t/*Read Status Register*/  \n\tNAND_CommandInput((NMX_uint8)0x70);   \n   \n\t/*Wait until the NAND is busy*/\n\twhile(uStatusCount < MAX_READ_STATUS_COUNT)\n\t{\n\t\tubStatus = NAND_DataOutput();\n\t\tif ( (ubStatus&(0x40)) == 0x40 ) \n\t\t{\n\t\t\tif((ubStatus & 0x01) == 0x0)\t/* If bit0 is 0, the last operation was successful */\n\t\t\t\tubReturnCode = NAND_PASS;\n\t\t\telse /*if (ubStatus & 0x01) == 0x1)*/\n\t\t\t\tubReturnCode = NAND_FAIL;\n\t\t\tbreak;\n\t\t}\n\t\tuStatusCount++;\n\t}\n\n\treturn ubReturnCode;\n}\n\n/*******************************************************************************\n                  ReadMultiplaneStatusRegister\n\nFunction:       NAND_Ret ReadMultiplaneStatusRegister()\nArguments:\nReturn Value:   Return the status of the status register\nDescription:    This function is called after an operation on the NAND is \n                asserted. The function wait until the NAND is ready. \n\t\t        NOTE: after return the NAND Read Array Mode                \n*******************************************************************************/\n\nNAND_Ret ReadMultiplaneStatusRegister (/*NMX_uint8 *ubStatus*/){\n\n\tNMX_uint8 ubStatus = 0;\n\tNMX_uint32 uStatusCount = 0;\n \n\t/*Read Status Register*/  \n\tNAND_CommandInput((NMX_uint8)0xF1);   \n   \n\t/*Wait until the NAND is busy*/\n\twhile(uStatusCount < MAX_READ_STATUS_COUNT)\n\t{\n\t\tubStatus = NAND_DataOutput();\n\t\tif ( (ubStatus&(0x40)) == 0x40 ) \n\t\t{\n\t\t\tif((ubStatus & 0x01) == 0x0)\t/* If bit0 is 0, the last operation was successful */\n\t\t\t\treturn NAND_PASS;\n\t\t\telse if ( (ubStatus & 0x01) == 0x1)\n\t\t\t{\n\t\t\t/*check the plane which the error occurred*/\n\t\t\t// bit 1: Plane 0: pass/fail - Pass: ‘0’, Fail: ‘1’\n\t\t\t// Bit 2: Plane 1: pass/fail - Pass: ‘0’, Fail: ‘1’\n  \t  \t\tif ( 0x2 == (ubStatus & 0x02) )\n  \t  \t\t\treturn NAND_FIRSTPLANE_FAIL;\n\t  \t\telse if ( 0x4 == (ubStatus & 0x04) )\n  \t  \t\t\treturn NAND_SECONDPLANE_FAIL;\n\t\t\telse if ( 0x6 == (ubStatus & 0x06) )\n\t\t\t\treturn NAND_BOTHPLANE_FAIL;\n\t\t\telse \treturn NAND_FAIL;\n\t\t\t}\t\t\n\t\t}\n\t\tuStatusCount++;\n\t}\n\t\n\treturn NAND_FAIL_TIMEOUT;\n}\n\n\n/*****************************************************/\n\n\n/****************************************************************************\n\t\t                  HARDWARE DEPENDENT FUNCTION \n****************************************************************************/\n\n\n/******************************************************************************\n                  NAND_SetWriteProtected\n\nFunction:       void NAND_SetWriteProtected(void)\nArguments:      na\nReturn Value: \tna\t\t\nDescription:    This function set the WP pint to low\n\n******************************************************************************/\nvoid NAND_SetWriteProtect(void)\n{\n     /*to be implemented */ \n}\n\n/******************************************************************************\n                  NAND_UnsetWriteProtected\n\nFunction:       void NAND_UnsetWriteProtected(void)\nArguments:      na\nReturn Value: \tna\t\t\nDescription:    This function set the WP pint to high\n\n******************************************************************************/\n\nvoid NAND_UnsetWriteProtect(void)\n{\n    /*to be implemented */   \n}\n\n/******************************************************************************\n                  Wait_time\n\nFunction:       NAND_WaitTime(NMX_uint8 nanoseconds)\nArguments:      nanosecond - time in ns\nReturn Value: \tna\t\t\nDescription:    This function wait a period of time \n\n******************************************************************************/\n\nvoid NAND_WaitTime(NMX_uint8 nanoseconds){\n    \n     /*to be implemented */   \n}    \n\n\n/******************************************************************************\n                  NAND_Open\n\nFunction:     void NAND_Open()\nArguments:     \nReturn Value: na\nDescription:  This function is called before a new operation on the NAND starts.\n******************************************************************************/\nvoid NAND_Open() {\n    \n   /*to be implemented */ \n   \n}\n\n/******************************************************************************\n                  NAND_Close\n\nFunction:       void NAND_Close()\nArguments:      na\nReturn Value:   na\nDescription:    This function is called after an operation on the NAND is \n                completed.               \n******************************************************************************/\nvoid NAND_Close() {\n \n /*To be Implemented*/\n\n}\n\n\n\n\n\n/******************************************************************************\n                  NAND_AddressInput\n\nFunction:      void NAND_AddressInput(NMX_uint8 ubAddress)\nArguments:     ubAddress - is the address to be issued to the NAND.\nReturn Value:  na\nDescription:   This function issues an address byte to the flash and control the\n               specific hardware signals between the MCU and the device\n\n******************************************************************************/\nvoid NAND_AddressInput(NMX_uint8 ubAddress) {\n    \n \t/* To be Implemented*/\n}\n\n\n/******************************************************************************\n                  NAND_CommandInput\n\nFunction:       void NAND_CommandInput(NMX_uint8 ubCommand)\nArguments:      ubCommand - is the command to be issued to the NAND.\nReturn Value:   na\nDescription:    This function issues a command to the flash and control the \n                specific hardware signals between the MCU and the device.\n                \n******************************************************************************/\nvoid NAND_CommandInput(NMX_uint8 ubCommand) {\n  \n /*To be Implemented*/\n    \n}\n\n\n/******************************************************************************\n                  NAND_DataInput\n\nFunction:       void NAND_DataInput(dataWidth ubData)\nArguments:      ubData - is the data to be issued to the NAND.\nReturn Value:   na \t\t\t\nDescription:    This function issues an input to the flash and control the\n                specific hardware signals\n\n******************************************************************************/\nvoid NAND_DataInput(dataWidth ubData) {\n \n/*To be Implemented*/\n    \n}\n\n/******************************************************************************\n                  NAND_DataOutput\n\nFunction:       NMX_uint8 NAND_DataOutput()\nArguments:      na\nReturn Value: \treturn the data readed from the flash\t\t\nDescription:    This function get a data from the flash and control the\n                specific hardware signals\n******************************************************************************/\ndataWidth NAND_DataOutput() {\n \n/*To be Implemented*/\n\n}\n\n\n\n/****************************************************************************\n\t\t                HARDWARE INDEPENDENT FUNCTION \t\t   \t\t\t\n****************************************************************************/\n\n\n\n/******************************************************************************\n                    NAND_ReadStatusRegister\n\nFunction:         NMX_uint8 NAND_ReadStatusRegister()\nArguments:        na\nReturn Value:     the status register readed \t\t\t\nDescription:      The PageProgram operation issue a Read Status Register Command \n                  as explained in the datasheet of the 528 byte/264 word page \n                  family.\n******************************************************************************/\nNMX_uint8 NAND_ReadStatusRegister()  {\n\tNMX_uint8 ubStatus = 0;\n      \n\t/* Issue Read Status Register command */ \n\tNAND_CommandInput((NMX_uint8)0x70);\n   \n\tubStatus = (NMX_uint8) NAND_DataOutput();\n   \n\t/* Return the Status Register */ \n\treturn ubStatus;\n}                        \n\n\n\n/******************************************************************************\n                  NAND_ReadElectronicSignature\n\nFunction:         void NAND_ReadElectronicSignature(NMX_uint8 *Buffer)\nArguments:        Buffer:\n                     contains the byte returned from ReadElectronicSignature\n                     command.\nReturn Value:     na\t\nDescription:      The ReadElectronicSignature operation issue a \n                  ReadElectronicSignature Command as explained in the datasheet \n                  of the very large page family.\n******************************************************************************/\nvoid NAND_ReadElectronicSignature(dataWidth *Buffer) { \n  \n\tNMX_uint8 count;\n\n\t/* Insert ReadElectronicSignature command */                          \n\tNAND_CommandInput((NMX_uint8)0x90); \n\n\t/* Issue the address */                          \n\tNAND_AddressInput((NMX_uint8)0x00); /* first address byte */\n\n\t/* read data */\n\tfor (count=0;count<6;count++)\n\t\tBuffer[count]= NAND_DataOutput();\n\n   NAND_Reset();\n \n}   \n\n\n/******************************************************************************\n                      NAND_Reset\n\nFunction:         void NAND_Reset(void)\nArguments:        na\nReturn Value:     na \t\t\t\nDescription:      The Reset operation issue a Reset Command as explained in the\n                  datasheet of the very large page family.\n\n******************************************************************************/\nvoid NAND_Reset(void) {\n\n   /* Issue the Reset Command*/\n   NAND_CommandInput((NMX_uint8)0xFF); \n     \n}  \n\n\n\n/******************************************************************************\n                  NAND_BlockErase\n\nFunction:         NAND_Ret NAND_BlockErase(NMX_uint32 udAddress)\nArguments:       udAddress\n                   The address inside the block to erase.\nReturn Value: \t\n                 NAND_FLASH_SIZE_OVERFLOW:\n                   The address is not within the flash\n                 NAND_PASS\n                   The operation are successfully executed\n                 NAND_FAIL \n                   The operation are not successfully executed,\nDescription:     This function issue a Block Erase Command as explained in the\n                 datasheet of the very large page family.\n\n******************************************************************************/\nNAND_Ret NAND_BlockErase(NMX_uint32 udAddress)\n {\n\tNAND_Ret ubStatus;\n               \n\tif ( udAddress >= FLASH_SIZE )\n\t\treturn NAND_FLASH_SIZE_OVERFLOW;\n   \n\t/* Issue Sequential data input command */                          \n\tNAND_CommandInput((NMX_uint8)0x60);\n                                                    \n\t/* Block Address Insertion */ \n\tInsertRowAddress(udAddress);\n\n\t/* Issue confirm code command */                          \n\tNAND_CommandInput((NMX_uint8)0xD0);\n\n\t/* wait for ready*/\n\tubStatus = ReadStatusRegister();\n\treturn ubStatus;\n\n}\n\n\n\n/******************************************************************************\n                  NAND_PageRead\n\nFunction:       NAND_Ret NAND_PageRead(NMX_uint32 *udAddresses, dataWidth *Buffer,\n                                            NMX_uint16 numOfChunks, NMX_uint32 *udlength) \n\nArguments:      udAddresses:\n                  The addresses in the page where read.\n                Buffer:\n                  Contains the destination buffer to store the data.\n                numOfChunks:\n                  number of the addresses contained into udAddresses parameter\n                udLength:\n                  lengths of the data pieces to read\nReturn Value:   NAND_FLASH_SIZE_OVERFLOW:\n                   The address is not within the flash\n                NAND_PAGE_OVERFLOW\n                   the address is not in the page required\n                NAND_PASS\n                   The operation are successfully executed\n                NAND_FAIL \n                   The operation are not successfully execute\t\t\t\nDescription:    The PageRead operation issue a PageRead Command as explained in \n                the datasheet of the very large page family.\n                It can execute page read with random data output.\n\n******************************************************************************/                                                            \nNAND_Ret NAND_PageRead(NMX_uint32 *udAddress, dataWidth *Buffer, NMX_uint16 numOfChunks, NMX_uint16 *chunkSize)\n{\n   \n\t /*volatile*/ NMX_uint16 udIndex, i=0;   \n\tNMX_uint32 count=0;\n\n\tNAND_Ret ubStatus = NAND_PASS;\n   \n\t/* Control if the address is within the flash */\n\tif ( udAddress[0] >= FLASH_SIZE )\n   \t\t return NAND_FLASH_SIZE_OVERFLOW;\n\n#ifdef NAND_DEBUG\n\tif (NAND_PASS != CheckPageConstraint (udAddress, numOfChunks, chunkSize) )\n\t\treturn NAND_WRONG_ADDRESS;\n#endif\n\n   \t/* page read command */\n\tNAND_CommandInput((NMX_uint8)0x00);  \n   \n\tInsertAddress(udAddress[0]);\n   \n\t/* Leave Read Status Register mode */\n\tNAND_CommandInput((NMX_uint8)0x30);\n\n\t/* Wait for ready */\n\tubStatus=ReadStatusRegister();\n\tif ( NAND_PASS != ubStatus )\n\t\treturn ubStatus;\n\n\tNAND_CommandInput((NMX_uint8)0x00);  \t\n       \n\t/* read data */\n\tfor(i=0;i<chunkSize[0]; i++, count++)\n\t\tBuffer[count] = NAND_DataOutput(); \n   \n\tfor(udIndex=1;udIndex<numOfChunks;udIndex++)\n\t{\n\t\t/*issue random data output command*/\n\t\tNAND_CommandInput((NMX_uint8)0x05);\n\t  \n\t\t/* insert column address*/  \n\t\tInsertColumnAddress(udAddress[udIndex]);\n\n\t\tNAND_CommandInput((NMX_uint8)0xE0);\n\t   \n\t\t/*output the data*/\n\t   \n\t\tfor(i=0;i<chunkSize[udIndex]; i++, count++)\n\t\t\tBuffer[count] = NAND_DataOutput(); \n\t}\n    \n\t/* Return Pass or Fail */   \n\tubStatus = ReadStatusRegister();\n\treturn ubStatus;\n\n}\n\n\n\n\n\n/******************************************************************************\n                  NAND_PageProgram function\n\nFunction:       NAND_PageProgram(NMX_uint32 *udAddresses, dataWidth **Buffer,\n                                            NMX_uint8 numOfChunks, NMX_uint32 *udlength)\n\nArguments:      udAddresses:  \n                  The addresses into the page to program.\n                Buffer:      \n                  Contains the source buffers with the data to program.\n                udlength:\n                  length of the data pieces to program\nReturn Value: \tNAND_FLASH_SIZE_OVERFLOW:\n                   The address is not within the flash\n                NAND_PAGE_OVERFLOW\n                   Some data pieces exceed the page limit \n                NAND_PASS\n                   The operation are successfully executed\n                NAND_DIFFERENT_PAGES\n                   The addresses refer to different pages\n                NAND_FAIL \n                   The operation are not successfully execute\t\t\n                   \nDescription:    The PageProgram operation issue a PageProgram Command as \n                explained in the datasheet of the very large page \n                family. It can performa page program with random data input                \n\n******************************************************************************/\nNAND_Ret NAND_PageProgram(NMX_uint32 *udAddress, dataWidth *Buffer, NMX_uint8 numOfChunks, NMX_uint16 *chunkSize)\n{\n\t /*volatile*/ NMX_uint16 udIndex, i=0;   \n\tNMX_uint32 count=0;\n\tNMX_uint8 ubStatus;\n    \n   /* Control if the address is within the flash */\n      if ( udAddress[0] >= FLASH_SIZE )\n   \t\t return NAND_FLASH_SIZE_OVERFLOW;\n\n#ifdef NAND_DEBUG\n\tif (NAND_PASS != CheckPageConstraint (udAddress, numOfChunks, chunkSize) )\n\t\treturn NAND_WRONG_ADDRESS;\n#endif\n\n                \n\tNAND_CommandInput((NMX_uint8)0x80);\n\tInsertAddress(udAddress[0]);  \n\n\tfor (i=0;i<chunkSize[0];i++, count++)\n\t\tNAND_DataInput( Buffer[count] );\n\n\tfor(udIndex=1; udIndex<numOfChunks; udIndex++)\n\t{\n \t\t/*random data input command*/            \n\t\tNAND_CommandInput((NMX_uint8)0x85);\n\n\t\t/* Column Address Insertion */ \n\t\tInsertColumnAddress(udAddress[udIndex]);\n\t\t\n\t\t/* Write the data to the internal buffer */                          \n\t\tfor(i=0;i<chunkSize[udIndex]; i++, count++)\n\t\t\tNAND_DataInput( Buffer[count] );\n\t}\n\n\t/* Issue the Program Command*/\n\tNAND_CommandInput((NMX_uint8)0x10);\n\t\n\t/* Return pass/fail */\n\tubStatus = ReadStatusRegister();\n\treturn ubStatus;\n\t\n}\n\n\n\n/*******************************************************************************\n                  NAND_CacheRead\n\nFunction:       NAND_Ret NAND_CacheRead(NMX_uint32 udAddress, dataWidth *Buffer,\n                                                                  NMX_uint32 length) \n\nArguments:      udAddresses:\n                  The addresses of the page where start the cache read.\n                Buffer:\n                  Contains the destination buffer to store the read data\n                length:\n                  the length\nReturn Value:   NAND_FLASH_SIZE_OVERFLOW:\n                   The address is not within the flash\n                NAND_WRONG_ADDRESS\n                   The address is not at the start of a page\n                NAND_PASS\n                   The operation are successfully executed\n                NAND_FAIL \n                   The operation are not successfully execute\t\t\t\nDescription:    The CacheRead operation issue a cache read Command as explained \n                in the datasheet of the very large page family.\n                This function leav the flash in cache read mode\n\n******************************************************************************/  \nNAND_Ret NAND_CacheRead(NMX_uint32 udAddress, dataWidth *Buffer,NMX_uint32 length) \n{\n   \n   NMX_uint32 count=0;\n   NAND_Ret ubStatus; \n\n   /* Control if the address is within the flash*/\n   if ( udAddress >= FLASH_SIZE )\n   \t\t return NAND_FLASH_SIZE_OVERFLOW;\n   \n   /*test that the address is at the page start*/\n   if((udAddress&(0x7FF))>0)\n   \t\treturn NAND_WRONG_ADDRESS;\n   \t\t\n   if(GetCacheReadMode()==CACHE_READ_PENDING)\n   \tNAND_Terminate_CacheRead();\n\n   SetCacheReadMode(CACHE_READ_PENDING);\n   SetLastAddressInCacheRead(udAddress);\n   \n   \n  \t/* page read command */\n   NAND_CommandInput((NMX_uint8)0x00);  \n   \n   InsertAddress(udAddress);\n   \n   #ifdef ONFI                                            \n   \n   NAND_CommandInput((NMX_uint8)0x30); \n   \n\t/* Return Pass or Fail */   \n\tubStatus=ReadStatusRegister();\n\tif ( NAND_PASS != ubStatus )\n\t\treturn ubStatus;\n\n   #endif             \n                          \n   /*cache read command*/\n   NAND_CommandInput((NMX_uint8)0x31);\n\n\n   /* Wait for ready */\n\tif ( NAND_PASS != (ubStatus=ReadStatusRegister()) )\n\t\treturn ubStatus;\n   \n   /* page read command */\n   NAND_CommandInput((NMX_uint8)0x00);  \n   \n   for(count=0;count<length;count++)\n   \t\tBuffer[count] = NAND_DataOutput(); \n   \n   #ifndef ONFI\n   SetLastAddressInCacheRead(GetLastAddressInCacheRead()+length);\n   #endif\n  \n   return NAND_PASS;\n}\n\n\n\n/**********************************************************************\n\t\t\t\t\tNAND_Terminate_CacheRead\t\t\t\t\t  \n\n                  NAND_PageRead\n\nFunction:       void NAND_Terminate_CacheRead(void)\n\nArguments:      na\n\nReturn Value:   na\n\t\t\t\nDescription:    The terminate cahe read issue the command able to\n\t\t\t\tterminate the pending cache read asexplained in the\n                datasheet of the very large page family.\n     \n\n**********************************************************************/\nvoid NAND_Terminate_CacheRead(void)\n{\n\t\n  \t#ifndef ONFI\n\t\tNAND_CommandInput((NMX_uint8)0x34);\n\t#else\n\t\tNAND_CommandInput((NMX_uint8)0x3F);\n\t\tif ( NAND_PASS != ReadStatusRegister() )\n\t\t\treturn;\n   \t\tNAND_CommandInput((NMX_uint8)0x00);  \n\t#endif\n\t\n\tSetCacheReadMode(CACHE_READ_NOT_PENDING);\n\t\n\t#ifndef ONFI\t\t\n\t\tSetLastAddressInCacheRead(0);\n\t#endif\n\t\n\t\n\t\n}\n\n\n\n\n/******************************************************************************\n                  NAND_CacheProgram\n\nFunction:       NAND_Ret NAND_CacheProgram(NMX_uint32 udPageAddresses[],\n                                            NMX_uint8 piecesNumber,NMX_uint8 *Buffers[], \n                                             NMX_uint32 udlength[],NMX_uint8* errorPage)\nArguments:      udPageAddresses:\n                  The addresses of page where copy in.\n                piecesNumber:\n                  the number of data pieces to write\n                Buffers:\n                  buffer of data to write\n                udlength:\n                  the size of each piece of data to write\n                errorPage:\n                  the number of the page where (if happen) the cache program \n                  have failed\n                  \nReturn Value: \tNAND_FLASH_SIZE_OVERFLOW:\n                  The address is not within the flash\n                NAND_PASS\n                  The operation are successfully executed\n                NAND_FAIL \n                  The operation are not successfully executed.\t\n                NAND_WRONG_ADDRESS\n                  The pages are not in the same half of the flash.\nDescription:    This function issue a cache program command as explained in the\n                datasheet of the very large page family. \n\t\t\t\tThe function stores in errorPage parameter, the page where the \n\t\t\t\tprogram have failed(if it happen)\n\n******************************************************************************/\n\nNAND_Ret NAND_CacheProgram(NMX_uint32 *udAddress, dataWidth *Buffer, NMX_uint8 numOfChunks, NMX_uint16 *chunkSize)\n{\n\n NAND_Ret ubStatus;\n NMX_uint8 udIndex, i;\n NMX_uint32 count = 0;\n \n#ifdef NAND_DEBUG\n\tif (NAND_PASS != CheckPageConstraint (udAddress, numOfChunks, chunkSize) )\n\t\treturn NAND_WRONG_ADDRESS;\n#endif\n\n \t/* Perform cache program with random data input of the chuncks with page address equal to val*/\n\nfor (udIndex=0; udIndex<numOfChunks; udIndex++) {\n\n\t/* Issue random Data input command */\n\tNAND_CommandInput((NMX_uint8)0x85);\n\n\t/* insert the column address */\t\t\n       InsertColumnAddress(udAddress[udIndex]);  \t\t\n\t    \t\t\n\t/* write data */\n\tfor(i=0;i<chunkSize[udIndex]; i++, count++)\n\t\tNAND_DataInput(Buffer[count]);\n\n\t\t\t\n\t/* Issue page program code */\n\tNAND_CommandInput((NMX_uint8)0x80);\n\n\t/* insert the address  */\t\t\n\tInsertAddress(udAddress[udIndex]);  \n\n\t/* write data */\n\tfor (i=0; i<chunkSize[udIndex]; i++, count++)\n\t\tNAND_DataInput(Buffer[count]);\n\t\t\t\n}\n\t\t\t\n\n\t/* issue cache program confirm code */\n\tNAND_CommandInput((NMX_uint8)0x15);\t\n\t\n\t/* Wait for Cache Register ready, SR6=1 */\n    \tNAND_CommandInput((NMX_uint8)0x70);\n    \n\tubStatus=ReadStatusRegister();\n\tif ( NAND_PASS != ubStatus )\n\t\treturn ubStatus;\n\t \t\t \n\t /* issue page program confirm code */\n \tNAND_CommandInput((NMX_uint8)0x10);\n \n\tubStatus=ReadStatusRegister();\n\treturn ubStatus;\n\n} \n\n\n\n\n/****************************************************************************** \n                  NAND_CopyBack\n\nFunction:  NAND_Ret NAND_CopyBack(NMX_uint32 udSourceAddr, NMX_uint32 udDestinationAddr,\n                                          NMX_uint16 *offsetInPage,NMX_uint16 *chunkSize,\n                                          NMX_uint16 numOfChunks.dataWidth** Buffers)\nArguments:      udSourceAddr:\n                  The address of the source page to copy.\n                udDestinationAddr:\n                  The address of the destination page.  \n                offsetInPage:\n                  the starting offsets of the pieces of data to copy\n                chunkSize:\n                  the size of each piece of data to copy\n                numOfChunks:\n                  the number of the data pieces to copy\n                Buffers:\n                  buffers of data to write  \n                  \nReturn Value: \tNAND_FLASH_SIZE_OVERFLOW:\n                  The address is not within the flash\n                NAND_PASS\n                  The operation are successfully executed\n                NAND_FAIL \n                  The operation are not successfully executed.\t\n                NAND_WRONG_ADDRESS\n                  The pages are not in the same half of the flash.\nDescription:    This function issue a CopyBack Command as explained in the\n                datasheet of the very large page family. \n\t\t\t\tThe function permits the copy back with random data input. in \n                this case the data inserted are all 1\n\n******************************************************************************/\nNAND_Ret NAND_CopyBack(NMX_uint32 *udSourceAddr, NMX_uint32 *udDestinationAddr, dataWidth *Buffer, NMX_uint16 numOfChunks, NMX_uint16 *chunkSize)\n{\n   \n\n\tNAND_Ret ubStatus;\n\tNMX_uint32 count=0;\n\tNMX_uint16 i;\n  \n#ifdef NAND_DEBUG\n\tif (NAND_PASS != CheckPageConstraint (udSourceAddr, numOfChunks, chunkSize) )\n\t\treturn NAND_WRONG_ADDRESS;\n\n\tif (NAND_PASS != CheckPageConstraint (udDestinationAddr, numOfChunks, chunkSize) )\n\t\treturn NAND_WRONG_ADDRESS;\t\n#endif\n\n\tNAND_CommandInput((NMX_uint8)0x00);\n\t/*issue the source address */                                                                                                                                \n\tInsertAddress(udSourceAddr[0]);                                       \n\n\t/*read command for copy-back*/\n\tNAND_CommandInput((NMX_uint8)0x35);\n \n\t/* Wait for ready */\n\tubStatus=ReadStatusRegister();\n\tif ( NAND_PASS != ubStatus )\n\t\treturn ubStatus;\n\n#if 0\t\n\t/* Read data from the internal buffer */ \n\tfor (i=0; i<chunkSize[0]; i++, count++)\n\t\tBuffer[count] = NAND_DataOutput(); \n#endif\n\n\t/* Issue Copy-Back Data Input Command*/\n\tNAND_CommandInput((NMX_uint8)0x85);\n\t/*issue the destination address */\n\tInsertAddress(udDestinationAddr[0]);\n\n\t/* Issue the Program Command*/\n\tNAND_CommandInput((NMX_uint8)0x10);\n                               \n\t/* Wait for ready */\n\tubStatus=ReadStatusRegister();\n\treturn ubStatus; \n\n}\n\n\n\n/******************************************************************************\n                  NAND_MultiplaneBlockErase\n\nFunction:         NAND_Ret NAND_BlockErase(NMX_uint32 FPudAddress,NMX_uint32 SPudAddress) \nArguments:       FPudAddress\n                   The address inside first plane block block to erase.\n                 FPudAddress\n                   The address inside second plane block block to erase.\nReturn Value: \t\n                 NAND_FLASH_SIZE_OVERFLOW:\n                   The address is not within the flash\n                 NAND_PASS\n                   The operation are successfully executed\n                 NAND_FAIL \n                   The operation are not successfully executed,\n                 NAND_WRONG_ADRRESS\n                   the addresses are does not respect the multiplane constraint\n                 NAND_FISTPLANE_FAIL \n                   The operation are not successfully execute on the first plane\n                 NAND_SECONDPLANE_FAIL \n                   The operation are not successfully execute on the second plane       \n                 NAND_BOTHPLANE_FAIL \n                   The operation are not successfully execute on the both first and second plane  \n\nDescription:     This function issue a MultiPlane Block Erase Command as explained in the\n                 datasheet of the very large page family.\n\n******************************************************************************/\nNAND_Ret NAND_MultiplaneBlockErase(NMX_uint32 FPudAddress, NMX_uint32 SPudAddress)\n {\n\tNMX_uint8 ubStatus, planeStatus;\n               \n\tif ( FPudAddress >= FLASH_SIZE )\n\t\treturn NAND_FLASH_SIZE_OVERFLOW;\n\tif ( SPudAddress >= FLASH_SIZE )\n\t\treturn NAND_FLASH_SIZE_OVERFLOW;\n\n\t/*CHECK ON MULTIPLANE CONSTRAINT*/\n\n\t// First block\n\t/* Issue Sequential data input command */                          \n\tNAND_CommandInput((NMX_uint8)0x60);\n\n\t/* Block Address Insertion */ \n\tInsertRowAddress(FPudAddress);\n   \n\t// Second block\n\t\n\t/* Issue Sequential data input command */                          \n\tNAND_CommandInput((NMX_uint8)0x60);\n                                                    \n\n\t/* Block Address Insertion */ \n\tInsertRowAddress(SPudAddress);\n\n\t/* Issue confirm code command */                          \n\tNAND_CommandInput((NMX_uint8)0xD0);\n\n\t/* wait for ready*/\n\tubStatus=ReadStatusRegister();\n\treturn ubStatus;\n\n}\n\n\n\n/******************************************************************************\n                  NAND_MultiplanePageRead function\n\nFunction:       NAND_MultiplanePageRead (NMX_uint32 *FPudAddresses, dataWidth **FPBuffer,NMX_uint8 FPnumOfChunks,\n\t\t\t\t\t\t\t\t\t\t\t\t  NMX_uint16 *FPudlength, NMX_uint32 *SPudAddresses, dataWidth **SPBuffer,\n\t\t\t\t\t\t\t\t\t\t\t\t  NMX_uint8 SPnumOfChunks, NMX_uint16 *SPudlength)\n\nArguments:      FPudAddresses:  \n                  The addresses into the first plane page to program.\n                FPBuffer:      \n                  Contains the source buffers with the first plane data to program.\n                FPnumofchunks\n                  contains the number of chunks to program in the first plane page\n                FPudlength:\n                  length of the data pieces to first plane page program\n                SPudAddresses:  \n                  The addresses into the Second plane page to program.\n                SPBuffer:      \n                  Contains the source buffers with the second plane data to program.\n                SPnumofchunks\n                  contains the number of chunks to program in the second plane page\n                SPudlength:\n                  length of the data pieces to second plane page program\nReturn Value: \tNAND_FLASH_SIZE_OVERFLOW:\n                   The address is not within the flash\n                NAND_PAGE_OVERFLOW\n                   Some data pieces exceed the page limit \n                NAND_PASS\n                   The operation are successfully executed\n                NAND_DIFFERENT_PAGES\n                   The addresses refer to different pages\n                NAND_WRONG_ADRRESS\n                   the addresses are does not respect the multiplane constraint\n                NAND_FISTPLANE_FAIL \n                   The operation are not successfully execute on the first plane\n                NAND_SECONDPLANE_FAIL \n                   The operation are not successfully execute on the second plane       \n                NAND_BOTHPLANE_FAIL \n                   The operation are not successfully execute on the both first and second plane         \t\t\n                   \nDescription:    The MultiplanePageProgram operation issue a MultiplanePageProgram Command as \n                explained in the datasheet of the very large page \n                family. It can performa multiplane page program with random data input                \n\n******************************************************************************/\nNAND_Ret NAND_MultiplanePageRead(NMX_uint32 *FPudAddress, dataWidth *FPBuffer, NMX_uint32 *SPudAddress, dataWidth *SPBuffer, NMX_uint8 numOfChunks, NMX_uint16 *chunkSize)\n{\n\t/*register*/ NMX_uint32 udIndex, i; \n\tNMX_uint32 FPcount = 0, SPcount = 0;\t\n\tNAND_Ret ubStatus;\n\tNMX_uint8 planeStatus;\n\n#ifdef NAND_DEBUG\n\tif (NAND_PASS != CheckPageConstraint (FPudAddress, numOfChunks, chunkSize) )\n\t\treturn NAND_WRONG_ADDRESS;\n\n\tif (NAND_PASS != CheckPageConstraint (SPudAddress, numOfChunks, chunkSize) )\n\t\treturn NAND_WRONG_ADDRESS;\t\n#endif\n\n\t/*CHECK ON MULTIPLANE CONSTRAINT*/\n#ifdef NAND_DEBUG\n\tif (NAND_PASS != CheckMultiplaneConstraint (FPudAddress, SPudAddress, numOfChunks) )\n\t\treturn NAND_WRONG_ADDRESS;\n#endif\n\t\n\n\tNAND_CommandInput((NMX_uint8)0x60);\n\tInsertRowAddress(PLANE1_ANYADDR);  \n                      \n\tNAND_CommandInput((NMX_uint8)0x60);\n\tInsertRowAddress(SPudAddress[0]);  \n\n\tNAND_CommandInput((NMX_uint8)0x30);\n\n\t/* Wait for ready */\n\tubStatus=ReadStatusRegister();\n\tif ( NAND_PASS != ubStatus )\n\t\treturn ubStatus;\n\n  /*FIRST PAGE READ */\n\n\tNAND_CommandInput((NMX_uint8)0x00); \n  \n  \tInsertAddress(PLANE1_ANYADDR);\n\t\n\tNAND_CommandInput((NMX_uint8)0x05); \n\n  \tInsertColumnAddress(FPudAddress[0]);  \n\t\n\tNAND_CommandInput((NMX_uint8)0xE0);\n       \n\t/* read data */\n\tfor(i=0;i<chunkSize[0]; i++, FPcount++)\n\t\tFPBuffer[FPcount] = NAND_DataOutput(); \n\n\tfor(udIndex=1;udIndex<numOfChunks;udIndex++)\n\t{\n\t\t/*issue random data output command*/\n\t\tNAND_CommandInput((NMX_uint8)0x05);\n\n\t\t/* insert column address*/  \n\t\tInsertColumnAddress(FPudAddress[udIndex]);\n\n\t\tNAND_CommandInput((NMX_uint8)0xE0);\n\t   \n\t\t/*output the data*/\n\t\tfor(i=0;i<chunkSize[udIndex]; i++, FPcount++)\n\t\t\tFPBuffer[FPcount] = NAND_DataOutput(); \n\n\t}\n\n  /*SECOND PAGE READ*/\n\n\tNAND_CommandInput((NMX_uint8)0x00); \n  \n  \tInsertAddress(PLANE2_ANYADDR);\n\t\n\tNAND_CommandInput((NMX_uint8)0x05); \n\n  \tInsertColumnAddress(SPudAddress[0]);  \n\n\tNAND_CommandInput((NMX_uint8)0xE0);\n       \n\t/* read data */\n\tfor(i=0;i<chunkSize[0]; i++, SPcount++)\n\t\tSPBuffer[SPcount] = NAND_DataOutput(); \n   \n\tfor(udIndex=1;udIndex<numOfChunks;udIndex++)\n\t{\n\t\t/*issue random data output command*/\n\t\tNAND_CommandInput((NMX_uint8)0x05);\n\t  \n\t\t/* insert column address*/  \n\t\tInsertColumnAddress(SPudAddress[udIndex]);\n\n\t\tNAND_CommandInput((NMX_uint8)0xE0);\n\t   \n\t\t/*output the data*/\n\t   \n\t\tfor(i=0;i<chunkSize[udIndex]; i++, SPcount++)\n\t\t\tSPBuffer[SPcount] = NAND_DataOutput(); \n\t}\n\n\n\t\t\n\t/* Read Status Register */\n\tubStatus=ReadStatusRegister();\n\treturn ubStatus;\n  \n}\n\n\n\n\n/******************************************************************************\n                  NAND_MultiplanePageProgram function\n\nFunction:       NAND_MultiplanePageProgram (NMX_uint32 *FPudAddresses, dataWidth **FPBuffer,NMX_uint8 FPnumOfChunks,\n\t\t\t\t\t\t\t\t\t\t\t\t  NMX_uint16 *FPudlength, NMX_uint32 *SPudAddresses, dataWidth **SPBuffer,\n\t\t\t\t\t\t\t\t\t\t\t\t  NMX_uint8 SPnumOfChunks, NMX_uint16 *SPudlength)\n\nArguments:      FPudAddresses:  \n                  The addresses into the first plane page to program.\n                FPBuffer:      \n                  Contains the source buffers with the first plane data to program.\n                FPnumofchunks\n                  contains the number of chunks to program in the first plane page\n                FPudlength:\n                  length of the data pieces to first plane page program\n                SPudAddresses:  \n                  The addresses into the Second plane page to program.\n                SPBuffer:      \n                  Contains the source buffers with the second plane data to program.\n                SPnumofchunks\n                  contains the number of chunks to program in the second plane page\n                SPudlength:\n                  length of the data pieces to second plane page program\nReturn Value: \tNAND_FLASH_SIZE_OVERFLOW:\n                   The address is not within the flash\n                NAND_PAGE_OVERFLOW\n                   Some data pieces exceed the page limit \n                NAND_PASS\n                   The operation are successfully executed\n                NAND_DIFFERENT_PAGES\n                   The addresses refer to different pages\n                NAND_WRONG_ADRRESS\n                   the addresses are does not respect the multiplane constraint\n                NAND_FISTPLANE_FAIL \n                   The operation are not successfully execute on the first plane\n                NAND_SECONDPLANE_FAIL \n                   The operation are not successfully execute on the second plane       \n                NAND_BOTHPLANE_FAIL \n                   The operation are not successfully execute on the both first and second plane         \t\t\n                   \nDescription:    The MultiplanePageProgram operation issue a MultiplanePageProgram Command as \n                explained in the datasheet of the very large page \n                family. It can performa multiplane page program with random data input                \n\n******************************************************************************/\nNAND_Ret NAND_MultiplanePageProgram(NMX_uint32 *FPudAddress, dataWidth *FPBuffer, NMX_uint32 *SPudAddress, dataWidth *SPBuffer, NMX_uint8 numOfChunks, NMX_uint16 *chunkSize)\n{\n   /*register*/ NMX_uint32 udIndex, i; \n   NMX_uint32 count = 0;\t\n   NAND_Ret ubStatus;\n   NMX_uint8 planeStatus;\n\n\t\n#ifdef NAND_DEBUG\n\tif (NAND_PASS != CheckPageConstraint (FPudAddress, numOfChunks, chunkSize) )\n\t\treturn NAND_WRONG_ADDRESS;\n\n\tif (NAND_PASS != CheckPageConstraint (SPudAddress, numOfChunks, chunkSize) )\n\t\treturn NAND_WRONG_ADDRESS;\t\n#endif\n\n#ifdef NAND_DEBUG\n\tif (NAND_PASS != CheckMultiplaneConstraint (FPudAddress, SPudAddress, numOfChunks) )\n\t\treturn NAND_WRONG_ADDRESS;\n#endif\n\n\t// First Plane\n\tNAND_CommandInput((NMX_uint8)0x80);\n\tInsertAddress(FPudAddress[0]);  \n\n  \t                             \n\t/* Write the data to the internal buffer */                          \n\tfor (i=0;i<chunkSize[0]; i++, count++)\n\t\tNAND_DataInput( FPBuffer[count] );   \n                             \n\tfor(udIndex=1;udIndex<numOfChunks;udIndex++)\n\t{\n     \n\t\t/*random data input command*/            \n\t\tNAND_CommandInput((NMX_uint8)0x85);\n\n\t\t/* Column Address Insertion */ \n\t\tInsertColumnAddress(FPudAddress[count]);\n\t\n                     \n\t\t/* Write the data to the internal buffer */                          \n\t\tfor (i=0;i<chunkSize[udIndex]; i++, count++)\n\t\t\tNAND_DataInput( FPBuffer[count] );   \n\n\t}\n\t/* Issue the first page Program Command*/\n\tNAND_CommandInput((NMX_uint8)0x11);\n\t\n\t/* Wait for ready */\n\tubStatus=ReadStatusRegister();\n\tif ( NAND_PASS != ubStatus )\n\t\treturn ubStatus;\n\n\t// Second Plane \n\tNAND_CommandInput((NMX_uint8)0x80);\n\tInsertAddress(SPudAddress[0]);  \n                           \n\t/* Write the data to the internal buffer */                          \n\tfor (i=0;i<chunkSize[0]; i++, count++)\n\t\tNAND_DataInput( SPBuffer[count] );   \n\n  \n\tfor(udIndex=1;udIndex<numOfChunks;udIndex++)\n\t{\n\t\t/*random data input command*/            \n\t\tNAND_CommandInput((NMX_uint8)0x85);\n \n\t\t/* Column Address Insertion */ \n\t\tInsertColumnAddress(SPudAddress[udIndex]);\n\n\t\t/* Write the data to the internal buffer */ \n\t\tfor (i=0;i<chunkSize[udIndex]; i++, count++)\n\t\t\tNAND_DataInput( SPBuffer[count] );\n\t}\n\t/* Issue the second page Program Command*/\n\tNAND_CommandInput((NMX_uint8)0x10);\n\t\t\n\t/* Wait for ready */\n\tubStatus=ReadStatusRegister();\n\treturn ubStatus;\n  \n}\n\n\n\n\n/****************************************************************************** \n                  NAND_MultiplaneCopyBack\n\nFunction:  NAND_Ret NAND_CopyBack(NMX_uint32 FPudSourceAddr, NMX_uint32 FPudDestinationAddr,NMX_uint16 *FPoffsetInPage,\n                                  NMX_uint16 *FPchunkSize, NMX_uint16 FPnumOfChunks,dataWidth** FPBuffers,NMX_uint32 SPudSourceAddr,\n                                   NMX_uint32 SPudDestinationAddr,NMX_uint16 *SPoffsetInPage,NMX_uint16 *SPchunkSize, \n                                   NMX_uint16 SPnumOfChunks,dataWidth** SPBuffers)\nArguments:      FPudSourceAddr:\n                  The address of the first plane source page to copy.\n                FPudDestinationAddr:\n                  The address of the first plane destination page.  \n                FPoffsetInPage:\n                  the starting offsets of the first plane pieces of data to copy\n                FPchunkSize:\n                  the size of each piece of first plane data to copy\n                FPnumOfChunks:\n                  the number of the first plane data pieces to copy\n                FPBuffers:\n                  buffers of first plane data to write  \n                SPudSourceAddr:\n                  The address of the second plane source page to copy.\n                SPudDestinationAddr:\n                  The address of the second plane destination page.  \n                SPoffsetInPage:\n                  the starting offsets of the second plane pieces of data to copy\n                SPchunkSize:\n                  the size of each piece of second plane data to copy\n                SPnumOfChunks:\n                  the number of the first second data pieces to copy\n                SPBuffers:\n                  buffers of second plane data to write  \nReturn Value: \tNAND_FLASH_SIZE_OVERFLOW:\n                  The address is not within the flash\n                NAND_PASS\n                  The operation are successfully executed\n                NAND_FAIL \n                  The operation are not successfully executed.\t\n                NAND_WRONG_ADDRESS\n                  The pages are not in the same half of the flash or Multiplane contraints are not respected\n                NAND_FISTPLANE_FAIL \n                  The operation are not successfully execute on the first plane\n                NAND_SECONDPLANE_FAIL \n                  The operation are not successfully execute on the second plane       \n                NAND_BOTHPLANE_FAIL \n                   The operation are not successfully execute on the both first and second plane \nDescription:    This function issue a Multiplane CopyBack Command as explained in the\n                datasheet of the very large page family. \n\t\t\t\tThe function permits the random data input. In this case the data inserted are all 1\n\n******************************************************************************/\nNAND_Ret NAND_MultiplaneCopyBack(NMX_uint32 *FPudSourceAddr, NMX_uint32 *FPudDestinationAddr, dataWidth *FPBuffer, NMX_uint16 FPnumOfChunks, NMX_uint16 *FPchunkSize, NMX_uint32 *SPudSourceAddr, NMX_uint32 *SPudDestinationAddr, dataWidth *SPBuffer, NMX_uint16 SPnumOfChunks, NMX_uint16 *SPchunkSize)\n{\n   \n\tNAND_Ret ubStatus;\n\tNMX_uint8 planeStatus;\n\tNMX_uint32 udIndex, i;\n\tNMX_uint32 count = 0;\n   \n\n#ifdef NAND_DEBUG\n\tif (NAND_PASS != CheckPageConstraint (FPudSourceAddr, FPnumOfChunks, FPchunkSize) )\n\t\treturn NAND_WRONG_ADDRESS;\n\tif (NAND_PASS != CheckPageConstraint (FPudDestinationAddr, FPnumOfChunks, FPchunkSize) )\n\t\treturn NAND_WRONG_ADDRESS;\n\n\tif (NAND_PASS != CheckPageConstraint (SPudSourceAddr, SPnumOfChunks, SPchunkSize) )\n\t\treturn NAND_WRONG_ADDRESS;\n\tif (NAND_PASS != CheckPageConstraint (SPudDestinationAddr, SPnumOfChunks, SPchunkSize) )\n\t\treturn NAND_WRONG_ADDRESS;\n#endif\n\n\t/*CHECK ON MULTIPLANE CONSTRAINT*/\n#ifdef NAND_DEBUG\n\tif (NAND_PASS != CheckMultiplaneConstraint (FPudSourceAddr, SPudSourceAddr, FPnumOfChunks) )\n\t\treturn NAND_WRONG_ADDRESS;\n#endif\n\n\n\tNAND_CommandInput((NMX_uint8)0x60);\n\n\tInsertRowAddress(0x0);                                   \n\tNAND_CommandInput((NMX_uint8)0x60);\n\n\tInsertRowAddress(FPudDestinationAddr[0]);                                 \n\n\tNAND_CommandInput((NMX_uint8)0x35);\n\n\t/* Wait for ready */\n\tubStatus=ReadStatusRegister();\n\tif ( NAND_PASS != ubStatus )\n\t\treturn ubStatus;\n\n\t/* return read mode */\n\tNAND_CommandInput((NMX_uint8)0x00);\n\n\t  /*Fisrt Plane source page read*/\n\tNAND_CommandInput((NMX_uint8)0x00);\n\tInsertAddress(0x0); // 1.st plane  \n\n\tfor(udIndex=1;udIndex<FPnumOfChunks;udIndex++)\n\t{\n\n\t  \n\t\t/*issue random data output command*/\n\t\tNAND_CommandInput((NMX_uint8)0x05);\n\n\t\t/* insert column address*/  \n\t\tInsertColumnAddress(FPudDestinationAddr[udIndex]); //??\n\n\n\t\tNAND_CommandInput((NMX_uint8)0xE0);\n\t   \n\t\t/*output the data*/\n\n\t\tfor(i=0;i<FPchunkSize[udIndex]; i++, count++)\n\t\t\tSPBuffer[count] = NAND_DataOutput(); \n\n\t}\n\n\n\t\t\t\t\n\t/*Second Plane source page read*/\n\tNAND_CommandInput((NMX_uint8)0x00);\n\tInsertAddress(0x4000); // 2.nd plane    \n\n\tfor(udIndex=1;udIndex<SPnumOfChunks;udIndex++)\n\t{\n\n \n\t\t/*issue random data output command*/\n\t\tNAND_CommandInput((NMX_uint8)0x05);\n\n\t\t/* insert column address*/  \n\t\tInsertColumnAddress(FPudDestinationAddr[udIndex]);\n\n\t\tNAND_CommandInput((NMX_uint8)0xE0);\n\n\t\t/*output the data*/\n\n\t\tfor(i=0;i<SPchunkSize[udIndex]; i++, count++)\n\t\t\tFPBuffer[count] = NAND_DataOutput(); \n\t}\n\n\n\t/*first plane destination program*/\n\tNAND_CommandInput((NMX_uint8)0x85);\n\tInsertAddress(FPudDestinationAddr[0]); // ??\n\n\n\t/* Issue the Program Command*/\n\tNAND_CommandInput((NMX_uint8)0x11);\n\n\t/* Wait for ready */\n\tubStatus=ReadStatusRegister();\n\tif ( NAND_PASS != ubStatus )\n\t\treturn ubStatus;\n\n\t/*second plane destination program*/\n\tNAND_CommandInput((NMX_uint8)0x81);\n\tInsertAddress(SPudDestinationAddr[0]); // ??\n\n\t/* Issue the Program Command*/\n\tNAND_CommandInput((NMX_uint8)0x10);\n   \n\t/* Wait for ready */\n\tubStatus=ReadStatusRegister();\n\treturn ubStatus;\n\n}\n\n\n\n\n/****************************************************************************\n\t\t                  UTILITY FUNCTION  \n****************************************************************************/\n\n\n/******************************************************************************\n                  CheckPageConstraint\n\nFunction:       CheckPageConstraint\nArguments:      value:\n\t\t\t\t \nReturn Value: \tna\t\t\nDescription:    This function check the page constraints\n******************************************************************************/\nstatic inline NAND_Ret CheckPageConstraint (NMX_uint32 *udAddress, NMX_uint16 numOfChunks, NMX_uint16 *chunkSize)\n{\n\n\tNMX_uint16 i, k, next, max;\n\tNMX_uint32 pageAddress;\n\n\tmax=0;\n\tfor (i=0;i<numOfChunks;i++)\n\t\tif (udAddress[i]>udAddress[max])\n\t\t\tmax=i;\n\n\tpageAddress = (udAddress[max]>>13);\n\n\t// Addresses must be in the same page\n\tfor (i=0;i<numOfChunks;i++)\n\t\tif ( (udAddress[i]>>13) != pageAddress)\n\t\t\treturn NAND_WRONG_ADDRESS;\n\n\tif (  ( (udAddress[max]+chunkSize[max]) > FLASH_SIZE) || (chunkSize[max]<=0))\n\t\treturn NAND_WRONG_ADDRESS;\n\n\tfor (i=0; (i<numOfChunks) ;i++)\n\t{\n\t\tif (i==max) continue;\n\t\tnext=max;\n\t\tfor (k = 0; k<numOfChunks; k++)\n\t\t{\n\t\t\tif ( (udAddress[k]>udAddress[i])&&(udAddress[k]<udAddress[next]) )\n\t\t\t\tnext=k;\n\t\t}\n\t\t// Check for addresses overlapping\n\t\tif  ( (chunkSize[i]<=0) || ( (udAddress[i]+chunkSize[i]) > udAddress[next]) )  // (udAddress[i]+chunkSize[i]) > FLASH_SIZE)\n\t\t\treturn NAND_WRONG_ADDRESS;\n\t}\n\n\treturn NAND_PASS;\n\t\n}\n\n\n\n/******************************************************************************\n                  CheckMultiplaneConstraint\n\nFunction:       CheckMultiplaneConstraint\nArguments:      value:\n\t\t\t\t \nReturn Value: \tna\t\t\nDescription:    This function check the multiplane constraints\n******************************************************************************/\nstatic inline NAND_Ret CheckMultiplaneConstraint (NMX_uint32 *FPudAddress, NMX_uint32 *SPudAddress, NMX_uint16 numOfChunks)\n{\n\tint i;\n\n   \tfor (i=0;i<numOfChunks-1;i++)\n\t{\n\t\tif ( ((SPudAddress[i]&BIT_PLANE) != BIT_PLANE ) || ((FPudAddress[i] ^ FPudAddress[i]) != 0x80000) )\n\t\t\treturn NAND_WRONG_ADDRESS;\n\t}\n\treturn NAND_PASS;\n\n};\n\n// ***************************** utility function ************************\n\n\n\n\n\n\n/******************************************************************************\n                  SetCacheReadMode\n\nFunction:       void SetCacheReadMode(NMX_uint8 value)\nArguments:      value:\n\t\t\t\t the value that you want to set cacheReadMode variable\nReturn Value: \tna\t\t\nDescription:    This function set the variable cacheReadMode to the desired value\n\n******************************************************************************/\nvoid SetCacheReadMode(NMX_uint8 value)\n{\n\tcacheReadMode=value;\n}\n\n\n/******************************************************************************\n                   GetCacheReadMode\n\nFunction:       NMX_uint8 GetCacheReadMode()\nArguments:      na\n\t\t\t\nReturn Value: \tCACHE_READ_PENDING:\n\t\t\t\t\ta cache read not terminate is in act\n\t\t\t\tCACHE_READ_NOT_PENDING\n\t\t\t\t\tcache read is not pending\t\nDescription:    This function get the value of the variable cacheReadMode\n\n******************************************************************************/\nNMX_uint8 GetCacheReadMode( void )\n{ \n\treturn cacheReadMode;\n}\n\n\n/******************************************************************************\n                   GetLastAddressInCacheRead\n\nFunction:       NMX_uint32 GetLastAddressInCacheRead()\nArguments:      na\n\t\t\t\nReturn Value: \tthe last address read in cache read mode\n\t\t\t\t\nDescription:    This function get the value of the variable lastAddressInCacheRead\n\n******************************************************************************/\nNMX_uint32 GetLastAddressInCacheRead( void )\n{\n\treturn lastAddressInCacheRead;\n}\n\n\n/******************************************************************************\n                   SetLastAddressInCacheRead\n\nFunction:       void SetLastAddressInCacheRead(NMX_uint32 address)\nArguments:      address:\n\t\t\t\t\tthe address that you want to set in lastAddressInCacheRead\n\t\t\t\nReturn Value: \tna\n\t\t\t\t\nDescription:    This function set the value of the variable lastAddressInCacheRead\n\n******************************************************************************/\nvoid SetLastAddressInCacheRead(NMX_uint32 address)\n{\n\tlastAddressInCacheRead=address;\n}\n\n\n\n",
-			"file": "/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.522/GW3F2A.c",
-			"file_size": 54458,
-			"file_write_time": 129126195860000000,
-			"settings":
-			{
-				"buffer_size": 52821,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "nand_addr_t ttt;\n\tuint8_t Data[4096];\n\tuint8_t data_s[224];\n\t\t\n\tuint8_t r_Data[4096];\n\tuint8_t r_data_s[224];\t\t\ntdStatus FILE_SYSTEM_init(tdFat * const _pFat)\n\t{\n\ttdStatus status = Ok;\n\tif( Init_Driver() != DRIVER_STATUS_INITIALIZED );\n\t\tstatus = Fail;\n\n\tintiMemPage();\n\n\t\t\n\t\tint i;\n\twhile( val )\n\t\t{\n\t\t\tfor (i=0;i<4096;i++)\n\t\t\t{\n\t\t\t\tData[i]=i;\n\n\t\t\t}\n\t\t\t\n\t\t\tfor (i=0;i<224;i++)\t\tdata_s[i]=i;\n\t\t\t\n\t\t\t\n\t\teraseStatus = NAND_Block_Erase( ttt );\n\t\tif( eraseStatus != NAND_SUCCESS )\n\t\t\tstatus = Fail;\n\n\t\twriteStatus = NAND_Page_Program(ttt, Data, 4096);\n\t\tif( writeStatus != NAND_SUCCESS )\n\t\t\tstatus = Fail;\t\t\n//\t\t\n\n\n\t\twriteStatus = NAND_Page_Read(ttt, r_Data, 4096);\n\t\tif( writeStatus != NAND_SUCCESS )\n\t\t\tstatus = Fail;\t\t\n\t\t\n\t\t//HAL_Delay(1000);\n\t\twriteSpareStatus = NAND_Spare_Program(ttt, data_s, 224);\n\t\tif( writeSpareStatus != NAND_SUCCESS )\n\t\t\tstatus = Fail;\t\n\t\t\n\t\twriteSpareStatus = NAND_Spare_Read(ttt, r_data_s, 224);\n\t\tif( writeSpareStatus != NAND_SUCCESS )\n\t\t\tstatus = Fail;\n\t\t\n\t\tif( checkIsWrittenAndReadEqual() != Ok )\n\t\t\tstatus = Fail;\n\t\t\n\t\tif( status == Ok )\n\t\t\tval = 0;\n\t\tttt.page++;\n\t\t}",
-			"settings":
-			{
-				"buffer_size": 1098,
-				"line_ending": "Windows",
-				"name": "nand_addr_t ttt;"
-			}
-		},
-		{
-			"file": "Src/task_can.c",
-			"settings":
-			{
-				"buffer_size": 3843,
+				"buffer_size": 12267,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Src/can.c",
-			"settings":
-			{
-				"buffer_size": 5161,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Src/main.c",
-			"settings":
-			{
-				"buffer_size": 5445,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Src/adc.c",
-			"settings":
-			{
-				"buffer_size": 9076,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -408,14 +361,30 @@
 	],
 	"file_history":
 	[
+		"/D/GIT/USS-136/Src/adc.c",
+		"/D/GIT/USS-136/Src/main.c",
+		"/D/GIT/USS-136/Src/can.c",
+		"/C/Users/S_Menshikov/Desktop/booking.uz.gov.ua.har",
+		"/Z/home/test1.ru/www/uz_fn.php",
+		"/D/GIT/USS-136/Src/tcc_task.c",
+		"/D/SVN/NOTSVN/UVVK_3000/SPI_drv.c",
+		"/D/SVN/UVVK2/trunk/SRC/ad2s_driver.c",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.522/GW3F2A.c",
+		"/D/GIT/USS-136/Src/task_can.c",
+		"/C/Users/S_Menshikov/Desktop/uz-php-master/uz_fn.php",
+		"/Z/home/test1.ru/www/index.php",
+		"/D/SVN/TC_2/trunk/Src/holt_driver.c",
+		"/D/SVN/ТС/trunk/Src/Utils/holt.c",
+		"/D/SVN/ТС/trunk/Src/Algoritm/threa_rz.c",
+		"/D/SVN/ТС/trunk/Src/Config/spi_cnf.c",
+		"/Z/home/test1.ru/www/index.html",
+		"/C/Users/S_Menshikov/Desktop/uz-php-master/index.php",
 		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.884/GW3F2A.h",
 		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.184/GW3F2A.c",
 		"/C/Keil_v5/ARM/Pack/ARM/CMSIS/4.5.0/CMSIS/RTOS/RTX/UserCodeTemplates/Mutex.c",
-		"/D/GIT/USS-136/Src/main.c",
 		"/D/SVN/TC_2/trunk/Src/freertos.c",
 		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Projects/STM322xG_EVAL/Examples/CAN/CAN_Networking/Inc/main.h",
 		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Projects/STM322xG_EVAL/Examples/CAN/CAN_Networking/Src/stm32f2xx_hal_msp.c",
-		"/D/GIT/USS-136/Src/tcc_task.c",
 		"/D/SVN/UVVK2/trunk/SRC/can.c",
 		"/D/SVN/TC_2/trunk/Src/task_can.c",
 		"/D/SVN/TC_2/trunk/Src/can.c",
@@ -461,7 +430,6 @@
 		"/D/SVN/TC_2/trunk/Src/DFillter.c",
 		"/D/SVN/TC_2/trunk/Inc/suosu.h",
 		"/D/SVN/UVVK2/trunk/SRC/adc.c",
-		"/D/SVN/TC_2/trunk/Src/holt_driver.c",
 		"/D/SVN/UVVK2/trunk/SRC/stm32f2xx_it.c",
 		"/D/SVN/UVVK2/trunk/SRC/thread_adc.c",
 		"/D/SVN/USS136/USS136/Src/adc_task.c",
@@ -520,22 +488,7 @@
 		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.936/ul_other.h",
 		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.432/ul_audio_gen.c",
 		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.523/tm_stm32f4_timer_properties.h",
-		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.056/tm_stm32f4_timer_properties.c",
-		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.824/tm_stm32f4_timer_properties.c",
-		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.569/tm_stm32f4_dac_signal.c",
-		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.368/test.c",
-		"/D/SVN/UKV2/trunk/Src/stm32f2xx_it.c",
-		"/D/Electron_pribor/Keil project/BKD-136/Timer/timer.cpp",
-		"/D/Electron_pribor/Keil project/BKD-136/Timer/timer.h",
-		"/D/Electron_pribor/Keil project/BKD-136/Config/global_init.h",
-		"/D/Electron_pribor/Keil project/BKD-136/Function/function.cpp",
-		"/D/SVN/TC_2/trunk/Src/task_bin_read.c",
-		"/D/SVN/TC_2/trunk/Src/suosu.c",
-		"/D/Electron_pribor/Keil project/BKD-136/Timer/izm_vibro.cpp",
-		"/D/Electron_pribor/Keil project/BKD-136/Task/task_race_can.cpp",
-		"/D/Electron_pribor/Keil project/BKD-136/Task/task_wd.cpp",
-		"/D/Electron_pribor/Keil project/BKD-136/Task/task.h",
-		"/D/Electron_pribor/Keil project/BKD-136/Task/send_can.cpp"
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.056/tm_stm32f4_timer_properties.c"
 	],
 	"find":
 	{
@@ -553,6 +506,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"$tr->coach_type",
 			".",
 			"ADC",
 			"AD4",
@@ -593,16 +547,120 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Src/tcc_task.c",
+					"file": "/Z/home/test1.ru/www/index1.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8098,
+						"buffer_size": 6441,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								444,
+								444
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/D/Electron_pribor/Keil project/BKD-136/_65-110.m",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2431,
 						"regions":
 						{
 						},
@@ -620,27 +678,12 @@
 							{
 								"close":
 								{
-									"1":
-									[
-										2790,
-										2791
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-										1512,
-										1513
-									]
 								},
 								"unmatched":
 								{
@@ -648,391 +691,46 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4395.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/D/SVN/NOTSVN/UVVK_3000/SPI_drv.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 24420,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								14901,
-								14901
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										14946,
-										14947
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										14443,
-										14444
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
-							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 11197.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/D/SVN/UVVK2/trunk/SRC/ad2s_driver.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5353,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1332,
-								1332
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-									"1":
-									[
-										1295,
-										1296
-									]
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
-							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1830.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.522/GW3F2A.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 52821,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								26795,
-								26795
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										26824,
-										26825
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										26309,
-										26310
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
@@ -1043,116 +741,13 @@
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 11922.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1098,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								282,
-								274
-							]
-						],
-						"settings":
-						{
-							"auto_name": "nand_addr_t ttt;",
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
+								"bh_regex_content"
 							],
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Objective-C/Objective-C.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1162,12 +757,116 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "Src/task_can.c",
+					"buffer": 2,
+					"file": "/Z/home/test1.ru/www/index.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3843,
+						"buffer_size": 2593,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1489,
+								1489
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Z/home/test1.ru/www/uz_fn.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12267,
 						"regions":
 						{
 						},
@@ -1198,393 +897,69 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 360.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "Src/can.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5161,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								5161
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 360.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "Src/main.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5445,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								5445
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-									"1":
-									[
-										4773,
-										4779
-									]
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 705.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "Src/adc.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9076,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5414,
-								5414
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-									"1":
-									[
-										5940,
-										5941
-									]
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
+								"bh_double_quote_content"
 							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2460.0,
+						"translation.y": 682.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
