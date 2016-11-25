@@ -66,6 +66,10 @@ osThreadId TCC1_Task;
 osThreadId TCC2_Task;
 osThreadId TCC3_Task;
 osThreadId TCC4_Task;
+osThreadId TCC1_Task_VSK;
+osThreadId TCC2_Task_VSK;
+osThreadId TCC3_Task_VSK;
+osThreadId TCC4_Task_VSK;
 
 osThreadId RZ_TaskId;
 
@@ -111,7 +115,17 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(TCC4_Task, Sensor_4_Task, osPriorityBelowNormal, 0, 128);
   TCC4_Task = osThreadCreate(osThread(TCC4_Task), NULL);
 	
+	osThreadDef(TCC1_Task_VSK, Sensor_1_Task_Vsk, osPriorityBelowNormal, 0, 128);
+  TCC1_Task_VSK = osThreadCreate(osThread(TCC1_Task_VSK), NULL);
 	
+	osThreadDef(TCC2_Task_VSK, Sensor_2_Task_Vsk, osPriorityBelowNormal, 0, 128);
+  TCC2_Task_VSK = osThreadCreate(osThread(TCC2_Task_VSK), NULL);
+	
+	osThreadDef(TCC3_Task_VSK, Sensor_3_Task_Vsk, osPriorityBelowNormal, 0, 128);
+  TCC3_Task_VSK = osThreadCreate(osThread(TCC3_Task_VSK), NULL);
+	
+	osThreadDef(TCC4_Task_VSK, Sensor_4_Task_Vsk, osPriorityBelowNormal, 0, 128);
+  TCC4_Task_VSK = osThreadCreate(osThread(TCC4_Task_VSK), NULL);
 	
   osThreadDef(IntegratorTask, IntegratorTask, osPriorityNormal, 0, 128);
   IntegtatorId = osThreadCreate(osThread(IntegratorTask), NULL);
