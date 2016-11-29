@@ -29,7 +29,7 @@ static float Core_Tempsensor(uint32_t data) {
 
 #define KZ_const 0.003
 #define Ku 12.f
-#define Strushka_const 0.013
+#define Strushka_const 0.08//0.060
 #define Obriv_const 6.1
 #define Ki 2.6
 #define Rizm 24000.f
@@ -54,6 +54,7 @@ void Algoritm_New(struct _s_STR *STR, float U_In, float U_Out, float I,
   if (STR->Ushunt > KZ_const && STR->Ushunt < Strushka_const && state == 1) {
     STR->P = (U_Out - U_In) * Ku * (I - (STR->Uio * 3.f)) * Ki;
     STR->Iresult = (I - (STR->Uio * 3.f)) * Ki;
+		  
   }
 
   if (STR->Ushunt > Strushka_const && STR->Ushunt < Obriv_const && state == 0) {
@@ -93,9 +94,13 @@ void Sensor_1_Task_Vsk(void const *argument) {
   float U_1_IN_M;
   float U_1_OUT_M;
   static uint8_t Start_Timer = 0;
-  uint32_t counter = 0;
+	static uint16_t mass_I[19];
+	static uint16_t mass_U_In[19];
+	static uint16_t mass_U_Out[19];
+  uint32_t counter;
+	uint16_t i;
   osStatus status;
-  //  mid_Thread_Mutex = osMutexCreate(osMutex(SampleMutex));
+ // mid_Thread_Mutex = osMutexCreate(osMutex(SampleMutex));
   while (1) {
     if (TCC1.Kz == 0) {
       status = osMutexWait(mid_Thread_Mutex, NULL);
@@ -104,32 +109,51 @@ void Sensor_1_Task_Vsk(void const *argument) {
           S_A_M_LOW
           S_B_M_LOW
           S_C_M_LOW
+         // HAL_GPIO_WritePin(GPIOF, GPIO_PIN_3, GPIO_PIN_SET);
           Timer_100_ms = 100;
           Start_Timer = 1;
+          osDelay(1);
         }
 
         while (Timer_100_ms > 0) {
-          I_1_IN_M += rawADC_1[4] * Uverif / 4095.f;
-          U_1_IN_M += rawADC_1[5] * Uverif / 4095.f;
-          U_1_OUT_M += rawADC_1[6] * Uverif / 4095.f;
+					
+					for (i=18;i>0;i--)
+					{
+						mass_I[i] = mass_I[i-1];
+						mass_U_In[i] = mass_U_In[i-1];
+						mass_U_Out[i] = mass_U_Out[i-1];
+					}
+					
+					mass_I[0]= rawADC_1[4];
+					mass_U_In[0]=rawADC_1[5];
+					mass_U_Out[0] =rawADC_1[6];
+					
+					
+//					Mediana_filter16(mass_I,19);
+//					Mediana_filter16(mass_U_In,19);
+//					Mediana_filter16(mass_U_Out,19);
+					
+          I_1_IN_M += Mediana_filter16(mass_I,19) * Uverif / 4095.f;
+          U_1_IN_M += Mediana_filter16(mass_U_In,19) * Uverif / 4095.f;
+          U_1_OUT_M += 	Mediana_filter16(mass_U_Out,19) * Uverif / 4095.f;
           counter++;
         }
         I_1_IN_M = I_1_IN_M / counter;
         U_1_IN_M = U_1_IN_M / counter;
         U_1_OUT_M = U_1_OUT_M / counter;
         Algoritm_New(&TCC1, U_1_IN_M, U_1_OUT_M, I_1_IN_M, 0);
-        Start_Timer = 0;
         counter = 0;
         I_1_IN_M = 0;
         U_1_IN_M = 0;
         U_1_OUT_M = 0;
+        Start_Timer = 0;
         S_A_M_HIGHT
         S_B_M_HIGHT
         S_C_M_HIGHT
-        osDelay(1);
+       // HAL_GPIO_WritePin(GPIOF, GPIO_PIN_3, GPIO_PIN_RESET);
         osMutexRelease(mid_Thread_Mutex);
-        //      if (TCC1.Period_1_sec == 1) osDelay(1000);
-        //      if (TCC1.Period_8_sec == 1) osDelay(8000);
+       // if (TCC1.Period_1_sec == 1) osDelay(1000);
+       // if (TCC1.Period_8_sec == 1) osDelay(8000);
       }
     }
     taskYIELD();
@@ -141,7 +165,11 @@ void Sensor_1_Task(void const *argument) {
   float U_1_IN_M;
   float U_1_OUT_M;
   static uint8_t Start_Timer = 0;
+	static uint16_t mass_I[19];
+	static uint16_t mass_U_In[19];
+	static uint16_t mass_U_Out[19];
   uint32_t counter;
+	uint16_t i;
   osStatus status;
   mid_Thread_Mutex = osMutexCreate(osMutex(SampleMutex));
   while (1) {
@@ -159,9 +187,26 @@ void Sensor_1_Task(void const *argument) {
         }
 
         while (Timer_100_ms > 0) {
-          I_1_IN_M += rawADC_1[4] * Uverif / 4095.f;
-          U_1_IN_M += rawADC_1[5] * Uverif / 4095.f;
-          U_1_OUT_M += rawADC_1[6] * Uverif / 4095.f;
+					
+					for (i=18;i>0;i--)
+					{
+						mass_I[i] = mass_I[i-1];
+						mass_U_In[i] = mass_U_In[i-1];
+						mass_U_Out[i] = mass_U_Out[i-1];
+					}
+					
+					mass_I[0]= rawADC_1[4];
+					mass_U_In[0]=rawADC_1[5];
+					mass_U_Out[0] =rawADC_1[6];
+					
+					
+//					Mediana_filter16(mass_I,19);
+//					Mediana_filter16(mass_U_In,19);
+//					Mediana_filter16(mass_U_Out,19);
+					
+          I_1_IN_M += Mediana_filter16(mass_I,19) * Uverif / 4095.f;
+          U_1_IN_M += Mediana_filter16(mass_U_In,19) * Uverif / 4095.f;
+          U_1_OUT_M += 	Mediana_filter16(mass_U_Out,19) * Uverif / 4095.f;
           counter++;
         }
         I_1_IN_M = I_1_IN_M / counter;
