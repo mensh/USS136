@@ -81,11 +81,12 @@ uint32_t osCPU_TotalIdleTime = 0;
   * @param  None
   * @retval None
   */
-void vApplicationIdleHook(void) {
-  if (xIdleHandle == NULL) {
-    /* Store the handle to the idle task. */
-    xIdleHandle = xTaskGetCurrentTaskHandle();
-  }
+void vApplicationIdleHook(void)
+{
+    if (xIdleHandle == NULL) {
+        /* Store the handle to the idle task. */
+        xIdleHandle = xTaskGetCurrentTaskHandle();
+    }
 }
 
 /**
@@ -93,18 +94,19 @@ void vApplicationIdleHook(void) {
   * @param  None
   * @retval None
   */
-void vApplicationTickHook(void) {
-  static int tick = 0;
+void vApplicationTickHook(void)
+{
+    static int tick = 0;
 
-  if (tick++ > CALCULATION_PERIOD) {
-    tick = 0;
+    if (tick++ > CALCULATION_PERIOD) {
+        tick = 0;
 
-    if (osCPU_TotalIdleTime > 1000) {
-      osCPU_TotalIdleTime = 1000;
+        if (osCPU_TotalIdleTime > 1000) {
+            osCPU_TotalIdleTime = 1000;
+        }
+        osCPU_Usage = (100 - (osCPU_TotalIdleTime * 100) / CALCULATION_PERIOD);
+        osCPU_TotalIdleTime = 0;
     }
-    osCPU_Usage = (100 - (osCPU_TotalIdleTime * 100) / CALCULATION_PERIOD);
-    osCPU_TotalIdleTime = 0;
-  }
 }
 
 /**
@@ -112,10 +114,11 @@ void vApplicationTickHook(void) {
   * @param  None
   * @retval None
   */
-void StartIdleMonitor(void) {
-  if (xTaskGetCurrentTaskHandle() == xIdleHandle) {
-    osCPU_IdleStartTime = xTaskGetTickCountFromISR();
-  }
+void StartIdleMonitor(void)
+{
+    if (xTaskGetCurrentTaskHandle() == xIdleHandle) {
+        osCPU_IdleStartTime = xTaskGetTickCountFromISR();
+    }
 }
 
 /**
@@ -123,12 +126,13 @@ void StartIdleMonitor(void) {
   * @param  None
   * @retval None
   */
-void EndIdleMonitor(void) {
-  if (xTaskGetCurrentTaskHandle() == xIdleHandle) {
-    /* Store the handle to the idle task. */
-    osCPU_IdleSpentTime = xTaskGetTickCountFromISR() - osCPU_IdleStartTime;
-    osCPU_TotalIdleTime += osCPU_IdleSpentTime;
-  }
+void EndIdleMonitor(void)
+{
+    if (xTaskGetCurrentTaskHandle() == xIdleHandle) {
+        /* Store the handle to the idle task. */
+        osCPU_IdleSpentTime = xTaskGetTickCountFromISR() - osCPU_IdleStartTime;
+        osCPU_TotalIdleTime += osCPU_IdleSpentTime;
+    }
 }
 
 /**

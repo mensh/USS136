@@ -1,5 +1,9 @@
 struct _s_STR {
   float P;
+	float P_f;
+	float P_min;
+	float P_max;
+	float P_nf;
   uint8_t Struhka;
   uint8_t Period_8_sec;
   uint8_t Kz;
@@ -10,6 +14,11 @@ struct _s_STR {
 	float Uio;
 	float Iresult;
 	uint32_t counter_KZ;
+	float P1;
+	float P2;
+  float mass_P[5];
+	uint8_t algo;
+	uint8_t counter;
 };
 
 #define S_A_M_LOW HAL_GPIO_WritePin(S_A_M_GPIO_Port, S_A_M_Pin, GPIO_PIN_RESET);
