@@ -5,6 +5,7 @@
 #include "adc.h"
 #include "math_func.h"
 #include "tcc_task.h"
+#include "math.h"
 
 struct _s_STR TCC1;
 struct _s_STR TCC2;
@@ -29,11 +30,14 @@ static float Core_Tempsensor(uint32_t data)
 }
 
 #define KZ_const 0.003
-#define Ku 12.f
+#define Ku 11.f
 #define Strushka_const 0.08 // 0.060
 #define Obriv_const 6.1
 #define Ki 2.6
-#define Rizm 24000.f
+#define Rizm 22000.f
+
+
+
 
 void Algoritm_New(struct _s_STR* STR, float U_In, float U_Out, float I,
     uint8_t state)
@@ -41,7 +45,6 @@ void Algoritm_New(struct _s_STR* STR, float U_In, float U_Out, float I,
     uint8_t i;
     float temp_mass[5];
     if (state == 0) {
-        STR->Uio = I;
         STR->Ushunt = (U_Out - U_In) * Ku;
         if (STR->Ushunt <= KZ_const) {
             STR->P = 0;
@@ -55,14 +58,15 @@ void Algoritm_New(struct _s_STR* STR, float U_In, float U_Out, float I,
             STR->Obriv = 0;
         }
     }
-
+		
+	//	test = STR->Uio - I;
     if (/*STR->Ushunt > KZ_const && STR->Ushunt < Strushka_const &&*/ state == 1) {
-        STR->P2 = (U_Out - U_In) * Ku * ((STR->Uio - I)/0.895) ;//* Ki;
+        STR->P2 = ((U_Out - U_In) * Ku * I * 1.8) * 1.05 ;//* Ki;
        // STR->Iresult = (I - (STR->Uio * 3.f)) * Ki;
     }
 
     if (/*STR->Ushunt > Strushka_const && STR->Ushunt < Obriv_const &&*/ state == 0) {
-        STR->P1 = (((U_Out * U_Out) * U_In * 144.f) / ((U_Out - U_In) * Rizm));
+        STR->P1 = (((U_Out * U_Out) * U_In * Ku * Ku) / ((U_Out - U_In) * Rizm)) * 1.5;
     }
 
     if (STR->P_nf > 5.f) {
@@ -77,9 +81,7 @@ void Algoritm_New(struct _s_STR* STR, float U_In, float U_Out, float I,
 				}
 				else STR->P_nf = STR->P2;
     }
-
-		
-		
+			
     for (i = 4; i > 0; i--) {
         STR->mass_P[i] = STR->mass_P[i - 1];
     }
@@ -112,19 +114,24 @@ void Algoritm_New(struct _s_STR* STR, float U_In, float U_Out, float I,
 		
     if (STR->P >= P_SIG_POROG) {
         STR->Struhka = 1;
+				STR->counter++;
     }
-    else {
+    else 
+		if (STR->counter >=3){
         STR->Struhka = 0;
+				STR->counter = 0;
     }
 
     if (STR->P >= 20 && STR->P < 36) {
         STR->Period_8_sec = 1;
         STR->Period_1_sec = 0;
+			
     }
 
-    if (STR->P < 20) {
+    if (STR->P < 20 && STR->counter>=3) {
         STR->Period_8_sec = 0;
         STR->Period_1_sec = 1;
+				
     }
 
     if (STR->P > 40) {
@@ -159,9 +166,9 @@ void Sensor_1_Task_Vsk(void const* argument)
             status = osMutexWait(mid_Thread_Mutex, NULL);
             if (status == osOK) {
                 if (Start_Timer == 0) {
-                    S_A_M_LOW
-                    S_B_M_LOW
-                    S_C_M_LOW
+                    S_A_M_LOW_plus
+                    S_B_M_LOW_plus
+                    S_C_M_LOW_plus
                     // HAL_GPIO_WritePin(GPIOF, GPIO_PIN_3, GPIO_PIN_SET);
                     Timer_100_ms = 100;
                     Start_Timer = 1;
@@ -193,9 +200,9 @@ void Sensor_1_Task_Vsk(void const* argument)
                 U_1_IN_M = 0;
                 U_1_OUT_M = 0;
                 Start_Timer = 0;
-                S_A_M_HIGHT
-                S_B_M_HIGHT
-                S_C_M_HIGHT
+                S_A_M_HIGHT_plus
+                S_B_M_HIGHT_plus
+                S_C_M_HIGHT_plus
                 // HAL_GPIO_WritePin(GPIOF, GPIO_PIN_3, GPIO_PIN_RESET);
                 osMutexRelease(mid_Thread_Mutex);
                 // if (TCC1.Period_1_sec == 1) osDelay(1000);
@@ -215,22 +222,52 @@ void Sensor_1_Task(void const* argument)
 
     static uint8_t Start_Timer = 0;
     static uint16_t mass_I[19];
+		float I_1_IN_M_not;		
+	  float minus_I;
+		static uint16_t mass_I_not[19];
+    uint16_t i;
+	
     static uint16_t mass_U_In[19];
     static uint16_t mass_U_Out[19];
 
     uint32_t counter;
-    uint16_t i;
+
     osStatus status;
     mid_Thread_Mutex = osMutexCreate(osMutex(SampleMutex));
     while (1) {
         if (TCC1.Kz == 0) {
             status = osMutexWait(mid_Thread_Mutex, NULL);
             if (status == osOK) {
+							   if (Start_Timer == 0) {
+                    Timer_100_ms = 100;
+                    Start_Timer = 1;
+                    osDelay(1);
+                }
+								 
+								
+							 while (Timer_100_ms > 0) {
+               for (i = 18; i > 0; i--) {
+                        mass_I_not[i] = mass_I_not[i - 1];         
+                    }
+										mass_I_not[0] = rawADC_1[4];
+										I_1_IN_M_not += Mediana_filter16(mass_I_not, 19) * Uverif / 4095.f;
+										counter++;
+										
+							}
+								I_1_IN_M_not = I_1_IN_M_not / counter;
+							
+							  counter = 0;
+								Start_Timer = 0;
                 if (Start_Timer == 0) {
                     S_A_M_LOW
                     S_B_M_LOW
                     S_C_M_LOW
-                    HAL_GPIO_WritePin(GPIOF, GPIO_PIN_3, GPIO_PIN_SET);
+                   // HAL_GPIO_WritePin(GPIOF, GPIO_PIN_3, GPIO_PIN_SET);
+									
+									  S_A_M_LOW_plus
+                    S_B_M_LOW_plus
+                    S_C_M_LOW_plus
+									
                     Timer_100_ms = 100;
                     Start_Timer = 1;
                     osDelay(1);
@@ -252,9 +289,9 @@ void Sensor_1_Task(void const* argument)
                 I_1_IN_M = I_1_IN_M / counter;
                 U_1_IN_M = U_1_IN_M / counter;
                 U_1_OUT_M = U_1_OUT_M / counter;
-							
+								minus_I = fabs(I_1_IN_M_not - I_1_IN_M);
 								
-                Algoritm_New(&TCC1, U_1_IN_M, U_1_OUT_M, I_1_IN_M, 1);
+                Algoritm_New(&TCC1, U_1_IN_M, U_1_OUT_M, minus_I, 1);
                 counter = 0;
                 I_1_IN_M = 0;
                 U_1_IN_M = 0;
@@ -263,7 +300,11 @@ void Sensor_1_Task(void const* argument)
                 S_A_M_HIGHT
                 S_B_M_HIGHT
                 S_C_M_HIGHT
-                HAL_GPIO_WritePin(GPIOF, GPIO_PIN_3, GPIO_PIN_RESET);
+								S_A_M_HIGHT_plus
+                S_B_M_HIGHT_plus
+                S_C_M_HIGHT_plus
+								
+                //HAL_GPIO_WritePin(GPIOF, GPIO_PIN_3, GPIO_PIN_RESET);
                 osMutexRelease(mid_Thread_Mutex);
                 if (TCC1.Period_1_sec == 1)
                     osDelay(1000);
@@ -288,9 +329,9 @@ void Sensor_2_Task_Vsk(void const* argument)
             status = osMutexWait(mid_Thread_Mutex, NULL);
             if (status == osOK) {
                 if (Start_Timer == 0) {
-                    S_A_M_HIGHT
-                    S_B_M_LOW
-                    S_C_M_LOW
+                    S_A_M_HIGHT_plus
+                    S_B_M_LOW_plus
+                    S_C_M_LOW_plus
                     Timer_100_ms = 100;
                     Start_Timer = 1;
                 }
@@ -310,9 +351,9 @@ void Sensor_2_Task_Vsk(void const* argument)
                 U_2_IN_M = 0;
                 U_2_OUT_M = 0;
                 Start_Timer = 0;
-                S_A_M_HIGHT
-                S_B_M_HIGHT
-                S_C_M_HIGHT
+                S_A_M_HIGHT_plus
+                S_B_M_HIGHT_plus
+                S_C_M_HIGHT_plus
                 osDelay(1);
                 osMutexRelease(mid_Thread_Mutex);
                 //      if (TCC2.Period_1_sec == 1) osDelay(1000);
@@ -331,17 +372,44 @@ void Sensor_2_Task(void const* argument)
     static uint8_t Start_Timer = 0;
     uint32_t counter;
     osStatus status;
+		float I_1_IN_M_not;		
+	  float minus_I;
+	  uint16_t i;
+		static uint16_t mass_I_not[19];
     while (1) {
         if (TCC2.Kz == 0) {
             status = osMutexWait(mid_Thread_Mutex, NULL);
             if (status == osOK) {
+								   if (Start_Timer == 0) {
+                    Timer_100_ms = 100;
+                    Start_Timer = 1;
+                    osDelay(1);
+                }
+								 
+								
+							 while (Timer_100_ms > 0) {
+               for (i = 18; i > 0; i--) {
+                        mass_I_not[i] = mass_I_not[i - 1];         
+                    }
+										mass_I_not[0] = rawADC_1[7];
+										I_1_IN_M_not += Mediana_filter16(mass_I_not, 19) * Uverif / 4095.f;
+										counter++;
+										
+							}
+								I_1_IN_M_not = I_1_IN_M_not / counter;
+							
+							  counter = 0;
+								Start_Timer = 0;
                 if (Start_Timer == 0) {
                     S_A_M_HIGHT
                     S_B_M_LOW
                     S_C_M_LOW
+									  S_A_M_HIGHT_plus
+                    S_B_M_LOW_plus
+                    S_C_M_LOW_plus
                     Timer_100_ms = 100;
                     Start_Timer = 1;
-                    HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);
+                    //HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);
                 }
 
                 while (Timer_100_ms > 0) {
@@ -353,16 +421,20 @@ void Sensor_2_Task(void const* argument)
                 I_2_IN_M = I_2_IN_M / counter;
                 U_2_IN_M = U_2_IN_M / counter;
                 U_2_OUT_M = U_2_OUT_M / counter;
-                Algoritm_New(&TCC2, U_2_IN_M, U_2_OUT_M, I_2_IN_M, 1);
+								minus_I = fabs(I_1_IN_M_not - I_2_IN_M);
+                Algoritm_New(&TCC2, U_2_IN_M, U_2_OUT_M, minus_I, 1);
                 counter = 0;
                 I_2_IN_M = 0;
                 U_2_IN_M = 0;
                 U_2_OUT_M = 0;
                 Start_Timer = 0;
-                HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET);
+                //HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET);
                 S_A_M_HIGHT
                 S_B_M_HIGHT
                 S_C_M_HIGHT
+								 S_A_M_HIGHT_plus
+                S_B_M_HIGHT_plus
+                S_C_M_HIGHT_plus
                 osMutexRelease(mid_Thread_Mutex);
                 if (TCC2.Period_1_sec == 1)
                     osDelay(1000);
@@ -381,6 +453,7 @@ void Sensor_3_Task_Vsk(void const* argument)
     float I_3_IN_M;
     uint32_t counter;
     static uint8_t Start_Timer = 0;
+	
     osStatus status;
     while (1) {
         if (TCC3.Kz == 0) {
@@ -388,9 +461,9 @@ void Sensor_3_Task_Vsk(void const* argument)
             if (status == osOK) {
                 if (Start_Timer == 0) {
                     Timer_100_ms = 100;
-                    S_A_M_LOW
-                    S_B_M_HIGHT
-                    S_C_M_LOW
+                    S_A_M_LOW_plus
+                    S_B_M_HIGHT_plus
+                    S_C_M_LOW_plus
                     Start_Timer = 1;
                 }
 
@@ -412,9 +485,9 @@ void Sensor_3_Task_Vsk(void const* argument)
                 U_3_IN_M = 0;
                 U_3_OUT_M = 0;
                 Start_Timer = 0;
-                S_A_M_HIGHT
-                S_B_M_HIGHT
-                S_C_M_HIGHT
+                S_A_M_HIGHT_plus
+                S_B_M_HIGHT_plus
+                S_C_M_HIGHT_plus
                 osDelay(1);
                 osMutexRelease(mid_Thread_Mutex);
                 //      if (TCC3.Period_1_sec == 1) osDelay(1000);
@@ -433,17 +506,47 @@ void Sensor_3_Task(void const* argument)
     uint32_t counter;
     static uint8_t Start_Timer = 0;
     osStatus status;
+		float I_1_IN_M_not;		
+	  float minus_I;
+	  uint16_t i;
+		static uint16_t mass_I_not[19];
     while (1) {
         if (TCC3.Kz == 0) {
             status = osMutexWait(mid_Thread_Mutex, NULL);
             if (status == osOK) {
+										if (Start_Timer == 0) {
+                    Timer_100_ms = 100;
+                    Start_Timer = 1;
+                    osDelay(1);
+                }
+								 
+								
+							 while (Timer_100_ms > 0) {
+               for (i = 18; i > 0; i--) {
+                        mass_I_not[i] = mass_I_not[i - 1];         
+                    }
+										mass_I_not[0] = rawADC_1[2];
+										I_1_IN_M_not += Mediana_filter16(mass_I_not, 19) * Uverif / 4095.f;
+										counter++;
+										
+							}
+								I_1_IN_M_not = I_1_IN_M_not / counter;
+							
+							  counter = 0;
+								Start_Timer = 0;
+							
+							
+							
                 if (Start_Timer == 0) {
                     Timer_100_ms = 100;
                     S_A_M_LOW
                     S_B_M_HIGHT
                     S_C_M_LOW
+									  S_A_M_LOW_plus
+                    S_B_M_HIGHT_plus
+                    S_C_M_LOW_plus
                     Start_Timer = 1;
-                    HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_SET);
+                    //HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_SET);
                 }
 
                 while (Timer_100_ms > 0) {
@@ -455,16 +558,20 @@ void Sensor_3_Task(void const* argument)
                 I_3_IN_M = I_3_IN_M / counter;
                 U_3_IN_M = U_3_IN_M / counter;
                 U_3_OUT_M = U_3_OUT_M / counter;
-                Algoritm_New(&TCC3, U_3_IN_M, U_3_OUT_M, I_3_IN_M, 1);
+								minus_I = fabs(I_1_IN_M_not - I_3_IN_M);
+                Algoritm_New(&TCC3, U_3_IN_M, U_3_OUT_M, minus_I, 1);
                 counter = 0;
                 I_3_IN_M = 0;
                 U_3_IN_M = 0;
                 U_3_OUT_M = 0;
                 Start_Timer = 0;
-                HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_RESET);
+                //HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_RESET);
                 S_A_M_HIGHT
                 S_B_M_HIGHT
                 S_C_M_HIGHT
+								S_A_M_HIGHT_plus
+                S_B_M_HIGHT_plus
+                S_C_M_HIGHT_plus
                 osMutexRelease(mid_Thread_Mutex);
                 if (TCC3.Period_1_sec == 1)
                     osDelay(1000);
@@ -490,9 +597,9 @@ void Sensor_4_Task_Vsk(void const* argument)
             if (status == osOK) {
                 if (Start_Timer == 0) {
                     Timer_100_ms = 100;
-                    S_A_M_HIGHT
-                    S_B_M_HIGHT
-                    S_C_M_LOW
+                    S_A_M_HIGHT_plus
+                    S_B_M_HIGHT_plus
+                    S_C_M_LOW_plus
                     Start_Timer = 1;
                 }
 
@@ -511,9 +618,9 @@ void Sensor_4_Task_Vsk(void const* argument)
                 U_4_IN_M = 0;
                 U_4_OUT_M = 0;
                 Start_Timer = 0;
-                S_A_M_HIGHT
-                S_B_M_HIGHT
-                S_C_M_HIGHT
+                S_A_M_HIGHT_plus
+                S_B_M_HIGHT_plus
+                S_C_M_HIGHT_plus
                 osDelay(1);
                 osMutexRelease(mid_Thread_Mutex);
                 //      if (TCC4.Period_1_sec == 1) osDelay(1000);
@@ -532,17 +639,45 @@ void Sensor_4_Task(void const* argument)
     static uint8_t Start_Timer = 0;
     osStatus status;
     uint32_t counter;
+		float I_1_IN_M_not;		
+	  float minus_I;
+	  uint16_t i;
+		static uint16_t mass_I_not[19];
     while (1) {
         if (TCC4.Kz == 0) {
             status = osMutexWait(mid_Thread_Mutex, NULL);
             if (status == osOK) {
                 if (Start_Timer == 0) {
+																		if (Start_Timer == 0) {
+                    Timer_100_ms = 100;
+                    Start_Timer = 1;
+                    osDelay(1);
+                }
+								 
+								
+							 while (Timer_100_ms > 0) {
+               for (i = 18; i > 0; i--) {
+                        mass_I_not[i] = mass_I_not[i - 1];         
+                    }
+										mass_I_not[0] = rawADC_1[0];
+										I_1_IN_M_not += Mediana_filter16(mass_I_not, 19) * Uverif / 4095.f;
+										counter++;
+										
+							}
+								I_1_IN_M_not = I_1_IN_M_not / counter;
+							
+							  counter = 0;
+								Start_Timer = 0;
+							
                     Timer_100_ms = 100;
                     S_A_M_HIGHT
                     S_B_M_HIGHT
                     S_C_M_LOW
+										S_A_M_HIGHT_plus
+                    S_B_M_HIGHT_plus
+                    S_C_M_LOW_plus
                     Start_Timer = 1;
-                    HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET);
+                   // HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET);
                 }
 
                 while (Timer_100_ms > 0) {
@@ -554,16 +689,20 @@ void Sensor_4_Task(void const* argument)
                 I_4_IN_M = I_4_IN_M / counter;
                 U_4_IN_M = U_4_IN_M / counter;
                 U_4_OUT_M = U_4_OUT_M / counter;
-                Algoritm_New(&TCC4, U_4_IN_M, U_4_OUT_M, I_4_IN_M, 1);
+								minus_I = fabs(I_1_IN_M_not - I_4_IN_M);
+                Algoritm_New(&TCC4, U_4_IN_M, U_4_OUT_M, minus_I, 1);
                 counter = 0;
                 I_4_IN_M = 0;
                 U_4_IN_M = 0;
                 U_4_OUT_M = 0;
                 Start_Timer = 0;
-                HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET);
+                //HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET);
                 S_A_M_HIGHT
                 S_B_M_HIGHT
                 S_C_M_HIGHT
+								S_A_M_HIGHT_plus
+                S_B_M_HIGHT_plus
+                S_C_M_HIGHT_plus
                 osMutexRelease(mid_Thread_Mutex);
                 if (TCC4.Period_1_sec == 1)
                     osDelay(1000);

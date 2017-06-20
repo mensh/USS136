@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"H",
+				"Hour"
+			],
+			[
+				"Tim",
+				"TimeCounter"
+			],
+			[
+				"td",
+				"tdCounter"
+			],
+			[
+				"tdC",
+				"tdCicleCounter"
+			],
+			[
+				"ty",
+				"typedef"
+			],
+			[
+				"struc",
+				"struct\tstruct"
+			],
+			[
+				"uint",
+				"uint16_t\t(HI3585Device.c)"
+			],
+			[
 				"html",
 				"html\thtml"
 			],
@@ -18,10 +46,6 @@
 			[
 				"S",
 				"STATE"
-			],
-			[
-				"uint",
-				"uint16_t"
 			],
 			[
 				"P",
@@ -236,10 +260,6 @@
 				"vkl_obogrev_nog"
 			],
 			[
-				"Tim",
-				"Timer_1_s_peregrev_nog"
-			],
-			[
 				"TI",
 				"Timer_1_s_peregrev_nog"
 			],
@@ -268,131 +288,236 @@
 	"buffers":
 	[
 		{
-			"file": "Src/freertos.c",
+			"file": "/D/c#/c#/Viewer_0.0.1/Viewer/Viewer/edit_protacol.cs",
 			"settings":
 			{
-				"buffer_size": 6286,
+				"buffer_size": 12109,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/GIT/SGrad/WindowsFormsApplication1/WindowsFormsApplication1/bin/Debug/ItemData.xml",
+			"settings":
+			{
+				"buffer_size": 305,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<?xml version=\"1.0\" standalone=\"yes\"?>\n<NewDataSet>\n\n  <Parametr>\n    <Names>2</Names>\n    <Description>ываыва</Description>\n    <Questionnaire>ываыва</Questionnaire>\n    <Chanell>ываыва</Chanell>\n    <Types>Ссылочный</Types>\n    <Mask>выаыва</Mask>\n    <Colors>-65536</Colors>\n    <Position>ыва</Position>\n    <Scaled>ываыва</Scaled>\n    <Accuracy>ываываыва</Accuracy>\n    <ViewName>ывавыа</ViewName>\n    <Unit>ываыва</Unit>\n    <FileMask>ываыва</FileMask>\n    <Format>ываыва</Format>  \n    <Coefic>\n\t    <Fizika>1</Fizika>\n\t    <Kod_pr>0.125</Kod_pr>\n  \t</Coefic>\n  </Parametr>\n  <Parametr>\n    <Names>2</Names>\n    <ViewName>ыв</ViewName>\n  </Parametr>\n  <Parametr>\n    <Names>2</Names>\n    <Scaled>ываыва</Scaled>\n  </Parametr>\n  <Parametr>\n    <Names>233232</Names>\n  </Parametr>\n  <Parametr>\n    <Names>32</Names>\n    <Accuracy>ываыва</Accuracy>\n    <Unit>ываыва</Unit>\n    <FileMask>ываыва</FileMask>\n  </Parametr>\n</NewDataSet>",
+			"file": "/D/GIT/SGrad/SGrad/SGrad/bin/Debug/protacol.xml",
+			"file_size": 1067,
+			"file_write_time": 131330174559971576,
+			"settings":
+			{
+				"buffer_size": 935,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/GIT/SGrad/WindowsFormsApplication2/WindowsFormsApplication2/bin/Debug/student.xml",
+			"settings":
+			{
+				"buffer_size": 156,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/GIT/SGrad/WindowsFormsApplication2/WindowsFormsApplication2/bin/Debug/people.xml",
+			"settings":
+			{
+				"buffer_size": 535,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Src/tcc_task.c",
+			"file": "/D/GIT/SGrad/WindowsFormsApplication2/WindowsFormsApplication2/bin/Debug/setting.xml",
 			"settings":
 			{
-				"buffer_size": 17953,
+				"buffer_size": 1994,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/User/clang_format.sublime-settings",
+			"file": "/D/GIT/SGrad/WindowsFormsApplication2/WindowsFormsApplication2/Form1.cs",
 			"settings":
 			{
-				"buffer_size": 248,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "// EXTERNAL IO\n\n#include \"AT91SAM7A3.H\" /* AT91SAM7X256 definitions          */\n//#include \"lib_AT91SAM7A3.h\"\n#include \"board.h\"\n#include \"EXT_IO.h\"\n#include \"ext_var_PIT.h\"\n#include \"CAN_A3.h\"\n#include \"anak.h\"\n#include \"io.h\"\n#include \"lib_AT91SAM7A3.h\"\n\nunsigned char TestControlState = NOWORK_TC;\nunsigned char TestControlIsSuccess = 0;\n\nunsigned char EXT_IO_REG[8] = { 0, 0, 0, 0, 0, 0, 0, 0 }; // 8 ðåãèñòðîâ ââîäà âûâîäà\n\nextern unsigned char CHAN_A;\nextern U32 SDS1;\n\nextern float Unak_A, Unak_B;\nunsigned char wrk_chanel = 1; // íîìåð ðàáî÷åãî êàíàëà äëÿ CAN\nunsigned char start_wrk = 1;\n\nunsigned char EXT_REG_ADR = 0;\n\nunsigned short EXT_REG_Timer = 0;\n\n#define EXT_REG_STS_SETADR 0\n#define EXT_REG_STS_DWNSTRB 1\n#define EXT_REG_STS_READ 2\n\nunsigned char USUA_NAK_ON;\nunsigned char USUB_NAK_ON;\nunsigned char ChannelNAK;\n\nunsigned char EXT_IO_REG_STATUS = EXT_REG_STS_SETADR;\n\nextern unsigned int Get_CAN(unsigned char can, unsigned char box, unsigned char reg);\nextern void PUT_CAN_DByte(unsigned char can, unsigned char box, unsigned char reg, unsigned short dbyte, unsigned char bit);\n\nextern unsigned char PIT_RccA; // Äîáàâèë 06.09.12  RA\nextern unsigned char PIT_RccB;\n\nunsigned short iTabloPress_timer = _1s;\n\n#define EXT_REG_Timer_ _5ms\n\nstruct DSignal TestControl = { 0, 0, 10, 1, 200 }; //  100ms-taking on, 1s-taking off  Period-5ms\nstruct DSignal iTabloPress = { 0, 0, 1, 20, 200 }; //  1s-taking on, 50ms-taking off  Period-5ms\n\nstruct DSignal ErrOutComand_A[13] = {\n    { 0, 0, 2, 1, 10 }, //  All 0.5s-taking on, 1s-taking off  Period-100ms\n    { 0, 0, 2, 1, 10 },\n    { 0, 0, 2, 1, 10 },\n    { 0, 0, 2, 1, 10 },\n    { 0, 0, 2, 1, 10 },\n    { 0, 0, 2, 1, 10 },\n    { 0, 0, 2, 1, 10 },\n    { 0, 0, 2, 1, 10 },\n    { 0, 0, 2, 1, 10 },\n    { 0, 0, 1, 1, 10 }, // ZAT  1s-taking on, 1s-taking off  Period-100ms\n    { 0, 0, 2, 1, 10 },\n    { 0, 0, 2, 1, 10 },\n    { 0, 0, 3, 1, 15 } // EC_PITTCC_A 0.5s-taking on, 1.5s-taking off  Period-100ms\n};\nstruct DSignal ErrOutComand_B[6] = {\n    { 0, 0, 2, 1, 10 }, //  All 0.5s-taking on, 1s-taking off  Period-100ms\n    { 0, 0, 2, 1, 10 },\n    { 0, 0, 2, 1, 10 },\n    { 0, 0, 2, 1, 10 },\n    { 0, 0, 2, 1, 10 },\n    { 0, 0, 3, 1, 15 } // EC_PITTCC_B 0.5s-taking on, 1.5s-taking off  Period-100ms\n};\n\nstruct DSignal ERR_SELEKTOR = { 0, 0, 2, 1, 20 }; //  All 1s-taking on, 2s-taking off  Period-100ms;\nunsigned char FAULT_UVVK = 0;\n\nstruct DSignal ErrResetSelektor = { 0, 0, 1, 5, 100 }; //  All 10s-taking on, 2s-taking off  Period-100ms;\n\nunsigned char PPRT = 0;\nunsigned char KPV = 0;\n\nvoid dec_EXT_REG_Timer(void)\n{\n    if (EXT_REG_Timer > 0)\n        EXT_REG_Timer--;\n}\n\nvoid dec_iTabloPress_Timer(void)\n{\n    if (iTabloPress_timer > 0)\n        iTabloPress_timer--;\n}\n\nSetResetSelector(BIT State)\n{\n    EXT_IO_REG[1] = (EXT_IO_REG[1] & 0xEF) | ((State & 0x01) << 4);\n}\n\nvoid SetPowRCC(BIT State)\n{\n    ROUT1 = (ROUT1 & 0xF6) | (State & 0x01) | ((State << 3) & 0x08);\n}\n\n//-------------------------------------------------------------------------------------\n\nvoid RevisionInStream(void)\n{\n    if (CAN0_USUA_outtime > 0)\n        USUA_CAN0_OK = 0x01;\n    else\n        USUA_CAN0_OK = 0x00;\n    if (CAN0_USUB_outtime > 0)\n        USUB_CAN0_OK = 0x01;\n    else\n        USUB_CAN0_OK = 0x00;\n\n    if (CAN1_USUA_outtime > 0)\n        USUA_CAN1_OK = 0x01;\n    else\n        USUA_CAN1_OK = 0x00;\n    if (CAN1_USUB_outtime > 0)\n        USUB_CAN1_OK = 0x01;\n    else\n        USUB_CAN1_OK = 0x00;\n\n    if (CAN0_NtkA_out_timer > 0)\n        NtkA_CAN0_OK = 0x01;\n    else\n        NtkA_CAN0_OK = 0x00;\n    if (CAN0_NtkB_out_timer > 0)\n        NtkB_CAN0_OK = 0x01;\n    else\n        NtkB_CAN0_OK = 0x00;\n\n    if (CAN1_NtkA_out_timer > 0)\n        NtkA_CAN1_OK = 0x01;\n    else\n        NtkA_CAN1_OK = 0x00;\n    if (CAN1_NtkB_out_timer > 0)\n        NtkB_CAN1_OK = 0x01;\n    else\n        NtkB_CAN1_OK = 0x00;\n}\n\nvoid ControlSelektor(void)\n{\n    DFillter(&ErrResetSelektor, RESET_SELECTOR);\n    if ((USUA_VKL && USUB_VKL) || (UVVKA_VKL && UVVKB_VKL) || (NAKA_VKL && NAKB_VKL) || (VKL_OSU && BUKOTK_VKL) || ErrResetSelektor.fValue\n        || (!VKL_OSU && BUKOTK_VKL && (USUA_VKL || USUB_VKL || UVVKA_VKL || UVVKB_VKL))\n        /*|| (RESET_SELECTOR && ((USUA_OK && USUB_OK && !USUA_VKL) || (!USUA_OK && USUB_OK && !USUB_VKL) \n\t\t\t\t\t|| (UVVKA_OK && UVVKB_OK && !UVVKA_VKL) || (!UVVKA_OK && UVVKB_OK && !UVVKB_VKL) \n\t\t\t\t\t|| (NAKA_OK && NAKB_OK && !NAKA_VKL) || (!NAKA_OK && NAKB_OK && !NAKB_VKL)) \n\t\t\t\t )*/\n        )\n        DFillter(&ERR_SELEKTOR, 1);\n    else\n        DFillter(&ERR_SELEKTOR, 0);\n}\n\nvoid ControlUVVK(void)\n{\n    if (ErrAnakA.ErrProgAD2S1210 || ErrAnakB.ErrProgAD2S1210 || (SPI0ReadyTimer == 0) || (SPI1ReadyTimer == 0))\n        FAULT_UVVK = 1;\n}\n\nU8 LevDev;\nU8 OstanovMinus;\n//-------------------------------------------------------------------------------------\nU16 temps1;\nU32 ttt;\nU8 gotzap;\nvoid EXT_IO_PROCEDURE(void)\n{ // ñîáñòâåííî ïðîöåäóðà ââîäà-âûâîäà\n    //unsigned short temps=0;\n\n    if (EXT_REG_Timer == 0) {\n        EXT_REG_Timer = EXT_REG_Timer_; //ïåðåçàãðóçêà òàéìåðà\n\n        RevisionInStream();\n\n        start_wrk = (~(RST1 >> 6)) & 0x01;\n\n        alfa_zad = -35;\n        USUA_NAK_ON = 0x00;\n        USUB_NAK_ON = 0x00;\n        ChannelNAK = 0;\n\n        if (USUA_VKL) // êàíàë À - èñïðàâåí\n        {\n            if (USUA_CAN0_OK) // ÑÀN0 - èñïðàâåí\n            {\n                ttt = Get_CAN(0, 14, 0);\n                EXT_IO_REG[0] = (U8)(((ttt)&0xff000000) >> 24);\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfb) | (((ttt >> 17) & 0x01) << 2); //VAZ\n                EXT_IO_REG[3] = (EXT_IO_REG[3] & 0xfe) | (((ttt >> 22) & 0x01)); //CAZST\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfe) | ((ttt >> 19) & 0x01); //SV_A\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfd) | (((ttt >> 19) & 0x01) << 1); //SV_B\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xdf) | (((ttt >> 23) & 0x01) << 5); //ZP_GOTOV\n                if ((((Get_CAN(0, 14, 0) >> 18) & 0x01)) == 0) {\n                    KPV_OFF\n                }\n                else {\n                    KPV_ON\n                }\n                if ((((Get_CAN(0, 14, 0) >> 16) & 0x01)) == 0) {\n                    PPRT_OFF\n                }\n                else {\n                    PPRT_ON\n                }\n                if ((((Get_CAN(0, 14, 0) >> 22) & 0x01)) == 1) {\n                    PIT_RccA = 0x01;\n                }\n                else {\n                    PIT_RccA = 0x00;\n                }\n                alfa_zad = ((signed short)(Get_CAN(0, 14, 0))) * ANAK_LSB;\n                USUA_NAK_ON = (Get_CAN(0, 14, 0) >> 31) & 0x01;\n                ChannelNAK = 1;\n            }\n            else if (USUA_CAN1_OK) // ÑÀN1 - èñïðàâåí\n            {\n                ttt = Get_CAN(0, 15, 0);\n                EXT_IO_REG[0] = (U8)(((ttt)&0xff000000) >> 24);\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfb) | (((ttt >> 17) & 0x01) << 2); //VAZ\n                EXT_IO_REG[3] = (EXT_IO_REG[3] & 0xfe) | (((ttt >> 22) & 0x01)); //CAZST\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfe) | ((ttt >> 19) & 0x01); //SV_A\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfd) | (((ttt >> 19) & 0x01) << 1); //SV_B\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xdf) | (((ttt >> 23) & 0x01) << 5); //ZP_GOTOV\n                if ((((Get_CAN(1, 14, 0) >> 18) & 0x01)) == 0) {\n                    KPV_OFF\n                }\n                else {\n                    KPV_ON\n                }\n                if ((((Get_CAN(1, 14, 0) >> 16) & 0x01)) == 0) {\n                    PPRT_OFF\n                }\n                else {\n                    PPRT_ON\n                }\n                if ((((Get_CAN(1, 14, 0) >> 22) & 0x01)) == 1) {\n                    PIT_RccA = 0x01;\n                }\n                else {\n                    PIT_RccA = 0x00;\n                }\n                alfa_zad = ((signed short)(Get_CAN(1, 14, 0))) * ANAK_LSB;\n                USUA_NAK_ON = (Get_CAN(1, 14, 0) >> 31) & 0x01;\n                ChannelNAK = 2;\n            }\n            else {\n                EXT_IO_REG[0] = 0x00;\n                EXT_IO_REG[1] = 0x00;\n                EXT_IO_REG[2] = 0x00;\n                PPRT_OFF\n                KPV_OFF\n            }\n        }\n        else if (USUB_VKL) // êàíàë Â - èñïðàâåí\n        {\n            if (USUB_CAN1_OK) // ÑÀN1 - èñïðàâåí\n            {\n                ttt = Get_CAN(1, 15, 0);\n                EXT_IO_REG[0] = (U8)(((ttt)&0xff000000) >> 24);\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfb) | (((ttt >> 17) & 0x01) << 2); //VAZ\n                EXT_IO_REG[3] = (EXT_IO_REG[3] & 0xfe) | (((ttt >> 22) & 0x01)); //CAZST\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfe) | ((ttt >> 19) & 0x01); //SV_A\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfd) | (((ttt >> 19) & 0x01) << 1); //SV_B\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xdf) | (((ttt >> 23) & 0x01) << 5); //ZP_GOTOV\n                if ((((Get_CAN(1, 15, 0) >> 18) & 0x01)) == 0) {\n                    KPV_OFF\n                }\n                else {\n                    KPV_ON\n                }\n                if ((((Get_CAN(1, 15, 0) >> 16) & 0x01)) == 0) {\n                    PPRT_OFF\n                }\n                else {\n                    PPRT_ON\n                }\n                if ((((Get_CAN(1, 15, 0) >> 22) & 0x01)) == 1) {\n                    PIT_RccA = 0x01;\n                }\n                else {\n                    PIT_RccA = 0x00;\n                }\n                alfa_zad = ((signed short)(Get_CAN(1, 15, 0))) * ANAK_LSB;\n                USUB_NAK_ON = (Get_CAN(1, 15, 0) >> 31) & 0x01;\n                ChannelNAK = 4;\n            }\n            else if (USUB_CAN0_OK) // ÑÀN0 - èñïðàâåí\n            {\n                ttt = Get_CAN(0, 15, 0);\n                EXT_IO_REG[0] = (U8)(((ttt)&0xff000000) >> 24);\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfb) | (((ttt >> 17) & 0x01) << 2); //VAZ\n                EXT_IO_REG[3] = (EXT_IO_REG[3] & 0xfe) | (((ttt >> 22) & 0x01)); //CAZST\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfe) | ((ttt >> 19) & 0x01); //SV_A\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfd) | (((ttt >> 19) & 0x01) << 1); //SV_B\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xdf) | (((ttt >> 23) & 0x01) << 5); //ZP_GOTOV\n                if ((((Get_CAN(0, 15, 0) >> 18) & 0x01)) == 0) {\n                    KPV_OFF\n                }\n                else {\n                    KPV_ON\n                }\n                if ((((Get_CAN(0, 15, 0) >> 16) & 0x01)) == 0) {\n                    PPRT_OFF\n                }\n                else {\n                    PPRT_ON\n                }\n                if ((((Get_CAN(0, 15, 0) >> 22) & 0x01)) == 1) {\n                    PIT_RccA = 0x01;\n                }\n                else {\n                    PIT_RccA = 0x00;\n                }\n                alfa_zad = ((signed short)(Get_CAN(0, 15, 0))) * ANAK_LSB;\n                USUB_NAK_ON = (Get_CAN(0, 15, 0) >> 31) & 0x01;\n                ChannelNAK = 3;\n            }\n            else {\n                EXT_IO_REG[0] = 0x00;\n                EXT_IO_REG[1] = 0x00;\n                EXT_IO_REG[2] = 0x00;\n                PPRT_OFF\n                KPV_OFF\n            }\n        }\n        else // êàíàëû USU íå ðàáîòàþò\n        {\n            if (USUA_CAN0_OK) // ÑÀN0 - èñïðàâåí\n            {\n                ttt = Get_CAN(0, 14, 0);\n                EXT_IO_REG[0] = (U8)(((ttt)&0xff000000) >> 24);\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfb) | (((ttt >> 17) & 0x01) << 2); //VAZ\n                EXT_IO_REG[3] = (EXT_IO_REG[3] & 0xfe) | (((ttt >> 22) & 0x01)); //CAZST\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfe) | ((ttt >> 19) & 0x01); //SV_A\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfd) | (((ttt >> 19) & 0x01) << 1); //SV_B\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xdf) | (((ttt >> 23) & 0x01) << 5); //ZP_GOTOV\n                if ((((Get_CAN(0, 14, 0) >> 16) & 0x01)) == 0) {\n                    PPRT_OFF\n                }\n                else {\n                    PPRT_ON\n                }\n                if ((((Get_CAN(0, 14, 0) >> 22) & 0x01)) == 1) {\n                    PIT_RccA = 0x01;\n                }\n                else {\n                    PIT_RccA = 0x00;\n                }\n            }\n            else if (USUA_CAN1_OK) // ÑÀN1 - èñïðàâåí\n            {\n                ttt = Get_CAN(0, 14, 0);\n                EXT_IO_REG[0] = (U8)(((ttt)&0xff000000) >> 24);\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfb) | (((ttt >> 17) & 0x01) << 2); //VAZ\n                EXT_IO_REG[3] = (EXT_IO_REG[3] & 0xfe) | (((ttt >> 22) & 0x01)); //CAZST\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfe) | ((ttt >> 19) & 0x01); //SV_A\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfd) | (((ttt >> 19) & 0x01) << 1); //SV_B\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xdf) | (((ttt >> 23) & 0x01) << 5); //ZP_GOTOV\n                if ((((Get_CAN(1, 14, 0) >> 16) & 0x01)) == 0) {\n                    PPRT_OFF\n                }\n                else {\n                    PPRT_ON\n                }\n                if ((((Get_CAN(1, 14, 0) >> 22) & 0x01)) == 1) {\n                    PIT_RccA = 0x01;\n                }\n                else {\n                    PIT_RccA = 0x00;\n                }\n            }\n            else if (USUB_CAN1_OK) // ÑÀN1 - èñïðàâåí\n            {\n                ttt = Get_CAN(1, 15, 0);\n                EXT_IO_REG[0] = (U8)(((ttt)&0xff000000) >> 24);\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfb) | (((ttt >> 17) & 0x01) << 2); //VAZ\n                EXT_IO_REG[3] = (EXT_IO_REG[3] & 0xfe) | (((ttt >> 22) & 0x01)); //CAZST\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfe) | ((ttt >> 19) & 0x01); //SV_A\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfd) | (((ttt >> 19) & 0x01) << 1); //SV_B\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xdf) | (((ttt >> 23) & 0x01) << 5); //ZP_GOTOV\n                if ((((Get_CAN(1, 15, 0) >> 16) & 0x01)) == 0) {\n                    PPRT_OFF\n                }\n                else {\n                    PPRT_ON\n                }\n                if ((((Get_CAN(1, 15, 0) >> 22) & 0x01)) == 1) {\n                    PIT_RccA = 0x01;\n                }\n                else {\n                    PIT_RccA = 0x00;\n                }\n            }\n            else if (USUB_CAN0_OK) // ÑÀN0 - èñïðàâåí\n            {\n                ttt = Get_CAN(1, 15, 0);\n                EXT_IO_REG[0] = (U8)(((ttt)&0xff000000) >> 24);\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfb) | (((ttt >> 17) & 0x01) << 2); //VAZ\n                EXT_IO_REG[3] = (EXT_IO_REG[3] & 0xfe) | (((ttt >> 22) & 0x01)); //CAZST\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfe) | ((ttt >> 19) & 0x01); //SV_A\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xfd) | (((ttt >> 19) & 0x01) << 1); //SV_B\n                EXT_IO_REG[2] = (EXT_IO_REG[2] & 0xdf) | (((ttt >> 23) & 0x01) << 5); //ZP_GOTOV\n                if ((((Get_CAN(0, 15, 0) >> 16) & 0x01)) == 0) {\n                    PPRT_OFF\n                }\n                else {\n                    PPRT_ON\n                }\n                if ((((Get_CAN(0, 15, 0) >> 22) & 0x01)) == 1) {\n                    PIT_RccA = 0x01;\n                }\n                else {\n                    PIT_RccA = 0x00;\n                }\n            }\n            else {\n                EXT_IO_REG[0] = 0x00;\n                EXT_IO_REG[1] = 0x00;\n                EXT_IO_REG[2] = 0x00;\n                PPRT_OFF\n            }\n\n            if (USUA_CAN0_OK) // ÑÀN0 - èñïðàâåí\n            {\n                USUA_NAK_ON = (Get_CAN(0, 14, 0) >> 31) & 0x01;\n\n                if (USUA_NAK_ON) {\n                    if ((((Get_CAN(0, 14, 0) >> 18) & 0x01)) == 0) {\n                        KPV_OFF\n                    }\n                    else {\n                        KPV_ON\n                    }\n                    alfa_zad = ((signed short)(Get_CAN(0, 14, 0))) * ANAK_LSB;\n                    ChannelNAK = 1;\n                }\n            }\n            if (USUA_CAN1_OK && !USUA_NAK_ON) // ÑÀN1 - èñïðàâåí\n            {\n                USUA_NAK_ON = (Get_CAN(1, 14, 0) >> 31) & 0x01;\n\n                if (USUA_NAK_ON) {\n                    if ((((Get_CAN(1, 14, 0) >> 18) & 0x01)) == 0) {\n                        KPV_OFF\n                    }\n                    else {\n                        KPV_ON\n                    }\n                    alfa_zad = ((signed short)(Get_CAN(1, 14, 0))) * ANAK_LSB;\n                    ChannelNAK = 2;\n                }\n            }\n            if (USUB_CAN1_OK && !USUA_NAK_ON) // ÑÀN1 - èñïðàâåí\n            {\n                USUB_NAK_ON = (Get_CAN(1, 15, 0) >> 31) & 0x01;\n\n                if (USUB_NAK_ON) {\n                    if ((((Get_CAN(1, 15, 0) >> 18) & 0x01)) == 0) {\n                        KPV_OFF\n                    }\n                    else {\n                        KPV_ON\n                    }\n                    alfa_zad = ((signed short)(Get_CAN(1, 15, 0))) * ANAK_LSB;\n                    ChannelNAK = 4;\n                }\n            }\n            if (USUB_CAN0_OK && !USUA_NAK_ON && !USUB_NAK_ON) // ÑÀN0 - èñïðàâåí\n            {\n                USUB_NAK_ON = (Get_CAN(0, 15, 0) >> 31) & 0x01;\n\n                if (USUB_NAK_ON) {\n                    if ((((Get_CAN(0, 15, 0) >> 18) & 0x01)) == 0) {\n                        KPV_OFF\n                    }\n                    else {\n                        KPV_ON\n                    }\n                    alfa_zad = ((signed short)(Get_CAN(0, 15, 0))) * ANAK_LSB;\n                    ChannelNAK = 3;\n                }\n            }\n            if (!USUA_NAK_ON && !USUB_NAK_ON) {\n                KPV_OFF\n                alfa_zad = -35;\n                ChannelNAK = 0;\n            }\n        }\n\n        //\tEXT_IO_REG[0] = 0xff;\n        //\tEXT_IO_REG[1] = (EXT_IO_REG[1]&0xF6) | PIT_RccA | (PIT_RccB<<3);\t// Power Rcc\n        //EXT_IO_REG[1] =\t0xff;\n        //\t\tEXT_IO_REG[1] =\t0xff;\n        //\t\tServiceTestControl();\n\n        A_IND_ON;\n\n        switch (EXT_IO_REG_STATUS) {\n        /*************************************************/\n        case (EXT_REG_STS_SETADR): {\n            //ñòðîá ââåðõ\n            A_WRD_STROB_UP;\n\n            // ñòàâèì àäðåññ è äàííûå, êîòîðûå íàäî çàïèñàòü âî âíåøíèå ïîðòû\n            if (EXT_REG_ADR == 7) {\n                EXT_REG_ADR = 0;\n            }\n            else {\n                EXT_REG_ADR++;\n            } // îïðåäåëèëè àäðåññ ñëåäóþùåãî ñëîâà\n\n            // óñòàíàâëèâàåì íîâûé àäðåññ\n            REG_SEL_PORT &= ~(REG_SEL_MASK);\n            REG_SEL_PORT0 &= ~(A_REG_SEL0);\n            REG_SEL_PORT |= (EXT_REG_ADR << A_REG_SEL0_pin);\n            REG_SEL_PORT0 |= ((EXT_REG_ADR << 1) & 0x02);\n\n            //âûñòàâëÿåì äàííûå íà âûõîäíîé ïîðò\n            if (EXT_REG_ADR <= 2) {\n                A_OUT_PORT &= ~(A_OUT_MASK);\n                A_OUT_PORT |= (EXT_IO_REG[EXT_REG_ADR] << A_OUT_pin);\n            }\n\n            EXT_IO_REG_STATUS = EXT_REG_STS_DWNSTRB;\n            break;\n        }\n\n        /*************************************************/\n        case (EXT_REG_STS_DWNSTRB): {\n            // äàâèì ñòðîá âíèç!!!\n            A_WRD_STROB_DN;\n            //EXT_IO_REG_STATUS = EXT_REG_STS_READ;\n            if (EXT_REG_ADR <= 2) {\n                EXT_IO_REG_STATUS = EXT_REG_STS_SETADR;\n            }\n            else {\n                EXT_IO_REG_STATUS = EXT_REG_STS_READ;\n            } // åñëè ìû çàïûñûâàåì òî íåôèã òðàòèòü âðåìÿ ÷èòàòü òî, ÷òî íå íàäî\n            break;\n        }\n\n        /*************************************************/\n        case (EXT_REG_STS_READ): {\n\n            // ÷èòàåì äàííûå\n            EXT_IO_REG[EXT_REG_ADR] = GET_IN_EXT_REG;\n            EXT_IO_REG_STATUS = EXT_REG_STS_SETADR;\n            if (EXT_REG_ADR == 4) {\n                LevDev = AT91F_PIO_IsInputSet(AT91C_BASE_PIOB, A_IN3) >> 14;\n                OstanovMinus = AT91F_PIO_IsInputSet(AT91C_BASE_PIOB, A_IN2) >> 13;\n            }\n            //ñòðîá ââåðõ\n            A_WRD_STROB_UP;\n            break;\n        }\n        } // end switch\n        //\t\ttemps1=RIN2;\n        //\t\ttemps1 |= (iOstanov_minus)<<1|(iLevDev)<<0;\n        //\tPUT_CAN_DByte(0,3,0,RIN2 | RIN1<< 8,16); //ÑÄÑ2  CAN0\n\n        /*temps=0;\n\t\ttemps |=(RIN1<<0);\n\t\ttemps |=((RIN2&0x03)<<8);\n\t\ttemps |=((RSTAT&0x0F)<<10);\n\t\ttemps |=((RIN2&0x30)<<10);\t\t// Ïðèçíàêè ERRÎÑÓÀ, ERRÎÑÓÂ    07.09.12  RA\t    \n\n\n\t\t//temps ^=(0x03ff);\t   // Çàêîìåíòèðîâàë    07.09.12  RA\n\t\ttemps ^=(0xC3FF);\t   // Äîáàâèë    07.09.12  RA\n\t\t//temps=(RIN1<<0)|(RIN2<<8);\n\n\t\t\n\n\t\ttemps=0;\n\t\t//temps |=((RST1&0x0F)<<0);\t\t // Çàêîìåíòèðîâàë    07.09.12  RA\n\t\ttemps |=((RST1&0x0B)<<0);\t\t // Äîáàâèë    07.09.12  RA\n\t\ttemps |=((RST2>>7)<<4);\n\t\ttemps |=(((RST2>>1)&0x3F)<<5);\n\t\ttemps |=(((RST1>>4)&0x07)<<11);\n\t\ttemps |=((RIN2&0xC0)<<8);\t\t          // Ïðèçíàêè ERRÔÈÊÑÀ, ERRÔÈÊÑÂ    07.09.12  RA\n\t\t//temps |= ((((AT91C_BASE_PIOA->PIO_PDSR & A_ST_PITTCC)>>7)&0x01)<<2);   // Îòêàç öåïè ïèòàíèÿ Rcc_À    11.04.12  \n\n\t\t//temps ^=(0x27fb);\t\t// Çàêîìåíòèðîâàë    07.09.12  RA\n\t\ttemps ^=(0xE7FF);\t\t// Äîáàâèë    07.09.12  RA\n\t\t//temps=(RST1<<0)|(RST2<<8);\n\n\t\t//if (CAN0_USUA_outtime>0 || CAN0_USUB_outtime>0) {temps |=(1<<2);}else{\n\n\t\t//\ttemps &=~(1<<2);} //ñòàâèì áèò åñëè ñëûøèì íàø ðàáî÷èé ÓÑÓ èëè ñíèìàåì áèò åñëè íå ñëûøèì åãî\n\n\t\tPUT_CAN_DByte(0,1,1,temps,0); //ÑÄÑ3   CAN0\n\n\n\t\ttemps = (ERR_KPV_B<<3)|(ERR_ZAJ_B<<1)|ERR_PPRT_B;\n\t\tPUT_CAN_DByte(1,1,1, temps,0); //ÑÄÑ3   CAN1*/\n\n    } //end void if\n\n    if (ErrOutCMDTimer == 0) {\n        ErrOutCMDTimer = _100ms;\n\n        DFillter(&EC_OSU_A, ERR_OSU_A);\n        DFillter(&EC_FIKS_A, ERR_FIKS_A);\n        if (VKL_PPRT && !PPRT)\n            DFillter(&EC_PPRT_A, 0);\n        else\n            DFillter(&EC_PPRT_A, ERR_PPRT_A);\n        DFillter(&EC_ZAJ_A, ERR_ZAJ_A);\n        if (VKL_KPV && !KPV)\n            DFillter(&EC_KPV_A, 0);\n        else\n            DFillter(&EC_KPV_A, ERR_KPV_A);\n        DFillter(&EC_VV, ERR_VV);\n        DFillter(&EC_PES, ERR_PES);\n        DFillter(&EC_PPES, ERR_PPES);\n        DFillter(&EC_DVR, ERR_DVR);\n        if (iOSTFL_A || iOSTFL_B)\n            DFillter(&EC_ZAT, 0);\n        else\n            DFillter(&EC_ZAT, ERR_ZAT);\n        DFillter(&EC_POS, ERR_POS);\n        DFillter(&EC_GOTZAP, ERR_GOTZAP);\n        DFillter(&EC_PITTCC_A, ERR_PITTCC_A);\n\n        DFillter(&EC_OSU_B, ERR_OSU_B);\n        DFillter(&EC_FIKS_B, ERR_FIKS_B);\n        if (VKL_PPRT && !PPRT)\n            DFillter(&EC_PPRT_B, 0);\n        else\n            DFillter(&EC_PPRT_B, ERR_PPRT_B);\n        DFillter(&EC_ZAJ_B, ERR_ZAJ_B);\n        if (VKL_KPV && !KPV)\n            DFillter(&EC_KPV_B, 0);\n        else\n            DFillter(&EC_KPV_B, ERR_KPV_B);\n        DFillter(&EC_PITTCC_B, ERR_PITTCC_B);\n\n        ControlSelektor();\n        ControlUVVK();\n\n        //\t\ttemps = 0;\n\n        //\t\ttemps = USUA_VKL|USUB_VKL<<1|UVVKA_VKL<<2|ErrCircut_A.EC_NAK<<3|ErrCircut_B.EC_NAK<<4| USUA_OK<<5|USUB_OK<<6|UVVKA_OK<<7|VKL_PPRT<<8|VKL_ZAJ<<9|VKL_KPV<<10|VKL_OSU<<11|EC_PPRT_A.fValue<<12| EC_ZAJ_A.fValue<<13 |EC_KPV_A.fValue<<14|\n        //\t\tEC_PES.fValue<<15|EC_OSU_A.fValue<<16;\n\n        //\ttemps = (VKL_OSU)|(BUKOTK_VKL<<1)|(VKL_PPRT<<2)|(VKL_ZAJ<<3)|(VKL_KPV<<4)|(VKL_DVR<<5)|(UVVKA_VKL<<6)|(UVVKB_VKL<<7)|(USUA_VKL<<8)|(USUB_VKL<<9)\n        //\t\t\t\t\t |(NAKA_VKL<<10)|(NAKB_VKL<<11)|(UVVKA_OK<<12)|(UVVKB_OK<<13)|(USUA_OK<<14)|(USUB_OK<<15);\n        //Unak_A = 0x12;\n        PUT_CAN_DByte(0, 0, 1, (((signed char)(Unak_A / 0.125) << 0) & 0xff) | USUA_VKL << 8 | USUB_VKL << 9 | UVVKA_VKL << 10 | NAKA_VKL << 11 | NAKB_VKL << 12 | USUA_OK << 13 | USUB_OK << 14 | UVVKA_OK << 15, 0); //ÑÄÑ2  CAN0\n        PUT_CAN_DByte(1, 0, 1, (((signed char)(Unak_A / 0.125) << 0) & 0xff) | USUA_VKL << 8 | USUB_VKL << 9 | UVVKA_VKL << 10 | NAKA_VKL << 11 | NAKB_VKL << 12 | USUA_OK << 13 | USUB_OK << 14 | UVVKA_OK << 15, 0); //ÑÄÑ2  CAN1\n\n        PUT_CAN_DByte(0, 0, 1, VKL_PPRT << 0 | VKL_ZAJ << 1 | VKL_KPV << 2 | VKL_OSU << 3 | EC_PPRT_A.fValue << 4 | EC_ZAJ_A.fValue << 5 | EC_KPV_A.fValue << 6 | EC_PES.fValue << 7 | EC_OSU_A.fValue << 8, 16); //ÑÄÑ2  CAN0\n        PUT_CAN_DByte(1, 0, 1, VKL_PPRT << 0 | VKL_ZAJ << 1 | VKL_KPV << 2 | VKL_OSU << 3 | EC_PPRT_A.fValue << 4 | EC_ZAJ_A.fValue << 5 | EC_KPV_A.fValue << 6 | EC_PES.fValue << 7 | EC_OSU_A.fValue << 8, 16); //ÑÄÑ2  CAN0\n\n        PUT_CAN_DByte(0, 2, 1, (((signed char)(Unak_B / 0.125) << 0) & 0xff) | USUA_VKL << 8 | USUB_VKL << 9 | UVVKA_VKL << 10 | NAKA_VKL << 11 | NAKB_VKL << 12 | USUA_OK << 13 | USUB_OK << 14 | UVVKA_OK << 15, 0); //ÑÄÑ2  CAN0\n        PUT_CAN_DByte(1, 2, 1, (((signed char)(Unak_B / 0.125) << 0) & 0xff) | USUA_VKL << 8 | USUB_VKL << 9 | UVVKA_VKL << 10 | NAKA_VKL << 11 | NAKB_VKL << 12 | USUA_OK << 13 | USUB_OK << 14 | UVVKA_OK << 15, 0); //ÑÄÑ2  CAN1\n\n        PUT_CAN_DByte(0, 2, 1, VKL_PPRT << 0 | VKL_ZAJ << 1 | VKL_KPV << 2 | VKL_OSU << 3 | EC_PPRT_B.fValue << 4 | EC_ZAJ_B.fValue << 5 | EC_KPV_B.fValue << 6 | EC_PPES.fValue << 7 | EC_OSU_B.fValue << 8, 16);\n        PUT_CAN_DByte(1, 2, 1, VKL_PPRT << 0 | VKL_ZAJ << 1 | VKL_KPV << 2 | VKL_OSU << 3 | EC_PPRT_B.fValue << 4 | EC_ZAJ_B.fValue << 5 | EC_KPV_B.fValue << 6 | EC_PPES.fValue << 7 | EC_OSU_B.fValue << 8, 16);\n        //\n        //\ttemps = 0;\n        //\ttemps = (EC_PPRT_A.fValue)|(EC_ZAJ_A.fValue<<1)|(EC_OSU_A.fValue<<2)|(EC_KPV_A.fValue<<3)|(EC_VV.fValue<<4)|(EC_PES.fValue<<5)\n        //\t\t\t\t\t |(EC_PPES.fValue<<6)|(EC_DVR.fValue<<7)|(EC_ZAT.fValue<<8)|(EC_POS.fValue<<9)|/*(EC_FIKS_A.fValue<<10)|*/(ErrCircut_A.EC_NAK<<11)|\n        //\t\t\t\t\t (ErrCircut_A.OKUPNAK.fValue<<12)|(RESET_SELECTOR<<13)|(ErrCircut_A.OKUNAK<<14);\n        //\tPUT_CAN_DByte(0,1,1,temps,0); //ÑÄÑ3   CAN0\n        //\t\ttemps = 0;\n        //\ttemps = USUA_VKL|USUB_VKL<<1|UVVKA_VKL<<2|ErrCircut_A.EC_NAK<<3|ErrCircut_B.EC_NAK<<4| USUA_OK<<5|USUB_OK<<6|UVVKA_OK<<7|VKL_PPRT<<8|VKL_ZAJ<<9|VKL_KPV<<10|VKL_OSU<<11|EC_PPRT_B.fValue<<12| EC_ZAJ_B.fValue<<13 |EC_KPV_B.fValue<<14|\n        //\t\tEC_PPES.fValue<<15|EC_OSU_B.fValue<<16;\n        //\t\tPUT_CAN_DByte(0,2,0,temps,16); //ÑÄÑ2  CAN0\n        //\tPUT_CAN_DByte(1,2,0,temps,16); //ÑÄÑ2  CAN1\n\n        //\ttemps = 0;\n        //\ttemps = (EC_PPRT_B.fValue)|(EC_ZAJ_B.fValue<<1)|(EC_OSU_B.fValue<<2)|(EC_KPV_B.fValue<<3)/*...*/ |(ERR_SELEKTOR.fValue<<8)|(FAULT_UVVK<<9)\n        //\t\t |/*(EC_FIKS_B.fValue<<10)|*/(ErrCircut_B.EC_NAK<<11)|(ErrCircut_B.OKUPNAK.fValue<<12)|(RESET_SELECTOR<<13)|(ErrCircut_B.OKUNAK<<14);\n        //\tPUT_CAN_DByte(1,1,1,temps,0); //ÑÄÑ3   CAN1\n    }\n\n} // end void\n",
-			"file": "/C/Users/S_Menshikov/Desktop/Новый текстовый документ.txt",
-			"file_size": 20872,
-			"file_write_time": 131249642661259328,
-			"settings":
-			{
-				"buffer_size": 26474,
+				"buffer_size": 8038,
+				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/GIT/UVVK-500-3000/SRC/ADC_A3.c",
+			"file": "/D/GIT/SGrad/WindowsFormsApplication3/WindowsFormsApplication3/bin/Debug/setting.xml",
 			"settings":
 			{
-				"buffer_size": 3771,
-				"encoding": "UTF-8",
+				"buffer_size": 0,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/GIT/UVVK-500-3000/SRC/crc16.c",
+			"file": "/D/GIT/SGrad/WindowsFormsApplication3/WindowsFormsApplication3/bin/Debug/data.xml",
 			"settings":
 			{
-				"buffer_size": 2551,
-				"encoding": "UTF-8",
+				"buffer_size": 564,
+				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/GIT/UVVK-500-3000/SRC/fram.c",
+			"file": "/D/SVN/sakta/Documets/DSU-inf/CParserRSF/ParseReport.cpp",
 			"settings":
 			{
-				"buffer_size": 7051,
-				"encoding": "UTF-8",
+				"buffer_size": 950,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/GIT/UVVK-500-3000/SRC/IO.c",
+			"file": "/D/SVN/sakta/Documets/DSU-inf/CParserRSF/CheckDataRSF.cpp",
 			"settings":
 			{
-				"buffer_size": 5762,
+				"buffer_size": 13565,
 				"encoding": "Western (Windows 1252)",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/GIT/UVVK-500-3000/SRC/math.c",
+			"file": "/D/GIT/TC1/Src/Algoritm/threa_rz.c",
 			"settings":
 			{
-				"buffer_size": 4171,
-				"encoding": "UTF-8",
+				"buffer_size": 14404,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/GIT/UVVK-500-3000/SRC/PIO_cfg.c",
+			"file": "/D/GIT/TC2/Src/suosu.c",
 			"settings":
 			{
-				"buffer_size": 5021,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/GIT/UVVK-500-3000/SRC/PIT_cfg.c",
-			"settings":
-			{
-				"buffer_size": 3188,
+				"buffer_size": 9942,
 				"encoding": "Western (Windows 1252)",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "// 06.09.12  RA\n\n#include <AT91SAM7A3.H> /* AT91SAM7X256 definitions          */\n#include \"board.h\"\n#include \"fram.h\"\n#include \"EXT_IO.h\"\n\n#define Rcc4kOm 418 //531\n#define Rcc6kOm 627 //796\n#define _60m 36000 //3600\n\n#define RccEv1 0\n#define RccEv2 1\n#define RccEv3 2\n\nunsigned short Rcc_TIMER = 0;\nsigned short Rcc1;\nsigned short Rcc2;\nunsigned char STRUJKA1 = 0x00;\nunsigned char STRUJKA2 = 0x00;\nunsigned char PIT_RccA = 0x00;\nunsigned char PIT_RccB = 0x00;\n\nextern unsigned short ADC_data_F[16];\nextern void PUT_CAN_DByte(unsigned char can, unsigned char box, unsigned char reg, unsigned short dbyte, unsigned char bit);\nstruct DSignal STR1 = { 0, 0, 2, 1, 10 }, STR2 = { 0, 0, 2, 1, 10 }; // 1s - on, 2s - off\nstruct DSignal StrInt1 = { 0, 0, 1, 50, 50 }, StrInt2 = { 0, 0, 1, 50, 50 }; // 10s - on, 0.2s - off\n\nvoid dec_Rcc_TIMER(void)\n{\n    if (Rcc_TIMER > 0) {\n        Rcc_TIMER--;\n    }\n}\n\nvoid Rcc_measure(void)\n{\n    static unsigned char Flag = 0;\n    static unsigned short TimerSTR1 = _60m, TimerSTR2 = _60m, Str1dT1, Str1dT2, Str2dT1, Str2dT2;\n    static unsigned char STR1Event, STR2Event;\n    static unsigned char Rcc1Stat = { 0 }, Rcc2Stat = { 0 };\n\n    signed short Rcc;\n\n    if (Rcc_TIMER == 0) {\n        Rcc_TIMER = _100ms; //_200ms*2.5;\n        Rcc = ADC_data_F[2];\n\n        //if (Rcc<Rcc4kOm) STRUJKA = 0x01;\n        //else if (Rcc>Rcc6kOm) STRUJKA = 0x00;\n\n        if (Flag) {\n            //Rcc\t= 800;\t //debug------------\n            Rcc2 = Rcc;\n            Rcc2 = (signed short)((float)Rcc2 * K1Rcc2 + K2Rcc2);\n            //STRUJKA2 = STRUJKA;\n            if (Rcc2 < Rcc4kOm)\n                DFillter(&STR2, 1);\n            else if (Rcc2 > Rcc6kOm)\n                DFillter(&STR2, 0);\n            if (STR2.fValue & 0x01) // && TimerSTR1==0)  TimerSTR1\t= TimerSTR;\n            {\n                if (!STR2Event) {\n                    switch (Rcc2Stat) {\n                    case (RccEv1): {\n                        TimerSTR2 = _60m;\n                        Rcc2Stat = RccEv2;\n                        break;\n                    }\n                    case (RccEv2): {\n                        if (TimerSTR2 > 0) {\n                            Str2dT1 = _60m - TimerSTR2;\n                            Rcc2Stat = RccEv3;\n                            break;\n                        }\n                        else {\n                            Rcc2Stat = RccEv1;\n                            break;\n                        }\n                    }\n                    case (RccEv3): {\n                        if (TimerSTR2 > 0) {\n                            Str2dT2 = _60m - TimerSTR2 - Str2dT1;\n                            if (Str2dT1 > 0)\n                                if ((float)Str2dT2 / (float)Str2dT1 < 0.9) {\n                                    StrInt2.fValue |= 0x01;\n                                }\n                                else {\n                                    Str2dT1 = Str2dT2;\n                                    TimerSTR2 = _60m - Str2dT1;\n                                    Rcc2Stat = RccEv3;\n                                    break;\n                                }\n                        }\n                        else {\n                            Rcc2Stat = RccEv1;\n                            break;\n                        }\n                    }\n                    }\n                    STR2Event = 1;\n                }\n                DFillter(&StrInt2, 1);\n            }\n            else {\n                if ((StrInt2.fValue & 0x01) == 0) {\n                    StrInt2.fValue = 0;\n                    StrInt2.Count = 0;\n                }\n                STR2Event = 0;\n                //TimerSTR2 = _60m;\n            }\n\n            A_TCC1_ON\n\n            if (STR2.fValue & 0x01)\n                PIT_RccB = 0x00;\n            else\n                PIT_RccB = 0x01;\n\n            if (TimerSTR2 > 0)\n                TimerSTR2--;\n        }\n        else {\n            //\t\t\tRcc1 = Rcc;\n            //\t\t\tif (Rcc1<Rcc4kOm)   DFillter(&STR1, 1, 0);\n            //\t\t\telse if (Rcc1>Rcc6kOm) DFillter(&STR1, 0, 2);\n            //\t\t\tA_TCC2_ON\n\n            Rcc1 = Rcc;\n            //Rcc1 = (signed short)((float)Rcc1*K1Rcc1+K2Rcc1);\n            if (Rcc1 < Rcc4kOm)\n                DFillter(&STR1, 1);\n            else if (Rcc1 > Rcc6kOm)\n                DFillter(&STR1, 0);\n            if (STR1.fValue & 0x01) {\n                if (!STR1Event) {\n                    switch (Rcc1Stat) {\n                    case (RccEv1): {\n                        TimerSTR1 = _60m;\n                        Rcc1Stat = RccEv2;\n                        break;\n                    }\n                    case (RccEv2): {\n                        if (TimerSTR1 > 0) {\n                            Str1dT1 = _60m - TimerSTR1;\n                            Rcc1Stat = RccEv3;\n                            break;\n                        }\n                        else {\n                            Rcc1Stat = RccEv1;\n                            break;\n                        }\n                    }\n                    case (RccEv3): {\n                        if (TimerSTR1 > 0) {\n                            Str1dT2 = _60m - TimerSTR1 - Str1dT1;\n                            if (Str1dT1 > 0)\n                                if ((float)Str1dT2 / (float)Str1dT1 < 0.9) {\n                                    StrInt1.fValue |= 0x01;\n                                }\n                                else {\n                                    Str1dT1 = Str1dT2;\n                                    TimerSTR1 = _60m - Str1dT1;\n                                    Rcc1Stat = RccEv3;\n                                    break;\n                                }\n                        }\n                        else {\n                            Rcc1Stat = RccEv1;\n                            break;\n                        }\n                    }\n                    }\n                    STR1Event = 1;\n                }\n                DFillter(&StrInt1, 1);\n            }\n            else {\n                if ((StrInt1.fValue & 0x01) == 0) {\n                    StrInt1.fValue = 0;\n                    StrInt1.Count = 0;\n                }\n                STR1Event = 0;\n            }\n\n            A_TCC2_ON\n\n            if (STR1.fValue & 0x01)\n                PIT_RccA = 0x00;\n            else\n                PIT_RccA = 0x01;\n\n            if (TimerSTR1 > 0)\n                TimerSTR1--;\n        }\n\n        //PUT_CAN_DByte(0,1,1, (((Rcc2<<6)&0xFE00)|((StrInt2.fValue&0x01)<<8)) | (((Rcc1>>2)&0xFE)|(StrInt1.fValue&0x01)),16);\n        PUT_CAN_DByte(0, 1, 1, (((Rcc1 << 6) & 0xFFC0) | ((STR1.fValue & 0x01) << 5) | ((StrInt1.fValue & 0x01) << 4) | (PIT_RccA << 3) | EC_PITTCC_A.fValue), 16);\n        PUT_CAN_DByte(1, 1, 1, (((Rcc2 << 6) & 0xFFC0) | ((STR2.fValue & 0x01) << 5) | ((StrInt2.fValue & 0x01) << 4) | (PIT_RccB << 3) | EC_PITTCC_B.fValue), 16);\n\n        Flag = ~Flag;\n    }\n}\n",
-			"file": "/D/GIT/UVVK-500-3000/SRC/RCC.c",
-			"file_size": 4774,
-			"file_write_time": 128609267500000000,
+			"file": "/C/Users/S_Menshikov/Documents/Visual Studio 2015/Projects/WindowsFormsApplication14/WindowsFormsApplication14/Form1.cs",
 			"settings":
 			{
-				"buffer_size": 6893,
+				"buffer_size": 3939,
+				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/GIT/UVVK-500-3000/SRC/SPI_drv.c",
+			"file": "/C/Users/S_Menshikov/Documents/Visual Studio 2015/Projects/WindowsFormsApplication26/WindowsFormsApplication26/Form1.cs",
 			"settings":
 			{
-				"buffer_size": 21432,
+				"buffer_size": 14586,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/GIT/TC2/Src/can.c",
+			"settings":
+			{
+				"buffer_size": 5568,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/GIT/TC1/Src/CAN/thread_can.c",
+			"settings":
+			{
+				"buffer_size": 3152,
+				"encoding": "Western (Windows 1252)",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/GIT/TC1/Src/Config/can_cnf.c",
+			"settings":
+			{
+				"buffer_size": 1450,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/GIT/TC1/Src/Config/gpio_cnf.c",
+			"settings":
+			{
+				"buffer_size": 3451,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/GIT/UVVK-514/SRC/can.c",
+			"settings":
+			{
+				"buffer_size": 24110,
+				"encoding": "Western (Windows 1252)",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/GIT/AZST-514/Src/can.c",
+			"settings":
+			{
+				"buffer_size": 15773,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/GIT/TC_2_NEW/Inc/adc_task.h",
+			"settings":
+			{
+				"buffer_size": 599,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/GIT/UVVK-500-3000/SRC/usart.c",
+			"file": "/D/GIT/TS-BSTO NewHardware_132/_drivers/eepromDriver.h",
 			"settings":
 			{
-				"buffer_size": 5796,
-				"encoding": "UTF-8",
+				"buffer_size": 3907,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Package Control Messages\n========================\n\nShellScriptImproved\n-------------------\n\n  ShellScript Improved has been updated. To see the changelog, visit\n  Preferences » Package Settings » ShellScript Improved » Changelog\n",
+			"settings":
+			{
+				"buffer_size": 229,
+				"line_ending": "Windows",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "/C/Users/S_Menshikov/Documents/visual studio 2015/Projects/WindowsFormsApplication34/WindowsFormsApplication34/bin/Debug/obj.xml",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/S_Menshikov/Desktop/SU25_B4.CYC",
+			"settings":
+			{
+				"buffer_size": 18446,
+				"encoding": "DOS (CP 437)",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/GIT/SGrad/SGrad/SGrad/bin/Debug/protacol.xml.xsd",
+			"settings":
+			{
+				"buffer_size": 2158,
 				"line_ending": "Windows"
 			}
 		}
@@ -413,7 +538,7 @@
 			],
 			[
 				"Packages/C++/C++ Single File.sublime-build",
-				""
+				"Run"
 			]
 		]
 	],
@@ -459,16 +584,108 @@
 	],
 	"file_history":
 	[
+		"/D/GIT/TS-BSTO NewHardware_132/_drivers/eepromDriver.c",
+		"/D/Electron_pribor/GUK/hi3585.c",
+		"/D/GIT/SGrad/WindowsFormsApplication1/WindowsFormsApplication1/bin/Debug/ItemData.xml",
+		"/D/GIT/SGrad/SGrad/SGrad/bin/Debug/protacol.xml.xsd",
+		"/D/GIT/SGrad/SGrad/SGrad/bin/Debug/protacol.xml",
+		"/D/newXML.xml",
+		"/D/c#/c#/Viewer_0.0.1/Viewer/Viewer/edit_protacol.cs",
+		"/D/c#/c#/Viewer_0.0.1/Viewer/Viewer/Main_Form.cs",
+		"/C/Users/S_Menshikov/Documents/visual studio 2015/Projects/WindowsFormsApplication34/WindowsFormsApplication34/bin/Debug/coef.xml",
+		"/C/Users/S_Menshikov/Documents/visual studio 2015/Projects/WindowsFormsApplication34/WindowsFormsApplication34/bin/Debug/obj.xml",
+		"/C/Users/S_Menshikov/Desktop/Desktop_old4/ICE/ice2/Src/main.c",
+		"/C/Users/S_Menshikov/Desktop/Desktop_old4/ICE/ICE/Src/main.c",
+		"/C/Users/S_Menshikov/Desktop/Desktop_old4/3210_test/3210_test/Src/3210_driver.c",
+		"/C/Users/S_Menshikov/Desktop/Desktop_old4/test_generator/22222/Src/main.c",
+		"/C/Users/S_Menshikov/Desktop/Desktop_old4/test_generator/test_generator/Src/main.c",
+		"/D/TEMPNET/MONSTR/GRAD/256.CYC",
+		"/D/GIT/SGrad/SGrad/SGrad/bin/Debug/xml.xml",
+		"/C/Users/S_Menshikov/Desktop/27043.GRD",
+		"/C/Users/S_Menshikov/Desktop/NY.FIZ",
+		"/C/Users/S_Menshikov/Documents/Visual Studio 2015/Projects/ConsoleApplication12/ConsoleApplication12/fdu_Parser.cpp",
+		"/D/Новая папка/freqvvvvvvvv/Src/sysclock_config.c",
+		"/D/Новая папка/freqvvvvvvvv/Src/main.c",
+		"/D/Desktop2/new 1.c",
+		"/C/Users/S_Menshikov/Documents/NewTaskRZUSB.rzt",
+		"/C/Users/S_Menshikov/Documents/init.lua",
+		"/C/Users/S_Menshikov/Documents/main.lua",
+		"/C/Users/S_Menshikov/Documents/termometr.php",
+		"/C/Users/S_Menshikov/Documents/testmodule.lua",
+		"/C/Users/S_Menshikov/Documents/Untitled.c",
+		"/D/GIT/work_Andrew_PC/ArincUSB Transceiver/code/ArincUSB Transceiver/src/drivers/HI3585Device.c",
+		"/D/GoogleDrive/Mensh/c++ project/function/fftc/fft.c",
+		"/D/GIT/work_Andrew_PC/BHD - 2/code/scatches/trash/spiDriver2.c",
+		"/D/GIT/work_Andrew_PC/BHD - 2/code/scatches/counters/code.c",
+		"/D/GIT/work_Andrew_PC/BHD - 2/code/SVN/_________________________________________________BHD 2_136/two mcus/counter/counter.c",
+		"/C/Users/S_Menshikov/Desktop/Новый текстовый документ.txt.bop",
+		"/D/GIT/work_Andrew_PC/БХД - 1/PO_BHD-1_archive/src/usb.c",
+		"/C/Users/S_Menshikov/Desktop/uz-php-master/smsclient.class.php",
+		"/C/Users/S_Menshikov/Desktop/uz-php-master/uz_fn.php",
+		"/C/Users/S_Menshikov/Desktop/uz-php-master/index.php",
+		"/D/temp/TC06102015.bop",
+		"//BUK3/buk3/ПО/SPI_drv.c",
+		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.626/a_d.h",
+		"/D/TEMPNET/TC.txt.bop",
+		"/D/GIT/UVVK-514/SRC/ad2s_driver.c",
+		"/D/Electron_pribor/c++ project/Fft/FFT.C",
+		"/D/Electron_pribor/GUK/algorithms.c",
+		"/D/Electron_pribor/GUK/corr_const.c",
+		"/D/Electron_pribor/GUK/fm25cl64.c",
+		"/D/GIT/work_Andrew_PC/BHD - 2/code/SVN/BHD 2/Src/core/counter.c",
+		"/D/GIT/work_Andrew_PC/testProject/test1/f2/inc/inludeMePlease.h",
+		"/D/GIT/work_Andrew_PC/testProject/test1/f0/src/file0.c",
+		"/D/GIT/work_Andrew_PC/testProject/test0/someFile.c",
+		"/D/GIT/work_Andrew_PC/testProject/test1/f2/inc/softwareVersion.h",
+		"/Z/home/localhost/cgi-bin/test.pl",
+		"/D/SVN/NOTSVN/UVVK_3000_____________/IO.c",
+		"/D/SVN/NOTSVN/UVVK_3000_____________/EXT_IO.c",
+		"/F/serial.#",
+		"/D/GIT/work_Andrew_PC/SVN/SPV 124/hooks/pre-commit.tmpl",
+		"/D/GIT/work_Andrew_PC/Sakta/BOPEditor/ProtocolEditor/Viewer.cpp",
+		"/D/GIT/work_Andrew_PC/Sakta/BOPEditor/ProtocolEditor/main.cpp",
+		"/D/GIT/work_Andrew_PC/Sakta/BOPEditor/ProtocolEditor/BopProtocol.cpp",
+		"/D/GIT/work_Andrew_PC/Sakta/BOPEditor/ProtocolEditor/DirectFormula.cpp",
+		"/D/GIT/work_Andrew_PC/Sakta/BOPEditor/ProtocolEditor/FormulaParam.cpp",
+		"/D/GIT/work_Andrew_PC/AIR-BAG/work/SOURCE.C/main.c",
+		"/D/GIT/work_Andrew_PC/AIR-BAG/work/SOURCE.C/st_spi.c",
+		"/D/GIT/work_Andrew_PC/БУК-ТС-148/Code/SVN/TS-BSTO/src/Holt.cpp",
+		"/D/GIT/work_Andrew_PC/SPV 124/project/SPV 124/Src/core/HI3210Device.c",
+		"/D/GIT/work_Andrew_PC/SPV 124/project/SPV 124/Src/core/HI3210Driver.c",
+		"/D/GIT/work_Andrew_PC/SPV 124/project/SPV 124/Src/core/dependencyWithAproximation.c",
+		"/D/GIT/work_Andrew_PC/SPV 124/project/SPV 124/Src/core/pressureSensor.c",
+		"/D/GIT/work_Andrew_PC/SPV 124/project/SPV 124/Src/core/spv.c",
+		"/D/GIT/work_Andrew_PC/SPV 124/project/SPV 124/Src/core/spvUnit.c",
+		"/D/GIT/work_Andrew_PC/SPV 124/project/SPV 124/Src/core/valveController.c",
+		"/D/GIT/work_Andrew_PC/SPV 124/project/SPV 124/Src/core/fileSystem.c",
+		"/D/GIT/TC2/Src/algoritm.c",
+		"/C/Users/S_Menshikov/Desktop/STM32F4_FreeRTOS_ENC28J60_hello/src/hello-world.c",
+		"/C/Users/S_Menshikov/Desktop/STM32F4_FreeRTOS_ENC28J60_hello/src/enc28j60.c",
+		"/D/GIT/USS-136/Src/freertos.c",
+		"/D/GIT/USS-136/Src/tcc_task.c",
+		"/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/User/clang_format.sublime-settings",
+		"/C/Users/S_Menshikov/Desktop/Новый текстовый документ.txt",
+		"/D/GIT/UVVK-500-3000/SRC/ADC_A3.c",
+		"/D/GIT/UVVK-500-3000/SRC/crc16.c",
+		"/D/GIT/UVVK-500-3000/SRC/fram.c",
+		"/D/GIT/UVVK-500-3000/SRC/IO.c",
+		"/D/GIT/UVVK-500-3000/SRC/math.c",
+		"/D/GIT/UVVK-500-3000/SRC/PIO_cfg.c",
+		"/D/GIT/UVVK-500-3000/SRC/PIT_cfg.c",
+		"/D/GIT/UVVK-500-3000/SRC/RCC.c",
+		"/D/GIT/UVVK-500-3000/SRC/SPI_drv.c",
+		"/D/GIT/UVVK-500-3000/SRC/usart.c",
+		"/C/Users/S_Menshikov/Desktop/STM32F4_FreeRTOS_ENC28J60_hello/src/stm32f4_discovery_lis302dl.c",
+		"/C/Users/S_Menshikov/Desktop/STM32F4_FreeRTOS_ENC28J60_hello/src/main.c",
+		"/D/SVN/TC_2/trunk/Src/freertos.c",
+		"/D/Electron_pribor/GUK/Src/task_can.c",
 		"/D/GIT/UVVK-500-3000/SRC/CAN_A3.c",
 		"/D/GIT/UVVK-500-3000/SRC/ANAK.c",
 		"/D/GIT/UVVK-500-3000/SRC/EXT_IO.c",
 		"/D/GIT/UVVK-500-3000/SRC/MAIN.c",
-		"/D/GIT/UVVK-500-3000/SRC/SPI_drv.c",
 		"/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/User/CTags.sublime-settings",
-		"/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/User/clang_format.sublime-settings",
 		"/Z/home/test1.ru/www/t1.php",
 		"/Z/home/test1.ru/www/ttt.php",
-		"/D/GIT/USS-136/Src/tcc_task.c",
 		"/D/GIT/USS-136/Src/task_RZ.c",
 		"/D/GIT/USS-136/Src/task_can.c",
 		"/D/GIT/USS-136/Src/stm32f2xx_it.c",
@@ -479,13 +696,11 @@
 		"/D/GIT/USS-136/Src/main.c",
 		"/D/GIT/USS-136/Src/holt.c",
 		"/D/GIT/USS-136/Src/gpio.c",
-		"/D/GIT/USS-136/Src/freertos.c",
 		"/D/GIT/USS-136/Src/dma.c",
 		"/D/GIT/USS-136/Src/cpu_utils.c",
 		"/D/GIT/USS-136/Src/can.c",
 		"/D/GIT/USS-136/Src/adc.c",
 		"/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/Clang Format/clang_format.sublime-settings",
-		"/C/Users/S_Menshikov/Desktop/STM32F4_FreeRTOS_ENC28J60_hello/src/main.c",
 		"/D/GIT/USS-136/Inc/FreeRTOSConfig.h",
 		"/D/GIT/USS-136/Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h",
 		"/D/GIT/TEST_Ethernet_ENC28J60/Ethernet/Src/uip/main.c",
@@ -496,97 +711,7 @@
 		"/D/SVN/NOTSVN/UVVK_3000/SPI_drv.c",
 		"/D/SVN/NOTSVN/OLD/UVVK-500-14/EXT_IO.c",
 		"/D/Electron_pribor/Keil project/MC-514/UKV-BUK-500-14____no_os_iir_matlab_usrednenie_posle50_proc/SRC/Filter/median_filter.c",
-		"//ANDREWPC/public/medianFilter_float.c",
-		"/D/SVN/NOTSVN/UVVK_3000/ANAK.c",
-		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.045/uip-conf.h",
-		"/D/GIT/TEST_Ethernet_ENC28J60/Ethernet/Src/mains.c",
-		"/D/SVN/NOTSVN/UVVK_3000/ANAK.h",
-		"/D/Electron_pribor/Keil project/BKD-136/_65-110.m",
-		"/D/GIT/AZST-500-3000/SRC/task_CAN.c",
-		"/D/Electron_pribor/Keil project/BUK-500-14doc/BUK_500_14_USO_27_04_13/Main/main.c",
-		"/D/Electron_pribor/Keil project/MC-514/UKV-BUK-500-14____no_os_iir_matlab_usrednenie_posle50_proc/SRC/CAN/CAN_transfer.c",
-		"/D/Electron_pribor/Keil project/MC-500/MC-500V0.4/Task/task_send_can.c",
-		"/D/Electron_pribor/GUK/CAN_Cfg.h",
-		"/D/Electron_pribor/GUK/can0_module.c",
-		"/C/Users/S_Menshikov/Desktop/BU-3_ot_20.06.2016_dad.bop",
-		"/D/Electron_pribor/Keil project/BUK-500-14doc/BUK_500_14_USO_27_04_13/CAN/CAN_Cfg.h",
-		"/C/Users/S_Menshikov/Desktop/booking.uz.gov.ua.har",
-		"/D/SVN/UVVK2/trunk/SRC/ad2s_driver.c",
-		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.522/GW3F2A.c",
-		"/C/Users/S_Menshikov/Desktop/uz-php-master/uz_fn.php",
-		"/D/SVN/TC_2/trunk/Src/holt_driver.c",
-		"/D/SVN/ТС/trunk/Src/Utils/holt.c",
-		"/D/SVN/ТС/trunk/Src/Algoritm/threa_rz.c",
-		"/D/SVN/ТС/trunk/Src/Config/spi_cnf.c",
-		"/Z/home/test1.ru/www/index.html",
-		"/C/Users/S_Menshikov/Desktop/uz-php-master/index.php",
-		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.884/GW3F2A.h",
-		"/C/Users/S_Menshikov/AppData/Local/Temp/Rar$DIa0.184/GW3F2A.c",
-		"/C/Keil_v5/ARM/Pack/ARM/CMSIS/4.5.0/CMSIS/RTOS/RTX/UserCodeTemplates/Mutex.c",
-		"/D/SVN/TC_2/trunk/Src/freertos.c",
-		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Projects/STM322xG_EVAL/Examples/CAN/CAN_Networking/Inc/main.h",
-		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Projects/STM322xG_EVAL/Examples/CAN/CAN_Networking/Src/stm32f2xx_hal_msp.c",
-		"/D/SVN/UVVK2/trunk/SRC/can.c",
-		"/D/SVN/TC_2/trunk/Src/task_can.c",
-		"/D/SVN/TC_2/trunk/Src/can.c",
-		"/D/SVN/TC_2/trunk/Src/main.c",
-		"/D/SVN/UKV2/trunk/Src/can.c",
-		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Projects/STM322xG_EVAL/Examples/CAN/CAN_Networking/Src/main.c",
-		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Projects/STM322xG_EVAL/Examples/CAN/CAN_LoopBack/Src/main.c",
-		"/D/SVN/gh/ghj/Src/can.c",
-		"/C/Users/S_Menshikov/Desktop/Desktop_old4/BHD 2/Src/can.c",
-		"/D/SVN/TC_2/trunk/Src/task_rz.c",
-		"//ANDREWPC/public/can.c",
-		"/D/Electron_pribor/GUK/spi1_module.c",
-		"/D/Electron_pribor/GUK/resource.c",
-		"/D/Electron_pribor/GUK/can_module.c",
-		"/D/Electron_pribor/GUK/adc_module.c",
-		"/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/Clang Format/Default (Windows).sublime-keymap",
-		"/D/GIT/AZST-3000/INC/AT91SAM7X256.h",
-		"/D/GIT/AZST-3000/INC/board.h",
-		"/D/SVN/USS136/USS136/Src/task_can.c",
-		"/D/SVN/NOTSVN/AZST-3000/board.h",
-		"/D/SVN/USS136/USS136/Inc/can_task.h",
-		"/D/SVN/NOTSVN/AZST-3000/SRC/cfg/PIOB_cfg.c",
-		"/D/GIT/AZST-3000/main.c",
-		"/C/Users/S_Menshikov/Desktop/Новый текстовый документ.txt.bop",
-		"/C/Keil_v5/ARM/Boards/Atmel/AT91SAM7X-EK/RTX_Blinky/Blinky.c",
-		"/D/SVN/TC_2/trunk/Новый текстовый документ.bat",
-		"/C/Users/S_Menshikov/Desktop/test.c",
-		"/D/SVN/USS136/USS136/Src/cpu_utils.c",
-		"/D/SVN/USS136/USS136/Src/dma.c",
-		"/D/SVN/USS136/USS136/Src/stm32f2xx_hal_msp.c",
-		"/D/SVN/USS136/USS136/Src/spi.c",
-		"/D/SVN/USS136/USS136/Src/adc.c",
-		"/D/SVN/USS136/USS136/Src/freertos.c",
-		"/D/SVN/USS136/USS136/Src/tcc_task.c",
-		"/D/SVN/USS136/USS136/Src/main.c",
-		"/D/SVN/USS136/USS136/Src/can.c",
-		"/D/SVN/USS136/USS136/Src/math_func.c",
-		"/D/SVN/USS136/USS136/Inc/tcc_task.h",
-		"/C/Keil_v5/ARM/Pack/Keil/STM32F2xx_DFP/2.5.0/Utilities/CPU/cpu_utils.c",
-		"/D/SVN/TC_2/trunk/Src/adc.c",
-		"/D/SVN/TC_2/trunk/Src/math_func.c",
-		"/D/SVN/TC_2/trunk/Src/DFillter.c",
-		"/D/SVN/TC_2/trunk/Inc/suosu.h",
-		"/D/SVN/UVVK2/trunk/SRC/adc.c",
-		"/D/SVN/UVVK2/trunk/SRC/stm32f2xx_it.c",
-		"/D/SVN/UVVK2/trunk/SRC/thread_adc.c",
-		"/D/SVN/USS136/USS136/Src/adc_task.c",
-		"/D/SVN/TC_2/trunk/Inc/Dfillter.h",
-		"/C/Users/S_Menshikov/Desktop/testt.c",
-		"/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/Default (Windows).sublime-keymap",
-		"/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
-		"/D/SVN/RZ_Wifi/hi3895/ArduESP8266/ArduESP8266.ino",
-		"/D/SVN/TC_2/trunk/Src/stm32f2xx_hal_msp.c",
-		"/C/MinGW/i686-w64-mingw32/include/adoctint.h",
-		"/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
-		"/C/MinGW/lib/gcc/mingw32/5.3.0/include/c++/mingw32/bits/stringfwd.h",
-		"/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
-		"/C/Users/S_Menshikov/Documents/visual studio 2015/Projects/WindowsFormsApplication27/WindowsFormsApplication27/Program.cs",
-		"/D/temp/RZ_BHD_com_port/Src/main.c",
-		"/D/temp/RZ_BHD_com_port/Src/HOLT/holt_core.c",
-		"/D/temp/RZ_BHD_com_port/Src/HOLT/HI3598.c"
+		"//ANDREWPC/public/medianFilter_float.c"
 	],
 	"find":
 	{
@@ -604,6 +729,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"CONST_I_OBDUV_OTKAZ",
+			"SaveDataGridViewToCSV",
 			"$tr->coach_type",
 			".",
 			"ADC",
@@ -645,24 +772,24 @@
 	"groups":
 	[
 		{
-			"selected": 13,
+			"selected": 21,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Src/freertos.c",
+					"file": "/D/c#/c#/Viewer_0.0.1/Viewer/Viewer/edit_protacol.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6286,
+						"buffer_size": 12109,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2886,
-								2886
+								498,
+								432
 							]
 						],
 						"settings":
@@ -681,30 +808,30 @@
 								},
 								"unmatched":
 								{
+									"1":
+									[
+										284,
+										285
+									]
 								}
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
@@ -715,50 +842,289 @@
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 630.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 24,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/D/GIT/SGrad/WindowsFormsApplication1/WindowsFormsApplication1/bin/Debug/ItemData.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 305,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								283,
+								283
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										219,
+										223
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/tag.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										219,
+										223
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 23,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/GIT/SGrad/SGrad/SGrad/bin/Debug/protacol.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 935,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								875,
+								875
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										870,
+										874
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/tag.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										857,
+										861
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content"
 							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/XML/XML.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1665.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 22,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "Src/tcc_task.c",
+					"buffer": 3,
+					"file": "/D/GIT/SGrad/WindowsFormsApplication2/WindowsFormsApplication2/bin/Debug/student.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17953,
+						"buffer_size": 156,
 						"regions":
 						{
 						},
@@ -785,97 +1151,303 @@
 								},
 								"unmatched":
 								{
-									"1":
-									[
-										4764,
-										4765
-									]
 								}
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
+								"bh_tag_content"
 							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/XML/XML.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 15.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 20,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "/C/Users/S_Menshikov/AppData/Roaming/Sublime Text 3/Packages/User/clang_format.sublime-settings",
+					"buffer": 4,
+					"file": "/D/GIT/SGrad/WindowsFormsApplication2/WindowsFormsApplication2/bin/Debug/people.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 248,
+						"buffer_size": 535,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								122,
-								122
+								492,
+								492
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+									"1":
+									[
+										477,
+										491
+									]
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 21,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/D/GIT/SGrad/WindowsFormsApplication2/WindowsFormsApplication2/bin/Debug/setting.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1994,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								954,
+								954
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 585.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/D/GIT/SGrad/WindowsFormsApplication2/WindowsFormsApplication2/Form1.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8038,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4029,
+								4108
 							]
 						],
 						"settings":
@@ -887,8 +1459,8 @@
 								{
 									"1":
 									[
-										246,
-										247
+										4534,
+										4535
 									]
 								},
 								"icon":
@@ -903,8 +1475,8 @@
 								{
 									"1":
 									[
-										0,
-										1
+										3207,
+										3208
 									]
 								},
 								"unmatched":
@@ -913,79 +1485,80 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
 							],
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2295.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "/C/Users/S_Menshikov/Desktop/Новый текстовый документ.txt",
+					"buffer": 7,
+					"file": "/D/GIT/SGrad/WindowsFormsApplication3/WindowsFormsApplication3/bin/Debug/setting.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 26474,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -993,7 +1566,7 @@
 						[
 							[
 								0,
-								26474
+								0
 							]
 						],
 						"settings":
@@ -1012,20 +1585,10 @@
 								},
 								"unmatched":
 								{
-									"1":
-									[
-										4976,
-										4977
-									]
 								}
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
@@ -1036,11 +1599,26 @@
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -1056,11 +1634,93 @@
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/D/GIT/SGrad/WindowsFormsApplication3/WindowsFormsApplication3/bin/Debug/data.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 564,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -1071,13 +1731,432 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/D/SVN/sakta/Documets/DSU-inf/CParserRSF/ParseReport.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 950,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_round_content"
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
 							],
-							"syntax": "Packages/C++/C.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/D/SVN/sakta/Documets/DSU-inf/CParserRSF/CheckDataRSF.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13565,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 5580.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "/D/GIT/TC1/Src/Algoritm/threa_rz.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14404,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/C Improved/C Improved.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2205.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "/D/GIT/TC2/Src/suosu.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9942,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/C Improved/C Improved.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1087,883 +2166,12 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "/D/GIT/UVVK-500-3000/SRC/ADC_A3.c",
+					"buffer": 13,
+					"file": "/C/Users/S_Menshikov/Documents/Visual Studio 2015/Projects/WindowsFormsApplication14/WindowsFormsApplication14/Form1.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3771,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2902,
-								2902
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										3039,
-										3040
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										1435,
-										1436
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
-							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/D/GIT/UVVK-500-3000/SRC/crc16.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2551,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								2551
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
-							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/D/GIT/UVVK-500-3000/SRC/fram.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7051,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								7051
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-									"1":
-									[
-										4682,
-										4683
-									]
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "/D/GIT/UVVK-500-3000/SRC/IO.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5762,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4768,
-								4768
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										5732,
-										5733
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										3026,
-										3027
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 405.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "/D/GIT/UVVK-500-3000/SRC/math.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4171,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								4171
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "/D/GIT/UVVK-500-3000/SRC/PIO_cfg.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5021,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1019,
-								1019
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										2907,
-										2908
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										315,
-										316
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "/D/GIT/UVVK-500-3000/SRC/PIT_cfg.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3188,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								3188
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
-							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "/D/GIT/UVVK-500-3000/SRC/RCC.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6893,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								6893
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-									"1":
-									[
-										4638,
-										4639
-									]
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"syntax": "Packages/C Improved/C Improved.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "/D/GIT/UVVK-500-3000/SRC/SPI_drv.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 21432,
+						"buffer_size": 3939,
 						"regions":
 						{
 						},
@@ -1976,22 +2184,98 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/C Improved/C Improved.tmLanguage"
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 45.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
-					"file": "/D/GIT/UVVK-500-3000/SRC/usart.c",
+					"buffer": 14,
+					"file": "/C/Users/S_Menshikov/Documents/Visual Studio 2015/Projects/WindowsFormsApplication26/WindowsFormsApplication26/Form1.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5796,
+						"buffer_size": 14586,
 						"regions":
 						{
 						},
@@ -1999,7 +2283,7 @@
 						[
 							[
 								0,
-								5796
+								0
 							]
 						],
 						"settings":
@@ -2018,30 +2302,218 @@
 								},
 								"unmatched":
 								{
-									"1":
-									[
-										4995,
-										4996
-									]
 								}
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2160.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "/D/GIT/TC2/Src/can.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5568,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/C Improved/C Improved.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1035.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "/D/GIT/TC1/Src/CAN/thread_can.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3152,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
@@ -2052,6 +2524,446 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/C Improved/C Improved.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "/D/GIT/TC1/Src/Config/can_cnf.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1450,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/C Improved/C Improved.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "/D/GIT/TC1/Src/Config/gpio_cnf.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3451,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/C Improved/C Improved.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 810.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "/D/GIT/UVVK-514/SRC/can.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 24110,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/C Improved/C Improved.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3915.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "/D/GIT/AZST-514/Src/can.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15773,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
@@ -2062,21 +2974,6 @@
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
@@ -2086,10 +2983,602 @@
 							"syntax": "Packages/C Improved/C Improved.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 525.0,
+						"translation.y": 3465.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "/D/GIT/TC_2_NEW/Inc/adc_task.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 599,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								591,
+								591
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										592,
+										598
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/hash.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										0,
+										7
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"file": "/D/GIT/TS-BSTO NewHardware_132/_drivers/eepromDriver.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3907,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								51,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										3900,
+										3906
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/hash.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										0,
+										7
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1215.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 23,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 229,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								229,
+								229
+							]
+						],
+						"settings":
+						{
+							"auto_indent": false,
+							"bracket_highlighter.busy": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_width": 2,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 24,
+					"file": "/C/Users/S_Menshikov/Documents/visual studio 2015/Projects/WindowsFormsApplication34/WindowsFormsApplication34/bin/Debug/obj.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 26,
+					"type": "text"
+				},
+				{
+					"buffer": 25,
+					"file": "/C/Users/S_Menshikov/Desktop/SU25_B4.CYC",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18446,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1755.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
+					"type": "text"
+				},
+				{
+					"buffer": 26,
+					"file": "/D/GIT/SGrad/SGrad/SGrad/bin/Debug/protacol.xml.xsd",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2158,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1619,
+								1619
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										1619,
+										1620
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/double_quote.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										1609,
+										1610
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 25,
 					"type": "text"
 				}
 			]

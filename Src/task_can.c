@@ -32,16 +32,34 @@ void CAN_Transmit(void)
     hcan1.pTxMsg->IDE = CAN_ID_STD;
     hcan1.pTxMsg->RTR = CAN_RTR_DATA;
     HAL_CAN_Transmit(&hcan1, 500);
-
+/*
     memset(hcan1.pTxMsg, 0, sizeof(CanTxMsgTypeDef));
     hcan1.pTxMsg->Data[0] = TCC1.Kz << 0 | TCC1.Otkaz << 1 | TCC1.Period_1_sec << 2 | TCC1.Period_8_sec << 3 | TCC1.Struhka << 4 | TCC1.Obriv << 5;
     hcan1.pTxMsg->Data[1] = TCC2.Kz << 0 | TCC2.Otkaz << 1 | TCC2.Period_1_sec << 2 | TCC2.Period_8_sec << 3 | TCC2.Struhka << 4 | TCC2.Obriv << 5;
     hcan1.pTxMsg->Data[2] = TCC3.Kz << 0 | TCC3.Otkaz << 1 | TCC3.Period_1_sec << 2 | TCC3.Period_8_sec << 3 | TCC3.Struhka << 4 | TCC3.Obriv << 5;
-    hcan1.pTxMsg->Data[3] = TCC4.Kz << 0 | TCC4.Otkaz << 1 | TCC4.Period_1_sec << 2 | TCC4.Period_8_sec << 3 | TCC4.Struhka << 4 | TCC4.Obriv << 5;
+    hcan1.pTxMsg->Data[3] = TCC4.Kz << 0 | TCC4.Otkaz << 1 | TCC4.Period_1_sec << 2 | TCC4.Period_8_sec << 3 |   TCC4.Obriv << 5;
+		hcan1.pTxMsg->Data[4] = TCC1.Struhka  << 0 | TCC2.Struhka << 1 | TCC3.Struhka << 2 |  TCC4.Struhka  << 3;
     hcan1.pTxMsg->StdId = 0x02c;
     hcan1.pTxMsg->DLC = 8;
     hcan1.pTxMsg->IDE = CAN_ID_STD;
     HAL_CAN_Transmit(&hcan1, 500);
+*/		
+		
+		
+		
+		    memset(hcan1.pTxMsg, 0, sizeof(CanTxMsgTypeDef));
+    hcan1.pTxMsg->Data[0] = TCC1.Kz << 0 | TCC1.Obriv << 1 | TCC1.Period_1_sec << 2  | TCC1.Period_8_sec << 3  | TCC2.Kz << 4 | TCC2.Obriv << 5  | TCC2.Period_1_sec << 6 | TCC2.Period_8_sec << 7;
+    hcan1.pTxMsg->Data[1] = TCC3.Kz << 0 | TCC3.Obriv << 1 |  TCC3.Period_1_sec << 2 |  TCC3.Period_8_sec << 3 | TCC4.Kz << 4 | TCC4.Obriv  << 5 | TCC4.Period_1_sec << 6 | TCC4.Period_8_sec << 7;
+ //   hcan1.pTxMsg->Data[2] = TCC3.Kz << 0 | TCC3.Otkaz << 1 | TCC3.Period_1_sec << 2 | TCC3.Period_8_sec << 3 | TCC3.Struhka << 4 | TCC3.Obriv << 5;
+//    hcan1.pTxMsg->Data[3] = TCC4.Kz << 0 | TCC4.Otkaz << 1 | TCC4.Period_1_sec << 2 | TCC4.Period_8_sec << 3 | TCC4.Obriv << 4;
+		hcan1.pTxMsg->Data[3] = TCC1.Struhka  << 0 | TCC2.Struhka << 1 | TCC3.Struhka << 2 |  TCC4.Struhka  << 3;
+    hcan1.pTxMsg->StdId = 0x02c;
+    hcan1.pTxMsg->DLC = 8;
+    hcan1.pTxMsg->IDE = CAN_ID_STD;
+    HAL_CAN_Transmit(&hcan1, 500);
+		
+		
+		
 
     //  memset(hcan1.pTxMsg, 0, sizeof(CanTxMsgTypeDef));
     //  hcan1.pTxMsg->Data[0] =

@@ -78,6 +78,8 @@
 #define IN2_M_GPIO_Port GPIOG
 #define IN3_M_Pin GPIO_PIN_4
 #define IN3_M_GPIO_Port GPIOG
+#define IN4_M_Pin GPIO_PIN_5
+#define IN4_M_GPIO_Port GPIOG
 #define OUT1_M_Pin GPIO_PIN_9
 #define OUT1_M_GPIO_Port GPIOG
 #define OUT2_M_Pin GPIO_PIN_10

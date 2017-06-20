@@ -14,7 +14,6 @@ struct _s_STR {
 	float Uio;
 	float Iresult;
 	uint32_t counter_KZ;
-	uint32_t counter_strushka;
 	float P1;
 	float P2;
   float mass_P[5];
@@ -30,20 +29,6 @@ struct _s_STR {
 
 #define S_C_M_LOW HAL_GPIO_WritePin(S_C_M_GPIO_Port, S_C_M_Pin, GPIO_PIN_RESET);
 #define S_C_M_HIGHT HAL_GPIO_WritePin(S_C_M_GPIO_Port, S_C_M_Pin, GPIO_PIN_SET);
-
-
-#define S_A_M_LOW_plus HAL_GPIO_WritePin(S_A_M_GPIO_Port, GPIO_PIN_7, GPIO_PIN_RESET);
-#define S_A_M_HIGHT_plus HAL_GPIO_WritePin(S_A_M_GPIO_Port, GPIO_PIN_7, GPIO_PIN_SET);
-
-#define S_B_M_LOW_plus HAL_GPIO_WritePin(S_B_M_GPIO_Port, GPIO_PIN_8, GPIO_PIN_RESET);
-#define S_B_M_HIGHT_plus HAL_GPIO_WritePin(S_B_M_GPIO_Port, GPIO_PIN_8, GPIO_PIN_SET);
-
-#define S_C_M_LOW_plus HAL_GPIO_WritePin(S_C_M_GPIO_Port, GPIO_PIN_9, GPIO_PIN_RESET);
-#define S_C_M_HIGHT_plus HAL_GPIO_WritePin(S_C_M_GPIO_Port, GPIO_PIN_9, GPIO_PIN_SET);
-
-
-
-
 
 #define Kp 19.24
 #define P_SIG_POROG 20.f
